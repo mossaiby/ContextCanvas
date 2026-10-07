@@ -1,0 +1,17 @@
+{
+  "strict_em": 70.0,
+  "normalized_em": 70.0,
+  "answer_em": 70.0,
+  "alias_em": 70.0,
+  "answer_f1": 77.02,
+  "evaluated_cases": 50,
+  "mode": "all_paragraphs",
+  "failure_stages": {
+    "success": 35,
+    "answer_mismatch_answer_in_evidence": 2,
+    "answer_mismatch_answer_not_in_evidence": 1,
+    "qa_refusal_answer_not_in_evidence": 3,
+    "answer_partial_match": 7,
+    "qa_refusal_answer_in_evidence": 2
+  }
+}

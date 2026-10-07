@@ -1,0 +1,78 @@
+{
+  "diagnostics": {
+    "temporal_updating": {
+      "axis": "temporal_updating",
+      "passed": 1,
+      "cases": [
+        {
+          "query": "Elena Rostova career timeline",
+          "expected_in_blueprint": [
+            ":before",
+            "Oxford",
+            "Munich"
+          ],
+          "passed": true
+        }
+      ]
+    },
+    "multi_hop_transitivity": {
+      "axis": "multi_hop_transitivity",
+      "passed": 1,
+      "cases": [
+        {
+          "query": "Detector Helios -> Employing Institution",
+          "passed": true
+        }
+      ]
+    },
+    "epistemic_calibration": {
+      "axis": "epistemic_calibration",
+      "passed": 1,
+      "cases": [
+        {
+          "query": "Superconductor certainty check",
+          "passed": true
+        }
+      ]
+    },
+    "negative_constraints": {
+      "axis": "negative_constraints",
+      "passed": 1,
+      "cases": [
+        {
+          "query": "Startup X valuation",
+          "expected": "STATUS: NOT_IN_EVIDENCE",
+          "passed": true
+        }
+      ]
+    },
+    "summary": {
+      "total_tests": 4,
+      "total_passed": 4,
+      "accuracy_percent": 100.0
+    }
+  },
+  "storage": [
+    {
+      "events_count": 100,
+      "events_per_second": 29.36,
+      "disk_bytes": 19300352,
+      "bytes_per_event": 193003.52,
+      "median_query_latency_ms": 1.863
+    },
+    {
+      "events_count": 500,
+      "events_per_second": 29.39,
+      "disk_bytes": 26009600,
+      "bytes_per_event": 52019.2,
+      "median_query_latency_ms": 9.281
+    },
+    {
+      "events_count": 1000,
+      "events_per_second": 29.44,
+      "disk_bytes": 27414528,
+      "bytes_per_event": 27414.53,
+      "median_query_latency_ms": 18.686
+    }
+  ]
+}

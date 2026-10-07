@@ -1,0 +1,2904 @@
+[
+  {
+    "id": "double__460946_294723",
+    "question": "Who is the spouse of the Green performer?",
+    "gold": "Miquette Giraudy",
+    "aliases": [
+      "Miquette Giraudy"
+    ],
+    "predicted": "Miquette Giraudy",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 132,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "green"
+      ],
+      "matched_anchors": [
+        "green"
+      ],
+      "candidate_entities": [
+        "Animals",
+        "Dorking",
+        "London",
+        "Steve Hillage",
+        "Miquette Giraudy",
+        "Surrey",
+        "System 7",
+        "US",
+        "Gong",
+        "Nice"
+      ],
+      "evidence_event_ids": [
+        "ev3_3",
+        "ev13",
+        "c0_ev1",
+        "ev1_34",
+        "ev2_35",
+        "ev3_36",
+        "ev14",
+        "ev3_17",
+        "ev5_19",
+        "ev2_loc0",
+        "ev4_37",
+        "ev1_14",
+        "ev2_16",
+        "ev4_18"
+      ],
+      "evidence_sources": [
+        "musique:double__460946_294723:10",
+        "musique:double__460946_294723:2",
+        "musique:double__460946_294723:5",
+        "musique:double__460946_294723:6"
+      ],
+      "raw_response": "ANSWER: Miquette Giraudy",
+      "llm_output": "The \"Green performer\" is Steve Hillage, who created and recorded \"green\" (ev1_34, ev2_35, ev3_36). His partner (spouse) is Miquette Giraudy, as stated in [ev3_17] where she is listed as his partner.\n\nFINAL ANSWER: Miquette Giraudy"
+    }
+  },
+  {
+    "id": "double__252311_366220",
+    "question": "Who founded the company that distributed the film UHF?",
+    "gold": "Mike Medavoy",
+    "aliases": [
+      "Mike Medavoy"
+    ],
+    "predicted": "Mike Medavoy",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 109,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "UHF"
+      ],
+      "matched_anchors": [
+        "UHF"
+      ],
+      "candidate_entities": [
+        "Tulsa",
+        "Tulsa, Oklahoma",
+        "Levey",
+        "Orion Pictures",
+        "Mike Medavoy",
+        "Oklahoma",
+        "Phoenix Pictures",
+        "TriStar Pictures",
+        "United Artists",
+        "chairman"
+      ],
+      "evidence_event_ids": [
+        "ev3_48",
+        "ev1_46",
+        "ev2_47",
+        "ev2_32",
+        "ev3_loc0",
+        "ev1_31",
+        "ev3_33",
+        "ev4_34",
+        "ev5_35"
+      ],
+      "evidence_sources": [
+        "musique:double__252311_366220:10",
+        "musique:double__252311_366220:6"
+      ],
+      "raw_response": "ANSWER: Mike Medavoy",
+      "llm_output": "The film UHF was supported (distributed) by Orion Pictures [ev2_47]. Orion Pictures was founded by Mike Medavoy [ev2_32].\n\nFINAL ANSWER: Mike Medavoy"
+    }
+  },
+  {
+    "id": "double__701895_752697",
+    "question": "What administrative territorial entity is the owner of Ciudad Deportiva located?",
+    "gold": "Tamaulipas",
+    "aliases": [
+      "Tamaulipas"
+    ],
+    "predicted": "Municipality of Nuevo Laredo",
+    "failure_stage": "answer_mismatch_answer_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 134,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Ciudad Deportiva"
+      ],
+      "matched_anchors": [
+        "Ciudad Deportiva"
+      ],
+      "candidate_entities": [
+        "Estadio Nuevo Laredo",
+        "Nuevo Laredo",
+        "Nuevo Laredo Multidisciplinary Gymnasium",
+        "Tecolotes de Nuevo Laredo",
+        "El Campanario y Oradel",
+        "Mexico",
+        "Municipality of Nuevo Laredo",
+        "R\u00edo Grande",
+        "Tamaulipas",
+        "Central Mexican Railroad"
+      ],
+      "evidence_event_ids": [
+        "ev1_54",
+        "ev2_56",
+        "ev3_57",
+        "ev6_60",
+        "ev7_61",
+        "ev2_5",
+        "ev5_8",
+        "ev6_9",
+        "ev1_loc0_55",
+        "ev4_58",
+        "ev5_59",
+        "ev1_4",
+        "ev3_6",
+        "ev4_7",
+        "ev7_10",
+        "c0_ev1_75",
+        "c0_ev5_79",
+        "c0_ev6_80",
+        "c0_ev2_76"
+      ],
+      "evidence_sources": [
+        "musique:double__701895_752697:11",
+        "musique:double__701895_752697:16",
+        "musique:double__701895_752697:3"
+      ],
+      "raw_response": "ANSWER: Municipality of Nuevo Laredo",
+      "llm_output": "The question asks: \"What administrative territorial entity is the owner of Ciudad Deportiva located?\"\n\nLet me parse this carefully. The question is asking about an \"administrative territorial entity\" that is the \"owner\" of something, and that something is \"located\" in Ciudad Deportiva.\n\nWait, let me re-read: \"What administrative territorial entity is the owner of Ciudad Deportiva located?\"\n\nThis could be parsed as:\n- \"What administrative territorial entity is the owner of [Ciudad Deportiva located]?\" - asking for the owner of Ciudad Deportiva\n- Or: \"What administrative territorial entity is the owner of [something] located [in Ciudad Deportiva]?\" - asking for an administrative territorial entity that owns something in Ciudad Deportiva\n\nLet me look at the facts:\n- Ciudad Deportiva is located in Nuevo Laredo [ev1_54]\n- Tecolotes de Nuevo Laredo is located in Ciudad Deportiva [ev2_56]\n- Toros de Nuevo Laredo is located in Ciudad Deportiva [ev3_57]\n- Estadio Nuevo Laredo is located in Ciudad Deportiva [ev6_60]\n- Nuevo Laredo Multidisciplinary Gymnasium is located in Ciudad Deportiva [ev7_61]\n- Nuevo Laredo is located in Municipality of Nuevo Laredo [ev2_5]\n- Municipality of Nuevo Laredo is located in Tamaulipas [ev1_4]\n- Municipality of Nuevo Laredo is located in R\u00edo Grande [ev7_10]\n- Nuevo Laredo is located in Mexico [ev1_loc0_55]\n\nNow, the question asks about \"administrative territorial entity\" that is the \"owner\" of something located in Ciudad Deportiva.\n\nLooking at the facts, I don't see any \"own\" relation involving Ciudad Deportiva or entities located in it. The only \"own\" fact is:\n- [c0_ev2_76] own (own.01): ARG0[owner]=17 rich families; ARG1[possession]=arable land in Chihuahua\n\nThis doesn't relate to Ciudad Deportiva.\n\nWait, let me re-read the question: \"What administrative territorial entity is the owner of Ciudad Deportiva located?\"\n\nMaybe it's asking: \"What administrative territorial entity is the owner of [the thing that] Ciudad Deportiva [is] located [in]?\" That doesn't make sense either.\n\nOr maybe: \"What administrative territorial entity is the owner of [something] located [in] Ciudad Deportiva?\"\n\nLooking at the entities located in Ciudad Deportiva:\n- Tecolotes de Nuevo Laredo (a baseball team)\n- Toros de Nuevo Laredo (a basketball team)\n- Estadio Nuevo Laredo (a stadium)\n- Nuevo Laredo Multidisciplinary Gymnasium\n\nNone of these have an \"owner\" relation in the facts.\n\nAlternatively, maybe the question is asking: \"What administrative territorial entity is the owner of Ciudad Deportiva?\" - i.e., who owns Ciudad Deportiva?\n\nBut there's no \"own\" fact for Ciudad Deportiva.\n\nWait, let me reconsider. Maybe \"owner\" is being used loosely to mean the administrative entity that governs/contains it. In that case:\n- Ciudad Deportiva is in Nuevo Laredo\n- Nuevo Laredo is in Municipality of Nuevo Laredo\n- Municipality of Nuevo Laredo is in Tamaulipas\n\nThe \"administrative territorial entity\" could be Municipality of Nuevo Laredo or Tamaulipas.\n\nBut the question specifically says \"owner\" which maps to the \"own\" relation. There's no \"own\" fact connecting to Ciudad Deportiva.\n\nHmm, but wait. Let me re-read the question more carefully: \"What administrative territorial entity is the owner of Ciudad Deportiva located?\"\n\nMaybe it's: \"What administrative territorial entity is the owner of [the place where] Ciudad Deportiva [is] located?\"\n\nCiudad Deportiva is located in Nuevo Laredo. Nuevo Laredo is in Municipality of Nuevo Laredo. Municipality of Nuevo Laredo is in Tamaulipas.\n\nThe \"administrative territorial entity\" that \"owns\" (governs) Nuevo Laredo would be Municipality of Nuevo Laredo or Tamaulipas.\n\nActually, I think the question might be poorly worded and is asking: \"In what administrative territorial entity is Ciudad Deportiva located?\" The word \"owner\" might be a misdirection or the question is asking about the governing entity.\n\nGiven the chain:\n- Ciudad Deportiva \u2192 Nuevo Laredo \u2192 Municipality of Nuevo Laredo \u2192 Tamaulipas\n\nThe most direct \"administrative territorial entity\" would be Municipality\n[finalize] FINAL ANSWER: Municipality of Nuevo Laredo"
+    }
+  },
+  {
+    "id": "double__259228_793698",
+    "question": "Where is Ulrich Walter's employer headquartered?",
+    "gold": "Cologne",
+    "aliases": [
+      "Cologne"
+    ],
+    "predicted": "Chicago",
+    "failure_stage": "answer_mismatch_answer_not_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 112,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Ulrich Walter"
+      ],
+      "matched_anchors": [
+        "Ulrich Walter"
+      ],
+      "candidate_entities": [
+        "Argonne National Laboratory",
+        "California",
+        "Chicago",
+        "German Aerospace Center",
+        "University of California at Berkeley",
+        "post-doc",
+        "trainee",
+        "Illinois",
+        "Moline",
+        "United States"
+      ],
+      "evidence_event_ids": [
+        "ev1_56",
+        "ev2_58",
+        "ev4_60",
+        "ev3_59",
+        "ev5_61",
+        "ev1_loc0_57",
+        "ev1_loc0_18",
+        "ev1_loc1_19"
+      ],
+      "evidence_sources": [
+        "musique:double__259228_793698:14",
+        "musique:double__259228_793698:6"
+      ],
+      "raw_response": "ANSWER: Chicago",
+      "llm_output": "Looking at the facts, Ulrich Walter had multiple employers. The most specific location tied to an employer is Chicago, where Argonne National Laboratory (his employer as a post-doc) is located (ev1_56: location=Chicago). Chicago is in Illinois, which is in the United States.\n\nFINAL ANSWER: Chicago"
+    }
+  },
+  {
+    "id": "double__481349_302087",
+    "question": "Which company owns the manufacturer of Learjet 60?",
+    "gold": "Bombardier Inc.",
+    "aliases": [
+      "Bombardier Inc."
+    ],
+    "predicted": "Bombardier Inc.",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 96,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Learjet 60"
+      ],
+      "matched_anchors": [
+        "Learjet 60"
+      ],
+      "candidate_entities": [
+        "Bombardier Aerospace",
+        "Wichita",
+        "Bombardier CRJ",
+        "Bombardier Inc.",
+        "Kansas",
+        "production pause of Learjet 60XR"
+      ],
+      "evidence_event_ids": [
+        "ev1_37",
+        "ev1_13",
+        "ev2_14",
+        "ev1_loc0_38",
+        "ev2_39"
+      ],
+      "evidence_sources": [
+        "musique:double__481349_302087:10",
+        "musique:double__481349_302087:5"
+      ],
+      "raw_response": "ANSWER: Bombardier Inc.",
+      "llm_output": "The manufacturer of Learjet 60 is Bombardier Aerospace (ev1_37). The company that owns Bombardier Aerospace is Bombardier Inc. (ev2_14).\n\nFINAL ANSWER: Bombardier Inc."
+    }
+  },
+  {
+    "id": "double__697790_864352",
+    "question": "Who is the child of Caroline LeRoy's spouse?",
+    "gold": "Fletcher Webster",
+    "aliases": [
+      "Fletcher Webster"
+    ],
+    "predicted": "Fletcher Webster",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 134,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Caroline LeRoy Webster"
+      ],
+      "matched_anchors": [
+        "Caroline LeRoy Webster"
+      ],
+      "candidate_entities": [
+        "Daniel Webster",
+        "Hannah Cornell",
+        "Herman LeRoy",
+        "New York City",
+        "Fletcher Webster",
+        "Portsmouth",
+        "Chief Clerk",
+        "Grace Fletcher Webster",
+        "John Tyler",
+        "New Hampshire"
+      ],
+      "evidence_event_ids": [
+        "ev3_k0_36",
+        "ev4_k0",
+        "ev5_k0",
+        "ev1_34",
+        "ev2_35",
+        "ev7_37",
+        "ev6_k0",
+        "ev1",
+        "ev1_loc0",
+        "ev2",
+        "ev3",
+        "ev4"
+      ],
+      "evidence_sources": [
+        "musique:double__697790_864352:0",
+        "musique:double__697790_864352:10"
+      ],
+      "raw_response": "ANSWER: Fletcher Webster",
+      "llm_output": "Caroline LeRoy Webster's spouse is Daniel Webster (from the marry fact). Daniel Webster is the parent (giving birth) of Fletcher Webster (from the bear fact).\n\nFINAL ANSWER: Fletcher Webster"
+    }
+  },
+  {
+    "id": "double__207476_625987",
+    "question": "Who is the grandmother of Philippe, Duke of Orl\u00e9ans?",
+    "gold": "Marie de' Medici",
+    "aliases": [
+      "Marie de' Medici"
+    ],
+    "predicted": "Marie de' Medici",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 132,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Philippe I, Duke of Orl\u00e9ans",
+        "Philippe II, Duke of Orl\u00e9ans"
+      ],
+      "matched_anchors": [
+        "Philippe I, Duke of Orl\u00e9ans",
+        "Philippe II, Duke of Orl\u00e9ans"
+      ],
+      "candidate_entities": [
+        "Anne of Austria",
+        "Count of Dourdan",
+        "Count of Romorantin",
+        "Duke of Chartres",
+        "House of Bourbon",
+        "Louis XIV of France",
+        "Marie de' Medici",
+        "Legitimists",
+        "Leonora Dori Galiga\u00ef",
+        "Marie Anne de Bourbon"
+      ],
+      "evidence_event_ids": [
+        "ev1_31",
+        "ev2_32",
+        "ev3_k0_33",
+        "ev5_35",
+        "ev6_36",
+        "ev7_37",
+        "ev8",
+        "ev9",
+        "ev10",
+        "ev11",
+        "ev12",
+        "ev13",
+        "ev14",
+        "ev15",
+        "ev1_k0_65",
+        "ev3_k0_67",
+        "ev4_k0_34",
+        "ev1_60",
+        "ev2_k0_66",
+        "ev4_k0_68",
+        "ev5_69",
+        "ev1_18",
+        "ev3_62",
+        "c1_ev11"
+      ],
+      "evidence_sources": [
+        "musique:double__207476_625987:14",
+        "musique:double__207476_625987:16",
+        "musique:double__207476_625987:17",
+        "musique:double__207476_625987:6",
+        "musique:double__207476_625987:8"
+      ],
+      "raw_response": "ANSWER: Marie de' Medici",
+      "llm_output": "Looking at the facts, I need to find the grandmother of Philippe, Duke of Orl\u00e9ans.\n\n**Chain for Philippe I, Duke of Orl\u00e9ans:**\n1. [ev1_31] Louis XIII of France is the parent (father) of Philippe I, Duke of Orl\u00e9ans.\n2. [ev1_60] Marie de' Medici is the parent (mother) of Louis XIII of France.\n\nTherefore, Marie de' Medici is the paternal grandmother of Philippe I, Duke of Orl\u00e9ans.\n\nFINAL ANSWER: Marie de' Medici"
+    }
+  },
+  {
+    "id": "double__390947_232243",
+    "question": "What is the goal of the group that European Movement Germany is a member of?",
+    "gold": "European integration",
+    "aliases": [
+      "European integration"
+    ],
+    "predicted": "European integration",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 85,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "European Movement Germany"
+      ],
+      "matched_anchors": [
+        "European Movement Germany"
+      ],
+      "candidate_entities": [
+        "Bernd H\u00fcttemann",
+        "Secretary General",
+        "European Movement International",
+        "Paderborn",
+        "Vice President",
+        "European integration",
+        "efforts of associations and national councils",
+        "information about European integration"
+      ],
+      "evidence_event_ids": [
+        "ev3_15",
+        "ev1_13",
+        "ev2_14",
+        "ev1_63",
+        "ev2_64",
+        "ev3_65"
+      ],
+      "evidence_sources": [
+        "musique:double__390947_232243:17",
+        "musique:double__390947_232243:4"
+      ],
+      "raw_response": "ANSWER: European integration",
+      "llm_output": "Looking at the facts, European Movement Germany is connected to European Movement International through Bernd H\u00fcttemann (employed by both). The fact [ev1_63] shows European Movement International coordinates \"efforts of associations and national councils,\" implying European Movement Germany is one such national council. The goal of European Movement International is stated in [ev2_64]: it promotes **European integration**.\n\nFINAL ANSWER: European integration"
+    }
+  },
+  {
+    "id": "double__354635_174222",
+    "question": "What company succeeded the owner of Empire Sports Network?",
+    "gold": "Time Warner Cable",
+    "aliases": [
+      "Time Warner Cable"
+    ],
+    "predicted": "",
+    "failure_stage": "qa_refusal_answer_not_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 162,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_refusal",
+      "anchors": [
+        "Empire Sports Network"
+      ],
+      "matched_anchors": [
+        "Empire Sports Network"
+      ],
+      "candidate_entities": [
+        "Adelphia Communications Corporation",
+        "eastern Ohio",
+        "northern Pennsylvania",
+        "upstate New York"
+      ],
+      "evidence_event_ids": [
+        "ev1",
+        "ev2",
+        "ev3",
+        "ev4",
+        "ev5"
+      ],
+      "evidence_sources": [
+        "musique:double__354635_174222:2"
+      ],
+      "raw_response": "STATUS: NOT_IN_EVIDENCE",
+      "llm_output": "The owner of Empire Sports Network is Adelphia Communications Corporation (ev1). However, none of the provided facts mention a company that succeeded Adelphia Communications Corporation. The only other entities reachable are locations (upstate New York, northern Pennsylvania, eastern Ohio), none of which are companies or successors.\n\nFINAL ANSWER: NOT_IN_EVIDENCE"
+    }
+  },
+  {
+    "id": "double__635187_861533",
+    "question": "What province shares a border with the province where Lago District is located?",
+    "gold": "Cabo Delgado Province",
+    "aliases": [
+      "Cabo Delgado Province"
+    ],
+    "predicted": "Cabo Delgado Province",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 132,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Lago District"
+      ],
+      "matched_anchors": [
+        "Lago District"
+      ],
+      "candidate_entities": [
+        "Lake Nyasa",
+        "Lichinga",
+        "Metangula",
+        "Niassa Province",
+        "Anadyrsky District",
+        "Chaunsky District",
+        "Dobrovsky District",
+        "Bilibinsky District",
+        "Cabo Delgado Province",
+        "Chukotka Autonomous Okrug"
+      ],
+      "evidence_event_ids": [
+        "ev1_99",
+        "ev2_100",
+        "ev3_101",
+        "ev4_102",
+        "ev5_103",
+        "ev6_104",
+        "ev2",
+        "ev4",
+        "ev7",
+        "ev3_3",
+        "ev4_4",
+        "ev5_5",
+        "ev6_6",
+        "ev3_10",
+        "ev4_11",
+        "ev5_12",
+        "ev1",
+        "ev3",
+        "ev1_1",
+        "ev2_2",
+        "ev7_7",
+        "ev1_8",
+        "ev1_71",
+        "ev2_72",
+        "ev3_73",
+        "ev4_74",
+        "ev5",
+        "ev6",
+        "ev8",
+        "ev2_9",
+        "ev6_13",
+        "ev5_75"
+      ],
+      "evidence_sources": [
+        "musique:double__635187_861533:0",
+        "musique:double__635187_861533:1",
+        "musique:double__635187_861533:12",
+        "musique:double__635187_861533:16",
+        "musique:double__635187_861533:2"
+      ],
+      "raw_response": "ANSWER: Cabo Delgado Province",
+      "llm_output": "Looking at the question, I need to:\n1. Identify the province where Lago District is located.\n2. Find a province that shares a border with that province.\n\n**Step 1:** From [ev1_99], Lago District is located in **Niassa Province**.\n\n**Step 2:** I need a province that borders Niassa Province. Looking at the facts:\n- [ev2]: Niassa Reserve is located in Niassa Province.\n- [ev1]: Niassa Reserve is located in **Cabo Delgado Province**.\n- [ev3]: Cabo Delgado Province is in Mozambique.\n- [ev4]: Niassa Province is in Mozambique.\n\nThe Niassa Reserve spans both Niassa Province and Cabo Delgado Province, indicating these two provinces are adjacent and share a border. No other province in the evidence has a direct connection to Niassa Province.\n\nFINAL ANSWER: Cabo Delgado Province"
+    }
+  },
+  {
+    "id": "double__166824_185403",
+    "question": "What league does the team that plays in Stadio Ciro Vigorito play for?",
+    "gold": "Lega Pro Prima Divisione",
+    "aliases": [
+      "Lega Pro Prima Divisione"
+    ],
+    "predicted": "Lega Pro Prima Divisione",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 92,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Stadio Ciro Vigorito"
+      ],
+      "matched_anchors": [
+        "Stadio Ciro Vigorito"
+      ],
+      "candidate_entities": [
+        "Benevento",
+        "Benevento Calcio",
+        "Italy",
+        "Argentina",
+        "Bari",
+        "Buffalo City Stadium",
+        "Carmelo Imbriani",
+        "Dublin",
+        "East London",
+        "Grenoble"
+      ],
+      "evidence_event_ids": [
+        "ev1_26",
+        "ev2_27",
+        "ev3_28",
+        "ev1",
+        "ev1_loc1",
+        "ev1_15",
+        "c1_ev1",
+        "c1_ev2",
+        "c1_ev3",
+        "c1_ev4",
+        "c1_ev5",
+        "c1_ev6",
+        "c1_ev7",
+        "c1_ev8",
+        "c1_ev9",
+        "c1_ev10",
+        "c1_ev11",
+        "c1_ev12",
+        "c1_ev13",
+        "c1_ev14",
+        "c1_ev15",
+        "ev2_loc0",
+        "ev1_24",
+        "ev1_31",
+        "ev1_32",
+        "ev2_46",
+        "ev3_49",
+        "ev1_52",
+        "ev2",
+        "ev3",
+        "ev4",
+        "ev1_loc0",
+        "ev1_12",
+        "ev2_16",
+        "ev4_18",
+        "c1_ev1_loc0",
+        "c1_ev2_loc0",
+        "c1_ev3_loc0",
+        "c1_ev4_loc0",
+        "c1_ev5_loc0"
+      ],
+      "evidence_sources": [
+        "musique:double__166824_185403:0",
+        "musique:double__166824_185403:10",
+        "musique:double__166824_185403:11",
+        "musique:double__166824_185403:13",
+        "musique:double__166824_185403:14",
+        "musique:double__166824_185403:17",
+        "musique:double__166824_185403:18",
+        "musique:double__166824_185403:19",
+        "musique:double__166824_185403:4",
+        "musique:double__166824_185403:5",
+        "musique:double__166824_185403:6",
+        "musique:double__166824_185403:7",
+        "musique:double__166824_185403:9"
+      ],
+      "raw_response": "ANSWER: Lega Pro Prima Divisione",
+      "llm_output": "The team that plays in Stadio Ciro Vigorito is Benevento Calcio (from [ev2_27], Benevento Calcio owns the stadium). From [ev1_31], Benevento employs Carmelo Imbriani as coach with the location/context being \"Lega Pro Prima Divisione,\" indicating the league in which the team plays.\n\nFINAL ANSWER: Lega Pro Prima Divisione"
+    }
+  },
+  {
+    "id": "double__698577_851686",
+    "question": "What is a notable work written by the author of The Timothy files?",
+    "gold": "Anderson Tapes",
+    "aliases": [
+      "Anderson Tapes"
+    ],
+    "predicted": "Anderson Tapes",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 99,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Timothy Files"
+      ],
+      "matched_anchors": [
+        "Timothy Files"
+      ],
+      "candidate_entities": [
+        "Lawrence Sanders",
+        "Anderson Tapes",
+        "Mystery Writers of America Edgar Award for best first mystery novel",
+        "Edward X. Delaney",
+        "Sean Connery",
+        "Sidney Lumet"
+      ],
+      "evidence_event_ids": [
+        "ev1_7",
+        "ev1_51",
+        "ev4_54",
+        "ev2_52",
+        "ev3_53",
+        "ev5_55",
+        "ev6_56",
+        "ev7_57"
+      ],
+      "evidence_sources": [
+        "musique:double__698577_851686:15",
+        "musique:double__698577_851686:3"
+      ],
+      "raw_response": "ANSWER: Anderson Tapes",
+      "llm_output": "The author of \"Timothy Files\" is Lawrence Sanders (ev1_7). Another notable work written by Lawrence Sanders is \"Anderson Tapes\" (ev1_51), which was also adapted into a film directed by Sidney Lumet and starring Sean Connery.\n\nFINAL ANSWER: Anderson Tapes"
+    }
+  },
+  {
+    "id": "double__362107_652514",
+    "question": "In which borough was Callum McManaman born?",
+    "gold": "Knowsley",
+    "aliases": [
+      "Knowsley"
+    ],
+    "predicted": "Metropolitan Borough of Knowsley",
+    "failure_stage": "answer_partial_match",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 129,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Callum McManaman"
+      ],
+      "matched_anchors": [
+        "Callum McManaman"
+      ],
+      "candidate_entities": [
+        "Whiston",
+        "Everton",
+        "Rainhill",
+        "West Bromwich Albion",
+        "Wigan Athletic",
+        "youth player",
+        "FA Cup",
+        "Merseyside",
+        "Metropolitan Borough of Knowsley",
+        "England"
+      ],
+      "evidence_event_ids": [
+        "ev1_75",
+        "ev2_77",
+        "ev3_78",
+        "ev4_79",
+        "ev5_80",
+        "ev7_82",
+        "ev1_loc0_76",
+        "ev2_loc0",
+        "ev6_81",
+        "ev1_83",
+        "ev2_84",
+        "ev3_85"
+      ],
+      "evidence_sources": [
+        "musique:double__362107_652514:17",
+        "musique:double__362107_652514:18"
+      ],
+      "raw_response": "ANSWER: Metropolitan Borough of Knowsley",
+      "llm_output": "Callum McManaman was born in Whiston (ev1_75), and Whiston is located in the Metropolitan Borough of Knowsley (ev1_83). Therefore, the borough of his birth is the Metropolitan Borough of Knowsley.\n\nFINAL ANSWER: Metropolitan Borough of Knowsley"
+    }
+  },
+  {
+    "id": "double__402530_774333",
+    "question": "What other county does the county where Imperial is located share a border with?",
+    "gold": "Crockett County",
+    "aliases": [
+      "Crockett County"
+    ],
+    "predicted": "Crockett County",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 151,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Imperial"
+      ],
+      "matched_anchors": [
+        "Imperial"
+      ],
+      "candidate_entities": [
+        "Pecos County",
+        "Lancaster Crossing",
+        "Texas",
+        "Crockett County",
+        "Pecos River",
+        "Sheffield",
+        "United States",
+        "Fort Lancaster"
+      ],
+      "evidence_event_ids": [
+        "ev1_98",
+        "ev3_79",
+        "ev2_99",
+        "ev1_77",
+        "ev2_78",
+        "ev4_80",
+        "ev4_loc0",
+        "ev3_100",
+        "ev5_81"
+      ],
+      "evidence_sources": [
+        "musique:double__402530_774333:12",
+        "musique:double__402530_774333:17"
+      ],
+      "raw_response": "ANSWER: Crockett County",
+      "llm_output": "Imperial is located in Pecos County (ev1_98). Lancaster Crossing is located in both Pecos County (ev3_79) and Crockett County (ev2_78), indicating that Pecos County and Crockett County share a border.\n\nFINAL ANSWER: Crockett County"
+    }
+  },
+  {
+    "id": "double__195917_575657",
+    "question": "In what county is William W. Blair's birthplace located?",
+    "gold": "Orleans County",
+    "aliases": [
+      "Orleans County"
+    ],
+    "predicted": "Orleans County",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 132,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "William W. Blair"
+      ],
+      "matched_anchors": [
+        "William W. Blair"
+      ],
+      "candidate_entities": [
+        "Holley",
+        "LaSalle County, Illinois",
+        "William Smith",
+        "missionaries from the Latter Day Saint movement",
+        "Murray",
+        "New York",
+        "Joseph Smith",
+        "Orleans County",
+        "United States",
+        "Latter Day Saint movement"
+      ],
+      "evidence_event_ids": [
+        "ev1_77",
+        "ev2_78",
+        "ev3_79",
+        "ev4_80",
+        "ev1_loc0",
+        "ev1_85",
+        "ev5_k0",
+        "ev5_89",
+        "ev2_86",
+        "ev3_87",
+        "ev4_88",
+        "ev6_81"
+      ],
+      "evidence_sources": [
+        "musique:double__195917_575657:15",
+        "musique:double__195917_575657:17"
+      ],
+      "raw_response": "ANSWER: Orleans County",
+      "llm_output": "William W. Blair was born in Holley (ev1_77). Holley is located in Murray (ev1_85), and Murray is located in Orleans County (ev2_86). Therefore, his birthplace is in Orleans County.\n\nFINAL ANSWER: Orleans County"
+    }
+  },
+  {
+    "id": "double__683835_709167",
+    "question": "What award did the author of The Red Tree receive?",
+    "gold": "Academy Award for Best Animated Short Film",
+    "aliases": [
+      "Academy Award for Best Animated Short Film"
+    ],
+    "predicted": "Academy Award for Best Animated Short Film",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 112,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Red Tree"
+      ],
+      "matched_anchors": [
+        "Red Tree"
+      ],
+      "candidate_entities": [
+        "Shaun Tan",
+        "Lost Thing",
+        "Academy Award for Best Animated Short Film",
+        "Andrew Ruhemann",
+        "Passion Australia"
+      ],
+      "evidence_event_ids": [
+        "ev1_50",
+        "ev2_51",
+        "ev6_16",
+        "ev4_14",
+        "ev5_15",
+        "ev7_17"
+      ],
+      "evidence_sources": [
+        "musique:double__683835_709167:13",
+        "musique:double__683835_709167:4"
+      ],
+      "raw_response": "ANSWER: Academy Award for Best Animated Short Film",
+      "llm_output": "The author of *Red Tree* is Shaun Tan (ev1_50). Shaun Tan directed *Lost Thing* (ev6_16), which won the Academy Award for Best Animated Short Film (ev7_17). Thus, the award associated with the author is the Academy Award for Best Animated Short Film.\n\nFINAL ANSWER: Academy Award for Best Animated Short Film"
+    }
+  },
+  {
+    "id": "double__197470_271394",
+    "question": "Where was Tyler MacDuff's child educated?",
+    "gold": "Blair High School",
+    "aliases": [
+      "Blair High School"
+    ],
+    "predicted": "Blair International Baccalaureate School",
+    "failure_stage": "answer_partial_match",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 128,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Tyler MacDuff"
+      ],
+      "matched_anchors": [
+        "Tyler MacDuff"
+      ],
+      "candidate_entities": [
+        "Beverlie May Anderson",
+        "Dana MacDuff",
+        "Pasadena",
+        "American Broadcasting Company",
+        "BBC",
+        "Belfast",
+        "Blair International Baccalaureate School",
+        "Blair High School",
+        "Northern Ireland",
+        "Reno"
+      ],
+      "evidence_event_ids": [
+        "ev1_55",
+        "ev3_k0_59",
+        "ev1_k0",
+        "ev4_33",
+        "ev1_loc0_56",
+        "ev2_57",
+        "ev4_60",
+        "ev5_61",
+        "ev6_62",
+        "ev7_63",
+        "ev8_64",
+        "ev2_31",
+        "ev3_32",
+        "ev5_34",
+        "ev6_35",
+        "ev7_loc0"
+      ],
+      "evidence_sources": [
+        "musique:double__197470_271394:14",
+        "musique:double__197470_271394:8"
+      ],
+      "raw_response": "ANSWER: Blair International Baccalaureate School",
+      "llm_output": "Tyler MacDuff is the parent of Dana MacDuff (ev1_55, bear.02). Dana MacDuff is connected to Blair International Baccalaureate School through the graduate relation (ev4_60), indicating that is where she was educated.\n\nFINAL ANSWER: Blair International Baccalaureate School"
+    }
+  },
+  {
+    "id": "double__458131_174974",
+    "question": "Who is the spouse of the Rabbit Hole's producer?",
+    "gold": "Keith Urban",
+    "aliases": [
+      "Keith Urban"
+    ],
+    "predicted": "",
+    "failure_stage": "qa_refusal_answer_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 135,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_refusal",
+      "anchors": [
+        "Rabbit Hole"
+      ],
+      "matched_anchors": [
+        "Rabbit Hole"
+      ],
+      "candidate_entities": [
+        "$3 million",
+        "$5.1 million",
+        "2010 Toronto International Film Festival",
+        "Aaron Eckhart",
+        "Academy Award",
+        "Andrew Davis",
+        "Best Actress",
+        "Celine Dion",
+        "John Travolta",
+        "Katy Perry"
+      ],
+      "evidence_event_ids": [
+        "c0_ev1",
+        "c0_ev2",
+        "c0_ev3",
+        "c0_ev4",
+        "c0_ev5",
+        "c0_ev6",
+        "c0_ev8",
+        "c0_ev9",
+        "c0_ev10",
+        "c0_ev11",
+        "c1_ev1",
+        "c1_ev2",
+        "ev3_75",
+        "ev2_14",
+        "ev1_42",
+        "ev2_43",
+        "ev3_44",
+        "ev4_45",
+        "ev5_46",
+        "ev8_49",
+        "c0_ev7",
+        "c0_ev12",
+        "c0_ev13",
+        "c0_ev14",
+        "ev1_73",
+        "ev2_74",
+        "ev4_76",
+        "ev5_77",
+        "ev6_78",
+        "ev1_13",
+        "ev3_15",
+        "ev4_16",
+        "ev5_17",
+        "ev6_18",
+        "ev7_19",
+        "ev8_20",
+        "ev9_21",
+        "ev6_47",
+        "ev7_48"
+      ],
+      "evidence_sources": [
+        "musique:double__458131_174974:15",
+        "musique:double__458131_174974:3",
+        "musique:double__458131_174974:8",
+        "musique:double__458131_174974:9"
+      ],
+      "raw_response": "STATUS: NOT_IN_EVIDENCE",
+      "llm_output": "The producer of Rabbit Hole is Nicole Kidman (c0_ev6). However, none of the provided facts mention a spouse, husband, wife, or marriage relationship for Nicole Kidman. No chain of facts leads to a spouse entity.\n\nFINAL ANSWER: NOT_IN_EVIDENCE"
+    }
+  },
+  {
+    "id": "double__299142_347613",
+    "question": "Who is the child of Sigrid Eskilsdotter's child?",
+    "gold": "Svante Stensson Sture",
+    "aliases": [
+      "Svante Stensson Sture"
+    ],
+    "predicted": "Sigrid Sture",
+    "failure_stage": "answer_partial_match",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 94,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Sigrid Eskilsdotter"
+      ],
+      "matched_anchors": [
+        "Sigrid Eskilsdotter"
+      ],
+      "candidate_entities": [
+        "Christina Gyllenstierna",
+        "Sigrid Sture",
+        "Gustav Vasa",
+        "M\u00e4rta Erikdotter Leijonhufvud",
+        "Svante Stensson Sture",
+        "Svante Turesson Bielke",
+        "Margaret Leijonhufvud",
+        "Stranda hundred",
+        "Sweden",
+        "Ture Pedersson Bielke"
+      ],
+      "evidence_event_ids": [
+        "ev1_49",
+        "ev4_k0",
+        "ev2_50",
+        "ev1_k0",
+        "ev2_k0",
+        "ev6_k0",
+        "ev3_k0",
+        "ev5_k0",
+        "ev8",
+        "ev9"
+      ],
+      "evidence_sources": [
+        "musique:double__299142_347613:15",
+        "musique:double__299142_347613:4"
+      ],
+      "raw_response": "ANSWER: Sigrid Sture",
+      "llm_output": "Looking at the chain of facts:\n\n1. **Sigrid Eskilsdotter's child**: From [ev1_49], Sigrid Eskilsdotter gave birth to **Christina Gyllenstierna**.\n\n2. **Christina Gyllenstierna's child**: From [ev4_k0], Christina Gyllenstierna is the parent of **Sigrid Sture**. (Also from [ev2_50], she gave birth to Gustav Vasa.)\n\nSo the child of Sigrid Eskilsdotter's child (Christina Gyllenstierna) is Sigrid Sture.\n\nFINAL ANSWER: Sigrid Sture"
+    }
+  },
+  {
+    "id": "double__528263_865831",
+    "question": "In which county is Kimbrough Memorial Stadium located?",
+    "gold": "Randall County",
+    "aliases": [
+      "Randall County"
+    ],
+    "predicted": "Randall County",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 139,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Kimbrough Memorial Stadium"
+      ],
+      "matched_anchors": [
+        "Kimbrough Memorial Stadium"
+      ],
+      "candidate_entities": [
+        "Canyon",
+        "Canyon High School",
+        "Randall High School",
+        "West Texas A&M University",
+        "Canyon Independent School District",
+        "Panhandle\u2013Plains Historical Museum",
+        "Randall County",
+        "Texas",
+        "Amarillo, Texas, metropolitan statistical area",
+        "United States"
+      ],
+      "evidence_event_ids": [
+        "ev1_10",
+        "ev3_12",
+        "ev4_13",
+        "ev5_14",
+        "ev2_11",
+        "ev6_15",
+        "ev7",
+        "ev1_loc0",
+        "ev1_72",
+        "ev5_76",
+        "ev6_77",
+        "ev7_78",
+        "ev8",
+        "ev9",
+        "ev4_75",
+        "ev2_73",
+        "ev3_74"
+      ],
+      "evidence_sources": [
+        "musique:double__528263_865831:16",
+        "musique:double__528263_865831:4"
+      ],
+      "raw_response": "ANSWER: Randall County",
+      "llm_output": "Kimbrough Memorial Stadium is located in Canyon (ev1_10), and Canyon is located in Randall County (ev1_72). By transitive containment, the stadium is in Randall County.\n\nFINAL ANSWER: Randall County"
+    }
+  },
+  {
+    "id": "double__569582_304416",
+    "question": "What record label is the performer of Almost Made Ya signed to?",
+    "gold": "Derrty Entertainment",
+    "aliases": [
+      "Derrty Entertainment"
+    ],
+    "predicted": "Universal Records",
+    "failure_stage": "answer_mismatch_answer_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 94,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Almost Made Ya"
+      ],
+      "matched_anchors": [
+        "Almost Made Ya"
+      ],
+      "candidate_entities": [
+        "Ali & Gipp",
+        "Ali Vaskabi-Waski-Jones",
+        "Almost Doesn't Count",
+        "Cameron Gipp",
+        "Guy Roche",
+        "Brandy",
+        "Ali",
+        "Derrty Entertainment",
+        "Gipp",
+        "Universal Records"
+      ],
+      "evidence_event_ids": [
+        "ev7_29",
+        "ev1_23",
+        "ev2_24",
+        "ev3_25",
+        "ev4_26",
+        "ev5_27",
+        "ev6_28",
+        "ev8_30",
+        "ev9",
+        "ev11",
+        "ev6_40",
+        "ev10",
+        "ev1_35",
+        "ev2_36",
+        "ev7_41",
+        "ev8_42"
+      ],
+      "evidence_sources": [
+        "musique:double__569582_304416:10",
+        "musique:double__569582_304416:7"
+      ],
+      "raw_response": "ANSWER: Universal Records",
+      "llm_output": "The question asks: \"What record label is the performer of Almost Made Ya signed to?\"\n\nLet me trace the chain:\n\n1. The performer of \"Almost Made Ya\" is Ali & Gipp (from ev7_29: perform.01, ARG0[performer]=Ali & Gipp, ARG1[performance]=Almost Made Ya)\n\n2. Now I need to find what record label Ali & Gipp is signed to.\n\nLooking at the facts:\n- ev1_35: release.01: ARG0[releaser]=Derrty Entertainment; ARG1[thing released]=Kinfolk; ARG2[released from]=Universal Records\n- ev8_30: include.01: ARG0[agent]=Kinfolk; ARG1[theme]=Almost Made Ya\n- ev2_36: create.01: ARG0[creator]=Ali & Gipp; ARG1[thing created]=Kinfolk\n\nSo Ali & Gipp created Kinfolk, and Kinfolk includes Almost Made Ya. Kinfolk was released by Derrty Entertainment from Universal Records.\n\nThe question asks about the \"record label\" the performer is \"signed to.\" \n\nDerrty Entertainment is the releaser (ARG0), and Universal Records is the \"released from\" (ARG2). \n\nIn music industry terms, \"signed to\" a record label typically refers to the label that releases their music. Derrty Entertainment is the releaser, and Universal Records is the parent/distribution label.\n\nThe question asks for \"record label\" - both Derrty Entertainment and Universal Records could be considered record labels. However, \"signed to\" typically refers to the label that directly signs and releases the artist's music. Derrty Entertainment is the direct releaser (ARG0[releaser]), while Universal Records is the \"released from\" (ARG2), which suggests it's the parent/distribution label.\n\nActually, let me reconsider. \"Released from\" (ARG2) in release.01 typically means the label through which it was distributed. In music, an artist is often \"signed to\" their own label (like Derrty Entertainment) but distributed through a major label (like Universal Records).\n\nThe question asks \"What record label is the performer signed to?\" - this is a bit ambiguous. But looking at the facts, Derrty Entertainment is the direct releaser, and Universal Records is the distribution label.\n\nHmm, but actually in common usage, \"signed to\" a record label usually means the label that has the contract. Derrty Entertainment appears to be Ali & Gipp's own label (they created Kinfolk, and Derrty Entertainment released it). Universal Records is the distribution partner.\n\nBut the question specifically asks for \"record label\" - both could be record labels. Let me think about which one is more directly \"signed to.\"\n\nActually, I think the answer they're looking for is Universal Records, as it's the major record label. But Derrty Entertainment is also a valid answer as the direct releaser.\n\nWait, let me re-read the facts. ev1_35 says: ARG0[releaser]=Derrty Entertainment; ARG1[thing released]=Kinfolk; ARG2[released from]=Universal Records.\n\n\"Released from\" Universal Records suggests Universal Records is the label through which it was released. In the music industry, \"signed to\" typically refers to the label that has the artist's contract. If Derrty Entertainment is Ali & Gipp's own label, they might be \"signed to\" Universal Records for distribution.\n\nBut actually, I think the most natural reading is that the artist is signed to Derrty Entertainment (their own label) and distributed through Universal Records. Or they could be signed to Universal Records.\n\nGiven the ambiguity, I'll go with Universal Records as it's the more prominent \"record label\" in the traditional sense, and the \"released from\" relation suggests it's the label the artist is associated with.\n\nActually, wait. Let me reconsider. The question is \"What record label is the performer of Almost Made Ya signed to?\" The performer is Ali & Gipp. The chain is:\n- Ali & Gipp performed Almost Made Ya\n- Ali & Gipp created Kinfolk\n- Kinfolk includes Almost Made Ya\n- Derrty Entertainment released Kinfolk from Universal Records\n\nThe \"released from\" (ARG2) in release.01 typically indicates the label. So Universal Records is the record label. Derrty Entertainment is the releaser (could be their own imprint/label).\n\nI'll go with Universal Records as the answer since it's the traditional \"record label\" in the \"released from\" position.\nLooking at the chain of facts:\n\n1. The performer of \"Almost Made Ya\" is **Ali & Gipp** (ev7_29: perform.0\n[finalize] FINAL ANSWER: Universal Records"
+    }
+  },
+  {
+    "id": "double__505860_650613",
+    "question": "Where was the author of Hannibal and Scipio educated at?",
+    "gold": "Exeter College",
+    "aliases": [
+      "Exeter College"
+    ],
+    "predicted": "Exeter College",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 96,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Hannibal and Scipio"
+      ],
+      "matched_anchors": [
+        "Hannibal and Scipio"
+      ],
+      "candidate_entities": [
+        "Queen Henrietta's Men",
+        "Thomas Nabbes",
+        "Bridget",
+        "Exeter College",
+        "London",
+        "St Giles in the Fields",
+        "William",
+        "Worcester",
+        "Worcestershire",
+        "Oxford"
+      ],
+      "evidence_event_ids": [
+        "ev1_38",
+        "ev2_39",
+        "ev3_40",
+        "ev1_21",
+        "ev2_22",
+        "ev3_23",
+        "ev4_24",
+        "ev5_k0",
+        "ev6_k0",
+        "ev8_25",
+        "ev2_loc0",
+        "ev7_k0",
+        "ev9",
+        "ev10"
+      ],
+      "evidence_sources": [
+        "musique:double__505860_650613:12",
+        "musique:double__505860_650613:9"
+      ],
+      "raw_response": "ANSWER: Exeter College",
+      "llm_output": "The author of *Hannibal and Scipio* is Thomas Nabbes (ev1_38). Thomas Nabbes was located at Exeter College in 1621 (ev2_22), indicating that is where he was educated.\n\nFINAL ANSWER: Exeter College"
+    }
+  },
+  {
+    "id": "double__821197_368148",
+    "question": "In which county is Southern Maryland Electric Cooperative headquartered?",
+    "gold": "Charles County",
+    "aliases": [
+      "Charles County"
+    ],
+    "predicted": "Charles County",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 89,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Southern Maryland Electric Cooperative"
+      ],
+      "matched_anchors": [
+        "Southern Maryland Electric Cooperative"
+      ],
+      "candidate_entities": [
+        "Hughesville",
+        "customers in Calvert, Charles, Prince George's, and St. Mary's counties",
+        "electricity",
+        "southern Maryland",
+        "14 million people",
+        "California",
+        "Charles County",
+        "Edison International",
+        "Elk Ridge",
+        "San Francisco"
+      ],
+      "evidence_event_ids": [
+        "ev1_10",
+        "ev2_12",
+        "ev1_loc0_11",
+        "ev2_14",
+        "ev3_15",
+        "ev4_16",
+        "ev5_17",
+        "ev6",
+        "ev1_24",
+        "ev1_13",
+        "ev7",
+        "ev2_25",
+        "ev3_26",
+        "ev1_53"
+      ],
+      "evidence_sources": [
+        "musique:double__821197_368148:14",
+        "musique:double__821197_368148:3",
+        "musique:double__821197_368148:4",
+        "musique:double__821197_368148:7"
+      ],
+      "raw_response": "ANSWER: Charles County",
+      "llm_output": "The Southern Maryland Electric Cooperative is located in Hughesville (ev1_10), and Hughesville is located in Charles County (ev1_24). Therefore, the cooperative is headquartered in Charles County.\n\nFINAL ANSWER: Charles County"
+    }
+  },
+  {
+    "id": "double__554167_451128",
+    "question": "Who is the child of the Victim of Romance performer?",
+    "gold": "Chynna Phillips",
+    "aliases": [
+      "Chynna Phillips"
+    ],
+    "predicted": "Chynna Phillips",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 120,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Victim of Romance"
+      ],
+      "matched_anchors": [
+        "Victim of Romance"
+      ],
+      "candidate_entities": [
+        "Michelle Phillips",
+        "Terry O'Neill",
+        "Chynna Phillips",
+        "Mamas & the Papas",
+        "John Phillips",
+        "Wilson Phillips"
+      ],
+      "evidence_event_ids": [
+        "ev1_62",
+        "ev3_64",
+        "ev7_k0",
+        "ev10_37",
+        "ev6_k0",
+        "ev3_34",
+        "ev9_36"
+      ],
+      "evidence_sources": [
+        "musique:double__554167_451128:15",
+        "musique:double__554167_451128:8"
+      ],
+      "raw_response": "ANSWER: Chynna Phillips",
+      "llm_output": "The performer of \"Victim of Romance\" is Michelle Phillips (ev1_62, release.01 ARG0). The child of Michelle Phillips is Chynna Phillips (ev7_k0, parent.01 ARG1).\n\nFINAL ANSWER: Chynna Phillips"
+    }
+  },
+  {
+    "id": "double__702496_430061",
+    "question": "What county was Tim Dubois born in?",
+    "gold": "McDonald County",
+    "aliases": [
+      "McDonald County"
+    ],
+    "predicted": "McDonald County",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 116,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Tim DuBois"
+      ],
+      "matched_anchors": [
+        "Tim DuBois"
+      ],
+      "candidate_entities": [
+        "Southwest City",
+        "B.A. in Accounting",
+        "M.A. in Accounting",
+        "Nashville",
+        "Oklahoma State University",
+        "Barry Beckett",
+        "Common Linnets",
+        "Fayetteville\u2013Springdale\u2013Rogers, AR-MO Metropolitan Statistical Area",
+        "McDonald County",
+        "United States"
+      ],
+      "evidence_event_ids": [
+        "ev1_17",
+        "ev2_18",
+        "ev3_19",
+        "ev4_20",
+        "ev5_21",
+        "ev6_22",
+        "ev2_75",
+        "ev1_loc0",
+        "ev2_loc0",
+        "ev1_70",
+        "ev4_73",
+        "ev1_74",
+        "ev3_76",
+        "ev4_77",
+        "ev5_78",
+        "ev6_79",
+        "ev7",
+        "ev2_71",
+        "ev3_72"
+      ],
+      "evidence_sources": [
+        "musique:double__702496_430061:17",
+        "musique:double__702496_430061:18",
+        "musique:double__702496_430061:6"
+      ],
+      "raw_response": "ANSWER: McDonald County",
+      "llm_output": "Tim DuBois was born in Southwest City (ev1_17), and Southwest City is located in McDonald County (ev1_70). Therefore, the county of his birth is McDonald County.\n\nFINAL ANSWER: McDonald County"
+    }
+  },
+  {
+    "id": "double__549146_223121",
+    "question": "What record label did the person who is part of The Bruce Lee Band start?",
+    "gold": "Asian Man Records",
+    "aliases": [
+      "Asian Man Records"
+    ],
+    "predicted": "Dill Records",
+    "failure_stage": "answer_partial_match",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 118,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Bruce Lee Band"
+      ],
+      "matched_anchors": [
+        "Bruce Lee Band"
+      ],
+      "candidate_entities": [
+        "Less Than Jake",
+        "Mike Park",
+        "Rx Bandits",
+        "Dill Records",
+        "Asian Man Records",
+        "Monte Sereno",
+        "California"
+      ],
+      "evidence_event_ids": [
+        "ev1_49",
+        "ev2_50",
+        "ev3_51",
+        "ev2_95",
+        "ev1_93",
+        "ev3_96",
+        "ev1_loc0_94"
+      ],
+      "evidence_sources": [
+        "musique:double__549146_223121:18",
+        "musique:double__549146_223121:9"
+      ],
+      "raw_response": "ANSWER: Dill Records",
+      "llm_output": "The question asks for a record label started by a member of the Bruce Lee Band. From the facts, Mike Park is a member of the Bruce Lee Band (ev1_49), and Mike Park started Dill Records (ev2_95, start.01, 1989). This directly matches the \"start\" relation in the question.\n\nFINAL ANSWER: Dill Records"
+    }
+  },
+  {
+    "id": "double__647996_551681",
+    "question": "What is another notable work made by the author of Miss Sara Sampson?",
+    "gold": "Emilia Galotti",
+    "aliases": [
+      "Emilia Galotti"
+    ],
+    "predicted": "Emilia Galotti",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 129,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Miss Sara Sampson"
+      ],
+      "matched_anchors": [
+        "Miss Sara Sampson"
+      ],
+      "candidate_entities": [
+        "France",
+        "Frankfurt-on-the-Oder",
+        "Gotthold Ephraim Lessing",
+        "Potsdam",
+        "Emilia Galotti",
+        "German National Theatre in Hamburg",
+        "dramaturg",
+        "Brunswick",
+        "Roman myth of Verginia"
+      ],
+      "evidence_event_ids": [
+        "ev1_67",
+        "ev2_68",
+        "ev3_69",
+        "ev4_70",
+        "ev5_71",
+        "ev1_74",
+        "ev2_75",
+        "ev3_76"
+      ],
+      "evidence_sources": [
+        "musique:double__647996_551681:15",
+        "musique:double__647996_551681:17"
+      ],
+      "raw_response": "ANSWER: Emilia Galotti",
+      "llm_output": "The author of *Miss Sara Sampson* is Gotthold Ephraim Lessing (ev1_67). Another work he wrote is *Emilia Galotti* (ev1_74), which premiered in Brunswick in 1772 and is based on the Roman myth of Verginia.\n\nFINAL ANSWER: Emilia Galotti"
+    }
+  },
+  {
+    "id": "double__673655_316668",
+    "question": "What instrument is played by the person from The Blackout All-Stars?",
+    "gold": "conga",
+    "aliases": [
+      "conga"
+    ],
+    "predicted": "",
+    "failure_stage": "qa_refusal_answer_not_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 129,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_refusal",
+      "anchors": [
+        "Blackout All-Stars"
+      ],
+      "matched_anchors": [
+        "Blackout All-Stars"
+      ],
+      "candidate_entities": [
+        "Dave Valentin",
+        "Grover Washington, Jr.",
+        "Paquito D'Rivera",
+        "Ray Barretto",
+        "Sheila E.",
+        "Midnight Blue",
+        "Bill English",
+        "Blue Note",
+        "Classics",
+        "Jazz Improv"
+      ],
+      "evidence_event_ids": [
+        "ev1_55",
+        "ev2_56",
+        "ev3_57",
+        "ev4_58",
+        "ev5_59",
+        "ev6_60",
+        "ev7_61",
+        "ev8_62",
+        "ev5_78",
+        "ev1_74",
+        "ev2_75",
+        "ev3_76",
+        "ev4_77",
+        "ev6_79",
+        "ev7_80",
+        "ev8_81",
+        "ev9_82",
+        "ev10_83"
+      ],
+      "evidence_sources": [
+        "musique:double__673655_316668:12",
+        "musique:double__673655_316668:16"
+      ],
+      "raw_response": "STATUS: NOT_IN_EVIDENCE",
+      "llm_output": "The question asks for an instrument played by a member of The Blackout All-Stars. While the facts identify several members (Ray Barretto, Sheila E., Tito Puente, Dave Valentin, etc.) and connect them to the album *Midnight Blue*, none of the provided facts mention any instrument played by any of these individuals. No entity of the type \"instrument\" is reachable through any chain of facts.\n\nFINAL ANSWER: NOT_IN_EVIDENCE"
+    }
+  },
+  {
+    "id": "double__574419_270105",
+    "question": "What is the seat of the county where Van Hook Township is located?",
+    "gold": "Stanley",
+    "aliases": [
+      "Stanley"
+    ],
+    "predicted": "Stanley",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 100,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Van Hook Township"
+      ],
+      "matched_anchors": [
+        "Van Hook Township"
+      ],
+      "candidate_entities": [
+        "Mountrail County",
+        "North Dakota",
+        "Stanley"
+      ],
+      "evidence_event_ids": [
+        "ev1_17",
+        "ev2_18",
+        "ev1_loc0"
+      ],
+      "evidence_sources": [
+        "musique:double__574419_270105:1",
+        "musique:double__574419_270105:8"
+      ],
+      "raw_response": "ANSWER: Stanley",
+      "llm_output": "Van Hook Township is located in Mountrail County (ev1_17), which is in North Dakota (ev2_18). The only town/city entity in the evidence is Stanley, located in North Dakota (ev1_loc0), and it is the only entity of the requested type (a county seat) reachable through the chain of facts.\n\nFINAL ANSWER: Stanley"
+    }
+  },
+  {
+    "id": "double__403712_793210",
+    "question": "Who is the father of Edward Baring, 1st Baron Revelstoke's father?",
+    "gold": "Sir Francis Baring, 1st Baronet",
+    "aliases": [
+      "Sir Francis Baring, 1st Baronet"
+    ],
+    "predicted": "Sir Francis Baring, 1st Baronet",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 126,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Edward Baring, 1st Baron Revelstoke"
+      ],
+      "matched_anchors": [
+        "Edward Baring, 1st Baron Revelstoke"
+      ],
+      "candidate_entities": [
+        "Thomas Baring",
+        "Baring, Magoun",
+        "Barings Bank",
+        "George C. Magoun",
+        "Henry Baring",
+        "Kidder Peabody",
+        "Liverpool",
+        "New York City",
+        "Henry Bingham Baring",
+        "Sir Francis Baring, 1st Baronet"
+      ],
+      "evidence_event_ids": [
+        "ev2_k0_26",
+        "ev1_k0_25",
+        "ev3_27",
+        "ev4_28",
+        "ev5_29",
+        "ev6_30",
+        "ev7_31",
+        "ev4_k0_74",
+        "ev5_k0_75"
+      ],
+      "evidence_sources": [
+        "musique:double__403712_793210:17",
+        "musique:double__403712_793210:6"
+      ],
+      "raw_response": "ANSWER: Sir Francis Baring, 1st Baronet",
+      "llm_output": "Looking at the question, I need to find:\n1. Edward Baring, 1st Baron Revelstoke's father\n2. Then the father of that person\n\n**Step 1:** From [ev2_k0_26], Thomas Baring and Edward Baring, 1st Baron Revelstoke are siblings. From [ev1_k0_25], Henry Baring is the parent of Thomas Baring. Since they are siblings, Henry Baring is also the parent (father) of Edward Baring, 1st Baron Revelstoke.\n\n**Step 2:** From [ev5_k0_75], Sir Francis Baring, 1st Baronet is the parent of Henry Baring.\n\nTherefore, the father of Edward Baring's father (Henry Baring) is Sir Francis Baring, 1st Baronet.\n\nFINAL ANSWER: Sir Francis Baring, 1st Baronet"
+    }
+  },
+  {
+    "id": "double__832795_350510",
+    "question": "What group was the performer of Be the One a member of?",
+    "gold": "Jackson 5",
+    "aliases": [
+      "Jackson 5"
+    ],
+    "predicted": "Jackson 5",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 119,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Be the One"
+      ],
+      "matched_anchors": [
+        "Be the One"
+      ],
+      "candidate_entities": [
+        "Gerald Albright",
+        "Jeff Lorber",
+        "Paul Jackson, Jr.",
+        "Robert Brookins",
+        "Jackie Jackson",
+        "Jackson 5",
+        "Corporation",
+        "Eddy Manson",
+        "Gene Page",
+        "Motown Records"
+      ],
+      "evidence_event_ids": [
+        "ev2_37",
+        "ev3_38",
+        "ev4_39",
+        "ev5_40",
+        "ev1_36",
+        "ev5_89",
+        "ev1_85",
+        "ev2_86",
+        "ev3_87",
+        "ev4_88"
+      ],
+      "evidence_sources": [
+        "musique:double__832795_350510:17",
+        "musique:double__832795_350510:8"
+      ],
+      "raw_response": "ANSWER: Jackson 5",
+      "llm_output": "The performer of \"Be the One\" is Jackie Jackson (released by Be the One per [ev1_36]). Jackie Jackson was a member of the group Jackson 5 (per [ev5_89]).\n\nFINAL ANSWER: Jackson 5"
+    }
+  },
+  {
+    "id": "double__744055_408817",
+    "question": "Who is the lead singer of the band performing Bang Bang Rock & Roll?",
+    "gold": "Eddie Argos",
+    "aliases": [
+      "Eddie Argos"
+    ],
+    "predicted": "Eddie Argos",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 131,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Bang Bang Rock & Roll"
+      ],
+      "matched_anchors": [
+        "Bang Bang Rock & Roll"
+      ],
+      "candidate_entities": [
+        "Art Brut",
+        "Eddie Argos"
+      ],
+      "evidence_event_ids": [
+        "ev1_6",
+        "ev2_7",
+        "ev2_40",
+        "ev1_39"
+      ],
+      "evidence_sources": [
+        "musique:double__744055_408817:2",
+        "musique:double__744055_408817:8"
+      ],
+      "raw_response": "ANSWER: Eddie Argos",
+      "llm_output": "The band that performed/released \"Bang Bang Rock & Roll\" is Art Brut (ev1_6, ev2_7). The only person linked to Art Brut in the evidence is Eddie Argos, identified as a member of the group (ev2_40). As the sole person connected to the band, he is the best-supported answer for the lead singer.\n\nFINAL ANSWER: Eddie Argos"
+    }
+  },
+  {
+    "id": "double__726717_610238",
+    "question": "What is the network which National Cycle Route 57 is part of an example of?",
+    "gold": "national cycling route network",
+    "aliases": [
+      "national cycling route network"
+    ],
+    "predicted": "National Cycle Network",
+    "failure_stage": "answer_partial_match",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 71,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "National Cycle Route 57"
+      ],
+      "matched_anchors": [
+        "National Cycle Route 57"
+      ],
+      "candidate_entities": [
+        "NCN",
+        "National Cycle Network",
+        "Sustrans",
+        "United Kingdom",
+        "National Lottery"
+      ],
+      "evidence_event_ids": [
+        "ev1_36",
+        "ev2_37",
+        "ev2_45",
+        "alias_c0",
+        "ev3_46"
+      ],
+      "evidence_sources": [
+        "musique:double__726717_610238:12",
+        "musique:double__726717_610238:14"
+      ],
+      "raw_response": "ANSWER: National Cycle Network",
+      "llm_output": "The question asks for the network that National Cycle Route 57 is part of. From fact [ev1_36], National Cycle Route 57 is a member (ARG0) of the National Cycle Network (ARG1). The alias fact [alias_c0] confirms NCN is the same entity. The network in question is the National Cycle Network.\n\nFINAL ANSWER: National Cycle Network"
+    }
+  },
+  {
+    "id": "double__499577_617190",
+    "question": "Who is the spouse of the child of Peter Andreas Heiberg?",
+    "gold": "Johanne Luise Heiberg",
+    "aliases": [
+      "Johanne Luise Heiberg"
+    ],
+    "predicted": "Johanne Luise Heiberg",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 117,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Peter Andreas Heiberg"
+      ],
+      "matched_anchors": [
+        "Peter Andreas Heiberg"
+      ],
+      "candidate_entities": [
+        "Copenhagen",
+        "Johan Ludvig Heiberg",
+        "Johanne Luise Heiberg",
+        "Baroness Gyllembourg-Ehrensv\u00e4rd",
+        "Denmark",
+        "Hegelian philosophy",
+        "Kierkegaard",
+        "Peter Andreas Hansen",
+        "autobiographical reflection of her life",
+        "geodetic survey of Denmark"
+      ],
+      "evidence_event_ids": [
+        "ev1_63",
+        "ev1_k0_44",
+        "ev2_64",
+        "ev3_65",
+        "ev4_66",
+        "ev2_27",
+        "ev2_45",
+        "ev3_46"
+      ],
+      "evidence_sources": [
+        "musique:double__499577_617190:11",
+        "musique:double__499577_617190:16",
+        "musique:double__499577_617190:7"
+      ],
+      "raw_response": "ANSWER: Johanne Luise Heiberg",
+      "llm_output": "The child of Peter Andreas Heiberg is Johan Ludvig Heiberg (ev1_63, bear.02: ARG0=Peter Andreas Heiberg, ARG1=Johan Ludvig Heiberg). The spouse of Johan Ludvig Heiberg is Johanne Luise Heiberg (ev1_k0_44, marry.01: ARG0=Johanne Luise Heiberg, ARG1=Johan Ludvig Heiberg).\n\nFINAL ANSWER: Johanne Luise Heiberg"
+    }
+  },
+  {
+    "id": "double__685280_510757",
+    "question": "The Unwinding author volunteered for which organisation?",
+    "gold": "Peace Corps",
+    "aliases": [
+      "Peace Corps"
+    ],
+    "predicted": "Peace Corps",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 86,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Unwinding: An Inner History of the New America"
+      ],
+      "matched_anchors": [
+        "Unwinding: An Inner History of the New America"
+      ],
+      "candidate_entities": [
+        "George Packer",
+        "Peter Thiel",
+        "English",
+        "Gnassingbe Eyadema",
+        "Lavie",
+        "Lom\u00e9",
+        "Peace Corps",
+        "Togo",
+        "Village of Waiting"
+      ],
+      "evidence_event_ids": [
+        "c0_ev1_34",
+        "c0_ev2_35",
+        "c0_ev1",
+        "c0_ev2",
+        "c0_ev3",
+        "c0_ev4",
+        "c0_ev5",
+        "c0_ev7",
+        "c0_ev6"
+      ],
+      "evidence_sources": [
+        "musique:double__685280_510757:11",
+        "musique:double__685280_510757:12"
+      ],
+      "raw_response": "ANSWER: Peace Corps",
+      "llm_output": "The author of *Unwinding: An Inner History of the New America* is George Packer [c0_ev1_34]. George Packer served (volunteered) for the Peace Corps in Togo [c0_ev1]. The Peace Corps is the organisation in question.\n\nFINAL ANSWER: Peace Corps"
+    }
+  },
+  {
+    "id": "double__341305_332933",
+    "question": "What is the capital of the county that Pine Springs is located in?",
+    "gold": "Van Horn",
+    "aliases": [
+      "Van Horn"
+    ],
+    "predicted": "Van Horn",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 116,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Pine Springs"
+      ],
+      "matched_anchors": [
+        "Pine Springs"
+      ],
+      "candidate_entities": [
+        "Culberson County",
+        "Texas",
+        "U.S. Routes 62 and 180",
+        "Guadalupe Mountains National Park",
+        "United States",
+        "Van Horn",
+        "Culberson County-Allamoore Independent School District",
+        "Guadalupe Peak",
+        "Kentucky",
+        "Hudspeth County"
+      ],
+      "evidence_event_ids": [
+        "ev1_21",
+        "ev5_25",
+        "ev1_loc0",
+        "ev2_22",
+        "ev4_24",
+        "ev2_16",
+        "ev1_15",
+        "ev3_23",
+        "ev1_loc1_61",
+        "ev3_17",
+        "ev4_18"
+      ],
+      "evidence_sources": [
+        "musique:double__341305_332933:16",
+        "musique:double__341305_332933:4",
+        "musique:double__341305_332933:6"
+      ],
+      "raw_response": "ANSWER: Van Horn",
+      "llm_output": "Looking at the facts:\n\n1. Pine Springs is located in **Culberson County** (ev1_21).\n2. The **Culberson County-Allamoore Independent School District** is located in **Van Horn** (ev1_15) and serves Culberson County (ev2_16).\n\nThe question asks for the \"capital\" (i.e., county seat) of Culberson County. While there is no explicit \"capital\" or \"county seat\" predicate in the facts, the county-named school district is located in Van Horn and serves Culberson County, implying Van Horn is the principal town/seat of the county. This is the best-supported entity of the requested type (a place serving as the county's main town).\n\nFINAL ANSWER: Van Horn"
+    }
+  },
+  {
+    "id": "double__731228_609866",
+    "question": "What district is the headquarter of Julia's House located?",
+    "gold": "East Dorset",
+    "aliases": [
+      "East Dorset"
+    ],
+    "predicted": "East Dorset",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 110,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Julia's House"
+      ],
+      "matched_anchors": [
+        "Julia's House"
+      ],
+      "candidate_entities": [
+        "Corfe Mullen",
+        "Dorset",
+        "England",
+        "3% of maintenance cost",
+        "children with life-limiting conditions",
+        "government",
+        "East Dorset"
+      ],
+      "evidence_event_ids": [
+        "ev1_21",
+        "ev2_22",
+        "ev3_23",
+        "ev4_24",
+        "ev5_25",
+        "ev1_loc0",
+        "ev1_loc1",
+        "ev3_35"
+      ],
+      "evidence_sources": [
+        "musique:double__731228_609866:10",
+        "musique:double__731228_609866:7"
+      ],
+      "raw_response": "ANSWER: East Dorset",
+      "llm_output": "Julia's House is located in Corfe Mullen (ev1_21), and Corfe Mullen is a member of East Dorset (ev3_35). East Dorset is the district-level entity in the evidence.\n\nFINAL ANSWER: East Dorset"
+    }
+  },
+  {
+    "id": "double__693444_220151",
+    "question": "Who is the spouse of Young Man Luther's author?",
+    "gold": "Joan Erikson",
+    "aliases": [
+      "Joan Erikson"
+    ],
+    "predicted": "Joan Erikson",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 101,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Young Man Luther: A Study in Psychoanalysis and History"
+      ],
+      "matched_anchors": [
+        "Young Man Luther: A Study in Psychoanalysis and History"
+      ],
+      "candidate_entities": [
+        "Erik Erikson",
+        "Erikson's stages of psychosocial development",
+        "Joan Erikson",
+        "Luther's spontaneous eruption",
+        "Martin Luther",
+        "identity crisis",
+        "model",
+        "Katharina von Bora",
+        "Elisabeth Luther",
+        "religious and worldly realms"
+      ],
+      "evidence_event_ids": [
+        "ev1_34",
+        "ev2_35",
+        "ev3_36",
+        "ev4_37",
+        "ev1_61",
+        "ev2_62",
+        "ev4_k0",
+        "ev2_k0",
+        "c0_ev1"
+      ],
+      "evidence_sources": [
+        "musique:double__693444_220151:12",
+        "musique:double__693444_220151:15",
+        "musique:double__693444_220151:19",
+        "musique:double__693444_220151:7"
+      ],
+      "raw_response": "ANSWER: Joan Erikson",
+      "llm_output": "The author of \"Young Man Luther: A Study in Psychoanalysis and History\" is Erik Erikson (ev1_34). The partner/spouse of Erik Erikson is Joan Erikson (ev2_62, partner.01).\n\nFINAL ANSWER: Joan Erikson"
+    }
+  },
+  {
+    "id": "double__235471_565925",
+    "question": "What record label did the performer of The Place and the Time belong to?",
+    "gold": "Columbia Records",
+    "aliases": [
+      "Columbia Records"
+    ],
+    "predicted": "Sundazed Records",
+    "failure_stage": "answer_partial_match",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 76,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Place and the Time"
+      ],
+      "matched_anchors": [
+        "Place and the Time"
+      ],
+      "candidate_entities": [
+        "Sundazed Records"
+      ],
+      "evidence_event_ids": [
+        "ev1"
+      ],
+      "evidence_sources": [
+        "musique:double__235471_565925:0"
+      ],
+      "raw_response": "ANSWER: Sundazed Records",
+      "llm_output": "Based on the evidence, [ev1] shows that Sundazed Records is the releaser (ARG0) of \"Place and the Time\" (ARG1). The question asks for the record label the performer belonged to, and the only record label entity connected to \"Place and the Time\" in the facts is Sundazed Records, which released the album.\n\nFINAL ANSWER: Sundazed Records"
+    }
+  },
+  {
+    "id": "double__310456_846599",
+    "question": "Who is the child of the person who followed Tihomir of Serbia?",
+    "gold": "Saint Sava",
+    "aliases": [
+      "Saint Sava"
+    ],
+    "predicted": "",
+    "failure_stage": "qa_refusal_answer_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 102,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_refusal",
+      "anchors": [
+        "Tihomir",
+        "Serbia"
+      ],
+      "matched_anchors": [
+        "Tihomir",
+        "Serbia"
+      ],
+      "candidate_entities": [
+        "Banja Monastery",
+        "Banjevac",
+        "Belgrade",
+        "Bor",
+        "Boris Tadi\u0107",
+        "Andri\u0107ev Venac",
+        "Baljev Dol",
+        "Duklja",
+        "Koceljeva municipality",
+        "Miroslav"
+      ],
+      "evidence_event_ids": [
+        "ev1_loc0",
+        "ev2_10",
+        "ev1_14",
+        "ev2_18",
+        "ev1_20",
+        "ev2_21",
+        "ev5_24",
+        "ev6_25",
+        "ev1_34",
+        "ev4_44",
+        "ev1_46",
+        "ev4_54",
+        "ev1_59",
+        "ev2_67",
+        "ev1_70",
+        "ev2_71",
+        "ev3_75",
+        "ev1_82",
+        "ev1_83",
+        "ev1_6",
+        "ev2_7",
+        "ev1_9",
+        "ev4_12",
+        "ev2_15",
+        "ev1_17",
+        "ev3_22",
+        "ev4_23",
+        "ev7_26",
+        "ev8_27",
+        "ev9_28",
+        "ev10",
+        "ev11",
+        "ev13",
+        "ev2_35",
+        "ev1_41",
+        "ev2_47",
+        "ev5_50",
+        "ev1_51",
+        "ev2_52",
+        "ev3_53"
+      ],
+      "evidence_sources": [
+        "musique:double__310456_846599:10",
+        "musique:double__310456_846599:11",
+        "musique:double__310456_846599:12",
+        "musique:double__310456_846599:13",
+        "musique:double__310456_846599:15",
+        "musique:double__310456_846599:16",
+        "musique:double__310456_846599:17",
+        "musique:double__310456_846599:18",
+        "musique:double__310456_846599:19",
+        "musique:double__310456_846599:2",
+        "musique:double__310456_846599:3",
+        "musique:double__310456_846599:4",
+        "musique:double__310456_846599:5",
+        "musique:double__310456_846599:6",
+        "musique:double__310456_846599:8"
+      ],
+      "raw_response": "STATUS: NOT_IN_EVIDENCE",
+      "llm_output": "Looking at the facts, the person who \"followed Tihomir of Serbia\" is **Stefan Nemanja**, who overthrew Tihomir (ev1_20), expelled him (ev2_21), defeated him (ev5_24), and became ruler of All Serbia (ev9_28).\n\nHowever, none of the provided facts state a parent-child relationship for Stefan Nemanja. There is no fact identifying a child of Stefan Nemanja in the context graph.\n\nFINAL ANSWER: NOT_IN_EVIDENCE"
+    }
+  },
+  {
+    "id": "double__335418_279684",
+    "question": "What team was Anna Benson's husband on?",
+    "gold": "Pittsburgh Pirates",
+    "aliases": [
+      "Pittsburgh Pirates"
+    ],
+    "predicted": "Pittsburgh Pirates",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 128,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Anna Benson"
+      ],
+      "matched_anchors": [
+        "Anna Benson"
+      ],
+      "candidate_entities": [
+        "Kris Benson",
+        "Baltimore Orioles",
+        "New York Mets",
+        "Pittsburgh Pirates",
+        "Tommy John surgery",
+        "rotator cuff surgery"
+      ],
+      "evidence_event_ids": [
+        "ev1_42",
+        "ev2_k0_43",
+        "ev1_83",
+        "ev2_84",
+        "ev3_85",
+        "ev4_86",
+        "ev5_87",
+        "ev6_88",
+        "ev7_89",
+        "ev8_90"
+      ],
+      "evidence_sources": [
+        "musique:double__335418_279684:16",
+        "musique:double__335418_279684:9"
+      ],
+      "raw_response": "ANSWER: Pittsburgh Pirates",
+      "llm_output": "Anna Benson's husband is Kris Benson (from the marry fact). Kris Benson was drafted by the Pittsburgh Pirates in 1996 and played for them in 1999, 2000, and 2004, making the Pittsburgh Pirates his primary team.\n\nFINAL ANSWER: Pittsburgh Pirates"
+    }
+  },
+  {
+    "id": "double__191125_781346",
+    "question": "What place does the administrative territorial entity that Juba is located in share a border with?",
+    "gold": "Eastern Equatoria",
+    "aliases": [
+      "Eastern Equatoria"
+    ],
+    "predicted": "Eastern Equatoria",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 162,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Juba"
+      ],
+      "matched_anchors": [
+        "Juba"
+      ],
+      "candidate_entities": [
+        "Central Equatoria",
+        "Citizen",
+        "South Sudan",
+        "Badigeru Swamp",
+        "Eastern Equatoria"
+      ],
+      "evidence_event_ids": [
+        "ev1_80",
+        "ev2_81",
+        "ev3_82",
+        "ev1_77",
+        "ev2_78",
+        "ev3_79"
+      ],
+      "evidence_sources": [
+        "musique:double__191125_781346:13",
+        "musique:double__191125_781346:14"
+      ],
+      "raw_response": "ANSWER: Eastern Equatoria",
+      "llm_output": "Looking at the facts:\n\n1. Juba is located in **Central Equatoria** (ev3_82), which is an administrative territorial entity (a state in South Sudan).\n\n2. To find what place Central Equatoria shares a border with, I look for entities located in both Central Equatoria and another region:\n   - Badigeru Swamp is located in **Central Equatoria** (ev2_78)\n   - Badigeru Swamp is also located in **Eastern Equatoria** (ev3_79)\n\nSince Badigeru Swamp spans both Central Equatoria and Eastern Equatoria, these two administrative entities share a border.\n\nFINAL ANSWER: Eastern Equatoria"
+    }
+  },
+  {
+    "id": "double__475070_532404",
+    "question": "Where was the spouse of Frances Tupper born?",
+    "gold": "Amherst",
+    "aliases": [
+      "Amherst"
+    ],
+    "predicted": "",
+    "failure_stage": "qa_refusal_answer_not_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 113,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_refusal",
+      "anchors": [
+        "Frances Am\u00e9lia Tupper"
+      ],
+      "matched_anchors": [
+        "Frances Am\u00e9lia Tupper"
+      ],
+      "candidate_entities": [
+        "Sir Charles Tupper",
+        "children of Frances Am\u00e9lia Tupper and Sir Charles Tupper"
+      ],
+      "evidence_event_ids": [
+        "ev1_k0",
+        "ev2_10"
+      ],
+      "evidence_sources": [
+        "musique:double__475070_532404:4"
+      ],
+      "raw_response": "STATUS: NOT_IN_EVIDENCE",
+      "llm_output": "The spouse of Frances Tupper is Sir Charles Tupper (from ev1_k0). However, none of the provided facts state where Sir Charles Tupper was born. No place entity is linked to his birth in the evidence.\n\nFINAL ANSWER: NOT_IN_EVIDENCE"
+    }
+  },
+  {
+    "id": "double__700093_455653",
+    "question": "Who founded the political party of Dimuthu Bandara Abayakoon?",
+    "gold": "Rohana Wijeweera",
+    "aliases": [
+      "Rohana Wijeweera"
+    ],
+    "predicted": "Rohana Wijeweera",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 86,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Dimuthu Bandara Abayakoon"
+      ],
+      "matched_anchors": [
+        "Dimuthu Bandara Abayakoon"
+      ],
+      "candidate_entities": [
+        "Janatha Vimukthi Peramuna",
+        "Kandy",
+        "Kandy District",
+        "Parliament of Sri Lanka",
+        "Rohana Wijeweera",
+        "Sri Lanka"
+      ],
+      "evidence_event_ids": [
+        "ev1_51",
+        "ev2_52",
+        "ev3_53",
+        "ev4_54",
+        "ev3_29",
+        "ev4_30",
+        "ev5_31",
+        "ev1_27",
+        "ev2_28"
+      ],
+      "evidence_sources": [
+        "musique:double__700093_455653:12",
+        "musique:double__700093_455653:8"
+      ],
+      "raw_response": "ANSWER: Rohana Wijeweera",
+      "llm_output": "Dimuthu Bandara Abayakoon is a member of Janatha Vimukthi Peramuna [ev2_52], and Rohana Wijeweera is the founder of Janatha Vimukthi Peramuna [ev3_29].\n\nFINAL ANSWER: Rohana Wijeweera"
+    }
+  },
+  {
+    "id": "double__512773_346751",
+    "question": "Bancroft's county borders what county?",
+    "gold": "Haliburton County",
+    "aliases": [
+      "Haliburton County"
+    ],
+    "predicted": "Haliburton County",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 168,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Bancroft"
+      ],
+      "matched_anchors": [
+        "Bancroft"
+      ],
+      "candidate_entities": [
+        "NHHS",
+        "North Hastings High School",
+        "Ontario",
+        "Canada",
+        "Canada\u2013United States border",
+        "Haliburton County",
+        "Hastings County",
+        "north",
+        "Alaska",
+        "Alberta"
+      ],
+      "evidence_event_ids": [
+        "ev1_49",
+        "ev1_loc0",
+        "c1_ev6_33",
+        "ev4_43",
+        "ev5_44",
+        "ev6_45",
+        "ev7_46",
+        "ev2_50",
+        "ev3_51",
+        "ev4_52",
+        "alias_c0",
+        "ev1",
+        "c0_ev2_27",
+        "c0_ev1_26",
+        "c1_ev1_28",
+        "c1_ev2_29",
+        "c1_ev3_30",
+        "c1_ev4_31",
+        "c1_ev5_32",
+        "c1_ev7_34",
+        "c1_ev8_35",
+        "c1_ev9_36",
+        "c1_ev10_37",
+        "c1_ev11_38",
+        "c1_ev12_39",
+        "c1_ev13",
+        "c1_ev14",
+        "c1_ev15",
+        "ev1_40",
+        "ev2_41",
+        "ev3_42"
+      ],
+      "evidence_sources": [
+        "musique:double__512773_346751:1",
+        "musique:double__512773_346751:6",
+        "musique:double__512773_346751:7",
+        "musique:double__512773_346751:8"
+      ],
+      "raw_response": "ANSWER: Haliburton County",
+      "llm_output": "The question asks: \"Bancroft's county borders what county?\"\n\nLet me trace the chain:\n1. Bancroft is located in Ontario (ev1_loc0)\n2. North Hastings High School is located in Bancroft (ev1_49)\n3. North Hastings High School serves students in the northern portion of Hastings County (ev2_50)\n4. North Hastings High School is a member of Hastings and Prince Edward District School Board (ev3_51)\n\nSo Bancroft's county appears to be Hastings County (since the school in Bancroft serves students in Hastings County).\n\nNow, what county does Hastings County border? Let me look at the facts:\n- York River is located in Renfrew County (ev1_40)\n- York River is located in Hastings County (ev2_41)\n- York River is located in Haliburton County (ev3_42)\n\nThe York River flows through Renfrew County, Hastings County, and Haliburton County. This suggests these counties are adjacent/border each other.\n\nSo Hastings County borders Renfrew County and Haliburton County.\n\nThe question asks \"Bancroft's county borders what county?\" - this is asking for a county that borders Hastings County.\n\nFrom the facts, the York River is located in both Hastings County and Renfrew County, and also in Haliburton County. This implies these counties share a border (via the river).\n\nThe candidates include both Renfrew County and Haliburton County. But looking at the discovered path candidates, I see Haliburton County and Hastings County listed, but Renfrew County is not in the candidates list.\n\nWait, let me re-read the candidates. The candidates listed are:\n- NHHS\n- North Hastings High School\n- Ontario\n- Canada\n- Canada\u2013United States border\n- Haliburton County\n- Hastings County\n- north\n- Alaska\n- Alberta\n\nRenfrew County is NOT in the candidates list. But Haliburton County IS.\n\nHowever, the York River is in both Hastings County and Renfrew County, and also in Haliburton County. So both Renfrew County and Haliburton County border Hastings County.\n\nBut the question asks \"Bancroft's county borders what county?\" - singular \"what county.\" \n\nLooking at the facts more carefully:\n- ev1_40: York River is in Renfrew County\n- ev2_41: York River is in Hastings County\n- ev3_42: York River is in Haliburton County\n\nThe York River connects all three counties, suggesting they all border each other.\n\nSince the question asks for \"what county\" (singular), and both Renfrew County and Haliburton County are valid answers based on the evidence, I need to pick the best-supported one.\n\nActually, looking at the discovered path candidates, Haliburton County is listed as a candidate but Renfrew County is not. This might be because the path-finding algorithm found a path to Haliburton County but not to Renfrew County through the specific chain.\n\nWait, let me re-examine. The path to Haliburton County is: Bancroft \u2192 Ontario \u2192 Haliburton County (via locate). But that's just saying both are in Ontario, not that they border each other.\n\nThe actual bordering evidence comes from the York River being in both counties. The York River is in Hastings County (ev2_41) and in Haliburton County (ev3_42), and in Renfrew County (ev1_40).\n\nSince the question asks \"Bancroft's county borders what county?\" and the evidence shows the York River flows through Hastings County, Renfrew County, and Haliburton County, any of these could be the answer.\n\nGiven that Haliburton County appears in the candidates list and the York River connects Hastings County to Haliburton County, I'll go with Haliburton County. But Renfrew County is equally valid.\n\nActually, let me reconsider. The question is \"Bancroft's county borders what county?\" The most direct evidence of bordering is the shared river. Both Renfrew County and Haliburton County share the York River with Hastings County.\n\nSince Haliburton County is in the candidates list and Renfrew County is not, I'll go with Haliburton County as the answer. But actually, both are valid. Let me check if there's a reason to prefer one.\n\nThe facts list them in order: Renfrew County (ev1_40), Hastings County (ev2_41), Haliburton County (ev3_42). This suggests the river flows through them in that order, meaning Hastings County is between Renfrew and Haliburton,\n[finalize] FINAL ANSWER: Haliburton County"
+    }
+  },
+  {
+    "id": "double__411091_625230",
+    "question": "In which county is Mark Dismore's birthplace located?",
+    "gold": "Hancock County",
+    "aliases": [
+      "Hancock County"
+    ],
+    "predicted": "Hancock County",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 120,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Mark Dismore"
+      ],
+      "matched_anchors": [
+        "Mark Dismore"
+      ],
+      "candidate_entities": [
+        "1990 Toyota Pacific championship",
+        "1993 24 Hours of Daytona",
+        "Concept Motorsports",
+        "Dan Gurney's All American Racers",
+        "Greenfield",
+        "Center Township",
+        "Hancock County",
+        "Indiana",
+        "United States",
+        "New Jersey"
+      ],
+      "evidence_event_ids": [
+        "c0_ev1_47",
+        "c0_ev2_48",
+        "c0_ev3_49",
+        "c0_ev4_50",
+        "c0_ev5_51",
+        "c0_ev6_52",
+        "c0_ev7_53",
+        "c0_ev8_54",
+        "c1_ev1_55",
+        "c1_ev2_56",
+        "c1_ev3_57",
+        "c1_ev4_58",
+        "c1_ev5_59",
+        "c1_ev6",
+        "c1_ev7",
+        "c1_ev8",
+        "ev1_27",
+        "ev2_28",
+        "ev3_29",
+        "ev5_31",
+        "ev4_30",
+        "ev1_loc2"
+      ],
+      "evidence_sources": [
+        "musique:double__411091_625230:1",
+        "musique:double__411091_625230:10",
+        "musique:double__411091_625230:13"
+      ],
+      "raw_response": "ANSWER: Hancock County",
+      "llm_output": "Mark Dismore was born in Greenfield (fact [c0_ev1_47]), and Greenfield is located in Hancock County (fact [ev1_27]).\n\nFINAL ANSWER: Hancock County"
+    }
+  },
+  {
+    "id": "double__423972_540249",
+    "question": "Who was the sibling of Nannina de' Medici?",
+    "gold": "Giuliano de' Medici",
+    "aliases": [
+      "Giuliano de' Medici"
+    ],
+    "predicted": "Lorenzo de' Medici",
+    "failure_stage": "answer_partial_match",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 85,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Nannina de' Medici"
+      ],
+      "matched_anchors": [
+        "Nannina de' Medici"
+      ],
+      "candidate_entities": [
+        "Lorenzo de' Medici",
+        "Bernardo Rucellai",
+        "Lucrezia Tornabuoni",
+        "Piero di Cosimo de' Medici",
+        "Giuliano de' Medici",
+        "Lorenzo the Magnificent",
+        "Florence",
+        "Piero de' Medici"
+      ],
+      "evidence_event_ids": [
+        "ev4_k0_22",
+        "ev1_19",
+        "ev2_k0_20",
+        "ev3_k0_21",
+        "ev5_k0",
+        "ev1_10",
+        "ev3_k0_12",
+        "ev4_k0_13",
+        "ev2_k0_11",
+        "ev5"
+      ],
+      "evidence_sources": [
+        "musique:double__423972_540249:5",
+        "musique:double__423972_540249:8"
+      ],
+      "raw_response": "ANSWER: Lorenzo de' Medici",
+      "llm_output": "Based on fact [ev4_k0_22], the sibling relation directly links Nannina de' Medici (ARG0, person) to Lorenzo de' Medici (ARG1, sibling).\n\nFINAL ANSWER: Lorenzo de' Medici"
+    }
+  },
+  {
+    "id": "double__455158_247871",
+    "question": "What county is the NRHEG High School located in?",
+    "gold": "Waseca County",
+    "aliases": [
+      "Waseca County"
+    ],
+    "predicted": "Waseca County",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 124,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "NRHEG High School"
+      ],
+      "matched_anchors": [
+        "NRHEG High School"
+      ],
+      "candidate_entities": [
+        "New Richland",
+        "New Richland, Hartland, Ellendale, Geneva",
+        "Minnesota",
+        "Waseca County",
+        "United States"
+      ],
+      "evidence_event_ids": [
+        "ev1_62",
+        "ev2_64",
+        "ev1_loc0_63",
+        "ev1_86",
+        "ev4_89",
+        "ev2_87",
+        "ev3_88"
+      ],
+      "evidence_sources": [
+        "musique:double__455158_247871:16",
+        "musique:double__455158_247871:19"
+      ],
+      "raw_response": "ANSWER: Waseca County",
+      "llm_output": "NRHEG High School is located in New Richland (ev1_62), and New Richland is located in Waseca County (ev1_86). By transitive containment, NRHEG High School is in Waseca County.\n\nFINAL ANSWER: Waseca County"
+    }
+  },
+  {
+    "id": "double__189094_612080",
+    "question": "What league does the team that occupies the Rabat Ajax Football Ground belong to?",
+    "gold": "Maltese Premier League",
+    "aliases": [
+      "Maltese Premier League"
+    ],
+    "predicted": "Maltese Premier League",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 82,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Rabat Ajax Football Ground"
+      ],
+      "matched_anchors": [
+        "Rabat Ajax Football Ground"
+      ],
+      "candidate_entities": [
+        "Mtarfa",
+        "Rabat Ajax",
+        "Arlind Rustemi",
+        "Malcolm Licari",
+        "Silvio Vella",
+        "defender",
+        "Balzan",
+        "Floriana",
+        "Hibernians",
+        "KF Vlora"
+      ],
+      "evidence_event_ids": [
+        "ev1_45",
+        "ev2_46",
+        "ev3",
+        "ev2_12",
+        "ev4_14",
+        "ev6_21",
+        "ev1",
+        "ev2",
+        "ev1_11",
+        "ev3_13",
+        "ev1_15",
+        "ev2_17",
+        "ev3_18",
+        "ev4_19",
+        "ev5_20",
+        "ev7_22",
+        "ev8_23"
+      ],
+      "evidence_sources": [
+        "musique:double__189094_612080:0",
+        "musique:double__189094_612080:13",
+        "musique:double__189094_612080:5",
+        "musique:double__189094_612080:6"
+      ],
+      "raw_response": "ANSWER: Maltese Premier League",
+      "llm_output": "The team that occupies the Rabat Ajax Football Ground is **Rabat Ajax** (ev1_45: Rabat Ajax owns the ground). Rabat Ajax employs Malcolm Licari (ev6_21), and Malcolm Licari is a member of the **Maltese Premier League** (ev7_22). This is the only league referenced in the evidence, linking Rabat Ajax to that competition.\n\nFINAL ANSWER: Maltese Premier League"
+    }
+  },
+  {
+    "id": "double__765678_310556",
+    "question": "Who was married to the star of No Escape?",
+    "gold": "John Profumo",
+    "aliases": [
+      "John Profumo"
+    ],
+    "predicted": "John Profumo",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 145,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "No Escape"
+      ],
+      "matched_anchors": [
+        "No Escape"
+      ],
+      "candidate_entities": [
+        "Leslie Perrins",
+        "Robert Cochran",
+        "Valerie Hobson",
+        "Norman Lee",
+        "David Profumo",
+        "John Profumo",
+        "London",
+        "6th Baron Profumo",
+        "British government",
+        "minister"
+      ],
+      "evidence_event_ids": [
+        "ev2_109",
+        "ev3_110",
+        "ev4_111",
+        "ev1_108",
+        "ev2_19",
+        "ev3_k0_20",
+        "ev1_18",
+        "ev4_21",
+        "ev5_22"
+      ],
+      "evidence_sources": [
+        "musique:double__765678_310556:19",
+        "musique:double__765678_310556:5"
+      ],
+      "raw_response": "ANSWER: John Profumo",
+      "llm_output": "The star of *No Escape* includes Valerie Hobson (ev2_109). The marry fact (ev3_k0_20) shows that John Profumo (ARG0, spouse) was married to Valerie Hobson (ARG1, other spouse). Therefore, John Profumo was married to the star of *No Escape*.\n\nFINAL ANSWER: John Profumo"
+    }
+  }
+]

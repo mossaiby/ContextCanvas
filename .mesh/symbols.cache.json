@@ -1,0 +1,991 @@
+{
+  "version": 1,
+  "updated_at": 1791234001.0438497,
+  "file_count": 16,
+  "symbol_count": 111,
+  "files": {
+    "install.sh": {
+      "mtime": 1791233348.956168,
+      "size": 9819,
+      "symbols": [
+        {
+          "name": "download_file",
+          "kind": "function",
+          "signature": "download_file() {",
+          "filepath": "install.sh",
+          "line": 66,
+          "docstring": ""
+        },
+        {
+          "name": "get_checksum_from_manifest",
+          "kind": "function",
+          "signature": "get_checksum_from_manifest() {",
+          "filepath": "install.sh",
+          "line": 88,
+          "docstring": ""
+        },
+        {
+          "name": "get_size_from_manifest",
+          "kind": "function",
+          "signature": "get_size_from_manifest() {",
+          "filepath": "install.sh",
+          "line": 105,
+          "docstring": ""
+        },
+        {
+          "name": "checksum_matches",
+          "kind": "function",
+          "signature": "checksum_matches() {",
+          "filepath": "install.sh",
+          "line": 178,
+          "docstring": ""
+        }
+      ]
+    },
+    "run_harness.py": {
+      "mtime": 1791117826.9728343,
+      "size": 2448,
+      "symbols": [
+        {
+          "name": "run_unit_tests",
+          "kind": "function",
+          "signature": "def run_unit_tests() -> bool:",
+          "filepath": "run_harness.py",
+          "line": 14,
+          "docstring": ""
+        },
+        {
+          "name": "run_reasoning_diagnostics",
+          "kind": "function",
+          "signature": "def run_reasoning_diagnostics() -> Dict:",
+          "filepath": "run_harness.py",
+          "line": 24,
+          "docstring": ""
+        },
+        {
+          "name": "run_storage_benchmarks",
+          "kind": "function",
+          "signature": "def run_storage_benchmarks() -> List:",
+          "filepath": "run_harness.py",
+          "line": 42,
+          "docstring": ""
+        },
+        {
+          "name": "main",
+          "kind": "function",
+          "signature": "def main() -> None:",
+          "filepath": "run_harness.py",
+          "line": 55,
+          "docstring": ""
+        }
+      ]
+    },
+    "download_propbank.py": {
+      "mtime": 1791123432.9156766,
+      "size": 1885,
+      "symbols": [
+        {
+          "name": "download_and_extract_propbank",
+          "kind": "function",
+          "signature": "def download_and_extract_propbank(target_dir: Path = TARGET_DIR) -> Path:",
+          "filepath": "download_propbank.py",
+          "line": 15,
+          "docstring": ""
+        }
+      ]
+    },
+    "tests/test_diagnostics.py": {
+      "mtime": 1791117804.4514077,
+      "size": 1634,
+      "symbols": [
+        {
+          "name": "test_diagnostic_harness_execution",
+          "kind": "function",
+          "signature": "def test_diagnostic_harness_execution(tmp_path):",
+          "filepath": "tests/test_diagnostics.py",
+          "line": 9,
+          "docstring": ""
+        },
+        {
+          "name": "test_propbank_catalog_custom_cache_path",
+          "kind": "function",
+          "signature": "def test_propbank_catalog_custom_cache_path(tmp_path):",
+          "filepath": "tests/test_diagnostics.py",
+          "line": 24,
+          "docstring": ""
+        },
+        {
+          "name": "test_propbank_disambiguate_unknown_lemma",
+          "kind": "function",
+          "signature": "def test_propbank_disambiguate_unknown_lemma():",
+          "filepath": "tests/test_diagnostics.py",
+          "line": 42,
+          "docstring": ""
+        }
+      ]
+    },
+    "tests/test_engine.py": {
+      "mtime": 1791117784.1210227,
+      "size": 4834,
+      "symbols": [
+        {
+          "name": "TestRealizer",
+          "kind": "class",
+          "signature": "class TestRealizer:",
+          "filepath": "tests/test_engine.py",
+          "line": 11,
+          "docstring": ""
+        },
+        {
+          "name": "realizer",
+          "kind": "function",
+          "signature": "def realizer(self):",
+          "filepath": "tests/test_engine.py",
+          "line": 13,
+          "docstring": ""
+        },
+        {
+          "name": "test_extract_structured_context_success",
+          "kind": "function",
+          "signature": "def test_extract_structured_context_success(self, realizer):",
+          "filepath": "tests/test_engine.py",
+          "line": 16,
+          "docstring": ""
+        },
+        {
+          "name": "test_extract_structured_context_retry_on_invalid_json",
+          "kind": "function",
+          "signature": "def test_extract_structured_context_retry_on_invalid_json(self, realizer):",
+          "filepath": "tests/test_engine.py",
+          "line": 41,
+          "docstring": ""
+        },
+        {
+          "name": "test_answer_question_routing",
+          "kind": "function",
+          "signature": "def test_answer_question_routing(self, realizer):",
+          "filepath": "tests/test_engine.py",
+          "line": 67,
+          "docstring": ""
+        },
+        {
+          "name": "TestContextCanvasEngine",
+          "kind": "class",
+          "signature": "class TestContextCanvasEngine:",
+          "filepath": "tests/test_engine.py",
+          "line": 76,
+          "docstring": ""
+        },
+        {
+          "name": "engine",
+          "kind": "function",
+          "signature": "def engine(self, tmp_path):",
+          "filepath": "tests/test_engine.py",
+          "line": 78,
+          "docstring": ""
+        },
+        {
+          "name": "test_ingest_text_with_sense_disambiguation",
+          "kind": "function",
+          "signature": "def test_ingest_text_with_sense_disambiguation(self, engine):",
+          "filepath": "tests/test_engine.py",
+          "line": 84,
+          "docstring": ""
+        },
+        {
+          "name": "test_ask_entity_detection_and_fallback",
+          "kind": "function",
+          "signature": "def test_ask_entity_detection_and_fallback(self, engine):",
+          "filepath": "tests/test_engine.py",
+          "line": 108,
+          "docstring": ""
+        }
+      ]
+    },
+    "tests/test_core.py": {
+      "mtime": 1791123146.9976947,
+      "size": 6732,
+      "symbols": [
+        {
+          "name": "test_propbank_candidate_disambiguation",
+          "kind": "function",
+          "signature": "def test_propbank_candidate_disambiguation():",
+          "filepath": "tests/test_core.py",
+          "line": 30,
+          "docstring": ""
+        },
+        {
+          "name": "test_propbank_validate_roles_filtering",
+          "kind": "function",
+          "signature": "def test_propbank_validate_roles_filtering():",
+          "filepath": "tests/test_core.py",
+          "line": 43,
+          "docstring": ""
+        },
+        {
+          "name": "test_schema_temporal_interval_parsing",
+          "kind": "function",
+          "signature": "def test_schema_temporal_interval_parsing():",
+          "filepath": "tests/test_core.py",
+          "line": 51,
+          "docstring": ""
+        },
+        {
+          "name": "test_schema_invalid_role_rejection",
+          "kind": "function",
+          "signature": "def test_schema_invalid_role_rejection():",
+          "filepath": "tests/test_core.py",
+          "line": 61,
+          "docstring": ""
+        },
+        {
+          "name": "test_schema_role_alias_normalization",
+          "kind": "function",
+          "signature": "def test_schema_role_alias_normalization():",
+          "filepath": "tests/test_core.py",
+          "line": 71,
+          "docstring": ""
+        },
+        {
+          "name": "test_context_graph_transactional_insert",
+          "kind": "function",
+          "signature": "def test_context_graph_transactional_insert(tmp_path):",
+          "filepath": "tests/test_core.py",
+          "line": 82,
+          "docstring": ""
+        },
+        {
+          "name": "test_context_graph_discourse_link",
+          "kind": "function",
+          "signature": "def test_context_graph_discourse_link(tmp_path):",
+          "filepath": "tests/test_core.py",
+          "line": 108,
+          "docstring": ""
+        },
+        {
+          "name": "test_evaluator_musique_metrics_calculation",
+          "kind": "function",
+          "signature": "def test_evaluator_musique_metrics_calculation(tmp_path):",
+          "filepath": "tests/test_core.py",
+          "line": 134,
+          "docstring": ""
+        },
+        {
+          "name": "test_evaluator_string_normalization",
+          "kind": "function",
+          "signature": "def test_evaluator_string_normalization():",
+          "filepath": "tests/test_core.py",
+          "line": 161,
+          "docstring": ""
+        },
+        {
+          "name": "test_storage_benchmark_monotonic_disk_bytes",
+          "kind": "function",
+          "signature": "def test_storage_benchmark_monotonic_disk_bytes(tmp_path):",
+          "filepath": "tests/test_core.py",
+          "line": 167,
+          "docstring": ""
+        },
+        {
+          "name": "test_pipeline_end_to_end",
+          "kind": "function",
+          "signature": "def test_pipeline_end_to_end(tmp_path):",
+          "filepath": "tests/test_core.py",
+          "line": 175,
+          "docstring": ""
+        }
+      ]
+    },
+    "engine/pipeline.py": {
+      "mtime": 1791223112.0227594,
+      "size": 12557,
+      "symbols": [
+        {
+          "name": "ContextCanvasEngine",
+          "kind": "class",
+          "signature": "class ContextCanvasEngine:",
+          "filepath": "engine/pipeline.py",
+          "line": 37,
+          "docstring": ""
+        },
+        {
+          "name": "__init__",
+          "kind": "function",
+          "signature": "def __init__(self, db_path: str = \"context_canvas_kuzu\", config_path: str = \"config.json\"):",
+          "filepath": "engine/pipeline.py",
+          "line": 40,
+          "docstring": ""
+        },
+        {
+          "name": "close",
+          "kind": "function",
+          "signature": "def close(self) -> None:",
+          "filepath": "engine/pipeline.py",
+          "line": 46,
+          "docstring": ""
+        },
+        {
+          "name": "reset",
+          "kind": "function",
+          "signature": "def reset(self) -> None:",
+          "filepath": "engine/pipeline.py",
+          "line": 49,
+          "docstring": ""
+        },
+        {
+          "name": "_extract_document_title",
+          "kind": "function",
+          "signature": "def _extract_document_title(self, text: str) -> Optional[str]:",
+          "filepath": "engine/pipeline.py",
+          "line": 54,
+          "docstring": ""
+        },
+        {
+          "name": "_repair_event_semantics",
+          "kind": "function",
+          "signature": "def _repair_event_semantics(self, event: ExtractedEvent, doc_title: Optional[str] = None) -> None:",
+          "filepath": "engine/pipeline.py",
+          "line": 63,
+          "docstring": ""
+        },
+        {
+          "name": "ingest_text",
+          "kind": "function",
+          "signature": "def ingest_text(self, text: str, source: str = \"Document\", debug: bool = False) -> List[str]:",
+          "filepath": "engine/pipeline.py",
+          "line": 134,
+          "docstring": ""
+        },
+        {
+          "name": "ingest_event_direct",
+          "kind": "function",
+          "signature": "def ingest_event_direct(self, event: ExtractedEvent) -> str:",
+          "filepath": "engine/pipeline.py",
+          "line": 181,
+          "docstring": ""
+        },
+        {
+          "name": "_find_candidate_entities",
+          "kind": "function",
+          "signature": "def _find_candidate_entities(self, question: str) -> List[str]:",
+          "filepath": "engine/pipeline.py",
+          "line": 187,
+          "docstring": ""
+        },
+        {
+          "name": "ask",
+          "kind": "function",
+          "signature": "def ask(self, question: str, target_entity: Optional[str] = None, debug: bool = False) -> str:",
+          "filepath": "engine/pipeline.py",
+          "line": 235,
+          "docstring": ""
+        }
+      ]
+    },
+    "engine/realizer.py": {
+      "mtime": 1791202172.2658114,
+      "size": 15009,
+      "symbols": [
+        {
+          "name": "_clean_and_parse_json",
+          "kind": "function",
+          "signature": "def _clean_and_parse_json(raw_text: str) -> Optional[Dict[str, Any]]:",
+          "filepath": "engine/realizer.py",
+          "line": 23,
+          "docstring": ""
+        },
+        {
+          "name": "_salvage_truncated_json",
+          "kind": "function",
+          "signature": "def _salvage_truncated_json(raw_text: str) -> Optional[Dict[str, Any]]:",
+          "filepath": "engine/realizer.py",
+          "line": 49,
+          "docstring": ""
+        },
+        {
+          "name": "_extract_json_content",
+          "kind": "function",
+          "signature": "def _extract_json_content(msg: Any) -> str:",
+          "filepath": "engine/realizer.py",
+          "line": 83,
+          "docstring": ""
+        },
+        {
+          "name": "_extract_message_text",
+          "kind": "function",
+          "signature": "def _extract_message_text(msg: Any) -> str:",
+          "filepath": "engine/realizer.py",
+          "line": 100,
+          "docstring": ""
+        },
+        {
+          "name": "Realizer",
+          "kind": "class",
+          "signature": "class Realizer:",
+          "filepath": "engine/realizer.py",
+          "line": 127,
+          "docstring": ""
+        },
+        {
+          "name": "__init__",
+          "kind": "function",
+          "signature": "def __init__(self, config_path: str = \"config.json\"):",
+          "filepath": "engine/realizer.py",
+          "line": 128,
+          "docstring": ""
+        },
+        {
+          "name": "extract_structured_context",
+          "kind": "function",
+          "signature": "def extract_structured_context(self, text: str, source: str = \"Input Document\") -> ExtractionPayload:",
+          "filepath": "engine/realizer.py",
+          "line": 151,
+          "docstring": ""
+        },
+        {
+          "name": "answer_question",
+          "kind": "function",
+          "signature": "def answer_question(",
+          "filepath": "engine/realizer.py",
+          "line": 243,
+          "docstring": ""
+        }
+      ]
+    },
+    "memory/context_graph.py": {
+      "mtime": 1791202146.1902833,
+      "size": 20961,
+      "symbols": [
+        {
+          "name": "ContextGraph",
+          "kind": "class",
+          "signature": "class ContextGraph:",
+          "filepath": "memory/context_graph.py",
+          "line": 22,
+          "docstring": ""
+        },
+        {
+          "name": "__init__",
+          "kind": "function",
+          "signature": "def __init__(self, db_path: str = \"context_canvas_kuzu\"):",
+          "filepath": "memory/context_graph.py",
+          "line": 25,
+          "docstring": ""
+        },
+        {
+          "name": "_init_schema",
+          "kind": "function",
+          "signature": "def _init_schema(self) -> None:",
+          "filepath": "memory/context_graph.py",
+          "line": 35,
+          "docstring": ""
+        },
+        {
+          "name": "close",
+          "kind": "function",
+          "signature": "def close(self) -> None:",
+          "filepath": "memory/context_graph.py",
+          "line": 55,
+          "docstring": ""
+        },
+        {
+          "name": "reset",
+          "kind": "function",
+          "signature": "def reset(self) -> None:",
+          "filepath": "memory/context_graph.py",
+          "line": 65,
+          "docstring": ""
+        },
+        {
+          "name": "_normalize_name",
+          "kind": "function",
+          "signature": "def _normalize_name(self, name: str) -> str:",
+          "filepath": "memory/context_graph.py",
+          "line": 90,
+          "docstring": ""
+        },
+        {
+          "name": "get_canonical_entity_id",
+          "kind": "function",
+          "signature": "def get_canonical_entity_id(self, entity_name: str) -> str:",
+          "filepath": "memory/context_graph.py",
+          "line": 117,
+          "docstring": ""
+        },
+        {
+          "name": "insert_event",
+          "kind": "function",
+          "signature": "def insert_event(self, event: ExtractedEvent) -> str:",
+          "filepath": "memory/context_graph.py",
+          "line": 147,
+          "docstring": ""
+        },
+        {
+          "name": "insert_discourse_relation",
+          "kind": "function",
+          "signature": "def insert_discourse_relation(self, rel: DiscourseRelation) -> None:",
+          "filepath": "memory/context_graph.py",
+          "line": 261,
+          "docstring": ""
+        },
+        {
+          "name": "_sync_event_to_mirror",
+          "kind": "function",
+          "signature": "def _sync_event_to_mirror(self, event: ExtractedEvent) -> None:",
+          "filepath": "memory/context_graph.py",
+          "line": 283,
+          "docstring": ""
+        },
+        {
+          "name": "find_candidate_answers_from_paths",
+          "kind": "function",
+          "signature": "def find_candidate_answers_from_paths(",
+          "filepath": "memory/context_graph.py",
+          "line": 316,
+          "docstring": ""
+        },
+        {
+          "name": "query_subgraph_blueprint",
+          "kind": "function",
+          "signature": "def query_subgraph_blueprint(self, entity_name: str, max_hops: int = 4) -> str:",
+          "filepath": "memory/context_graph.py",
+          "line": 356,
+          "docstring": ""
+        }
+      ]
+    },
+    "evaluation/musique.py": {
+      "mtime": 1791202129.6829486,
+      "size": 4490,
+      "symbols": [
+        {
+          "name": "normalize_answer",
+          "kind": "function",
+          "signature": "def normalize_answer(s: str) -> str:",
+          "filepath": "evaluation/musique.py",
+          "line": 15,
+          "docstring": ""
+        },
+        {
+          "name": "compute_f1",
+          "kind": "function",
+          "signature": "def compute_f1(prediction: str, ground_truth: str) -> float:",
+          "filepath": "evaluation/musique.py",
+          "line": 34,
+          "docstring": ""
+        },
+        {
+          "name": "compute_exact_match",
+          "kind": "function",
+          "signature": "def compute_exact_match(prediction: str, ground_truth: str) -> float:",
+          "filepath": "evaluation/musique.py",
+          "line": 47,
+          "docstring": ""
+        },
+        {
+          "name": "compute_strict_em",
+          "kind": "function",
+          "signature": "def compute_strict_em(prediction: str, ground_truth: str) -> float:",
+          "filepath": "evaluation/musique.py",
+          "line": 52,
+          "docstring": ""
+        },
+        {
+          "name": "run_official_musique_evaluator",
+          "kind": "function",
+          "signature": "def run_official_musique_evaluator(",
+          "filepath": "evaluation/musique.py",
+          "line": 57,
+          "docstring": ""
+        },
+        {
+          "name": "compute_dataset_metrics",
+          "kind": "function",
+          "signature": "def compute_dataset_metrics(predictions_jsonl: Path, gold_jsonl: Path) -> Dict[str, Any]:",
+          "filepath": "evaluation/musique.py",
+          "line": 79,
+          "docstring": ""
+        }
+      ]
+    },
+    "evaluation/eval_musique_runner.py": {
+      "mtime": 1791202183.9840488,
+      "size": 23216,
+      "symbols": [
+        {
+          "name": "check_ollama_status",
+          "kind": "function",
+          "signature": "def check_ollama_status(base_url: str = \"http://localhost:11434\") -> bool:",
+          "filepath": "evaluation/eval_musique_runner.py",
+          "line": 49,
+          "docstring": ""
+        },
+        {
+          "name": "normalize_musique_record",
+          "kind": "function",
+          "signature": "def normalize_musique_record(record: Dict[str, Any]) -> Optional[Dict[str, Any]]:",
+          "filepath": "evaluation/eval_musique_runner.py",
+          "line": 60,
+          "docstring": ""
+        },
+        {
+          "name": "load_musique_sample",
+          "kind": "function",
+          "signature": "def load_musique_sample(jsonl_path: Path, max_samples: int = 100) -> List[Dict[str, Any]]:",
+          "filepath": "evaluation/eval_musique_runner.py",
+          "line": 102,
+          "docstring": ""
+        },
+        {
+          "name": "generate_mock_musique_sample",
+          "kind": "function",
+          "signature": "def generate_mock_musique_sample() -> List[Dict[str, Any]]:",
+          "filepath": "evaluation/eval_musique_runner.py",
+          "line": 122,
+          "docstring": ""
+        },
+        {
+          "name": "detect_question_relations",
+          "kind": "function",
+          "signature": "def detect_question_relations(question: str) -> Set[str]:",
+          "filepath": "evaluation/eval_musique_runner.py",
+          "line": 155,
+          "docstring": ""
+        },
+        {
+          "name": "select_hop1_candidates",
+          "kind": "function",
+          "signature": "def select_hop1_candidates(",
+          "filepath": "evaluation/eval_musique_runner.py",
+          "line": 167,
+          "docstring": ""
+        },
+        {
+          "name": "select_hop2_candidates",
+          "kind": "function",
+          "signature": "def select_hop2_candidates(",
+          "filepath": "evaluation/eval_musique_runner.py",
+          "line": 244,
+          "docstring": ""
+        },
+        {
+          "name": "run_musique_evaluation",
+          "kind": "function",
+          "signature": "def run_musique_evaluation(",
+          "filepath": "evaluation/eval_musique_runner.py",
+          "line": 328,
+          "docstring": ""
+        }
+      ]
+    },
+    "evaluation/harness.py": {
+      "mtime": 1791117762.287609,
+      "size": 6105,
+      "symbols": [
+        {
+          "name": "DiagnosticBenchmarkHarness",
+          "kind": "class",
+          "signature": "class DiagnosticBenchmarkHarness:",
+          "filepath": "evaluation/harness.py",
+          "line": 19,
+          "docstring": ""
+        },
+        {
+          "name": "__init__",
+          "kind": "function",
+          "signature": "def __init__(self, db_path: str = \"benchmark_eval_kuzu\"):",
+          "filepath": "evaluation/harness.py",
+          "line": 22,
+          "docstring": ""
+        },
+        {
+          "name": "close",
+          "kind": "function",
+          "signature": "def close(self) -> None:",
+          "filepath": "evaluation/harness.py",
+          "line": 25,
+          "docstring": ""
+        },
+        {
+          "name": "run_all",
+          "kind": "function",
+          "signature": "def run_all(self) -> Dict[str, Any]:",
+          "filepath": "evaluation/harness.py",
+          "line": 28,
+          "docstring": ""
+        },
+        {
+          "name": "eval_temporal_updating",
+          "kind": "function",
+          "signature": "def eval_temporal_updating(self) -> Dict[str, Any]:",
+          "filepath": "evaluation/harness.py",
+          "line": 45,
+          "docstring": ""
+        },
+        {
+          "name": "eval_multi_hop",
+          "kind": "function",
+          "signature": "def eval_multi_hop(self) -> Dict[str, Any]:",
+          "filepath": "evaluation/harness.py",
+          "line": 85,
+          "docstring": ""
+        },
+        {
+          "name": "eval_epistemic_calibration",
+          "kind": "function",
+          "signature": "def eval_epistemic_calibration(self) -> Dict[str, Any]:",
+          "filepath": "evaluation/harness.py",
+          "line": 111,
+          "docstring": ""
+        },
+        {
+          "name": "eval_negative_constraints",
+          "kind": "function",
+          "signature": "def eval_negative_constraints(self) -> Dict[str, Any]:",
+          "filepath": "evaluation/harness.py",
+          "line": 132,
+          "docstring": ""
+        }
+      ]
+    },
+    "evaluation/benchmark_storage.py": {
+      "mtime": 1791110835.164368,
+      "size": 4112,
+      "symbols": [
+        {
+          "name": "_remove_path_safely",
+          "kind": "function",
+          "signature": "def _remove_path_safely(target: Path) -> None:",
+          "filepath": "evaluation/benchmark_storage.py",
+          "line": 20,
+          "docstring": ""
+        },
+        {
+          "name": "measure_directory_bytes",
+          "kind": "function",
+          "signature": "def measure_directory_bytes(dir_path: Path) -> int:",
+          "filepath": "evaluation/benchmark_storage.py",
+          "line": 35,
+          "docstring": ""
+        },
+        {
+          "name": "benchmark_storage_scaling",
+          "kind": "function",
+          "signature": "def benchmark_storage_scaling(",
+          "filepath": "evaluation/benchmark_storage.py",
+          "line": 52,
+          "docstring": ""
+        }
+      ]
+    },
+    "tools/repo2prompt.sh": {
+      "mtime": 1791152058.8740454,
+      "size": 244,
+      "symbols": []
+    },
+    "semantics/propbank.py": {
+      "mtime": 1791223160.7618847,
+      "size": 6875,
+      "symbols": [
+        {
+          "name": "PropBankRoleset",
+          "kind": "class",
+          "signature": "class PropBankRoleset(BaseModel):",
+          "filepath": "semantics/propbank.py",
+          "line": 13,
+          "docstring": ""
+        },
+        {
+          "name": "PropBankCatalog",
+          "kind": "class",
+          "signature": "class PropBankCatalog:",
+          "filepath": "semantics/propbank.py",
+          "line": 20,
+          "docstring": ""
+        },
+        {
+          "name": "__init__",
+          "kind": "function",
+          "signature": "def __init__(",
+          "filepath": "semantics/propbank.py",
+          "line": 34,
+          "docstring": ""
+        },
+        {
+          "name": "_load",
+          "kind": "function",
+          "signature": "def _load(self) -> None:",
+          "filepath": "semantics/propbank.py",
+          "line": 45,
+          "docstring": ""
+        },
+        {
+          "name": "parse_xml_directory",
+          "kind": "function",
+          "signature": "def parse_xml_directory(self, frames_dir: Union[Path, str]) -> int:",
+          "filepath": "semantics/propbank.py",
+          "line": 68,
+          "docstring": ""
+        },
+        {
+          "name": "get_candidate_senses",
+          "kind": "function",
+          "signature": "def get_candidate_senses(self, lemma: str) -> List[PropBankRoleset]:",
+          "filepath": "semantics/propbank.py",
+          "line": 112,
+          "docstring": ""
+        },
+        {
+          "name": "disambiguate_sense",
+          "kind": "function",
+          "signature": "def disambiguate_sense(self, lemma: str, sentence_context: str) -> Optional[PropBankRoleset]:",
+          "filepath": "semantics/propbank.py",
+          "line": 118,
+          "docstring": ""
+        },
+        {
+          "name": "validate_roles",
+          "kind": "function",
+          "signature": "def validate_roles(self, sense_id: str, proposed_roles: Dict[str, str]) -> Dict[str, str]:",
+          "filepath": "semantics/propbank.py",
+          "line": 142,
+          "docstring": ""
+        }
+      ]
+    },
+    "semantics/schema.py": {
+      "mtime": 1791189114.8862154,
+      "size": 18697,
+      "symbols": [
+        {
+          "name": "TemporalContext",
+          "kind": "class",
+          "signature": "class TemporalContext(BaseModel):",
+          "filepath": "semantics/schema.py",
+          "line": 157,
+          "docstring": ""
+        },
+        {
+          "name": "coerce_temporal",
+          "kind": "function",
+          "signature": "def coerce_temporal(cls, v: Any) -> Any:",
+          "filepath": "semantics/schema.py",
+          "line": 165,
+          "docstring": ""
+        },
+        {
+          "name": "populate_years",
+          "kind": "function",
+          "signature": "def populate_years(self) -> TemporalContext:",
+          "filepath": "semantics/schema.py",
+          "line": 199,
+          "docstring": ""
+        },
+        {
+          "name": "SpatialContext",
+          "kind": "class",
+          "signature": "class SpatialContext(BaseModel):",
+          "filepath": "semantics/schema.py",
+          "line": 211,
+          "docstring": ""
+        },
+        {
+          "name": "coerce_spatial",
+          "kind": "function",
+          "signature": "def coerce_spatial(cls, v: Any) -> Any:",
+          "filepath": "semantics/schema.py",
+          "line": 218,
+          "docstring": ""
+        },
+        {
+          "name": "EpistemicContext",
+          "kind": "class",
+          "signature": "class EpistemicContext(BaseModel):",
+          "filepath": "semantics/schema.py",
+          "line": 239,
+          "docstring": ""
+        },
+        {
+          "name": "ExtractedEvent",
+          "kind": "class",
+          "signature": "class ExtractedEvent(BaseModel):",
+          "filepath": "semantics/schema.py",
+          "line": 246,
+          "docstring": ""
+        },
+        {
+          "name": "pre_validate_event",
+          "kind": "function",
+          "signature": "def pre_validate_event(cls, data: Any) -> Any:",
+          "filepath": "semantics/schema.py",
+          "line": 258,
+          "docstring": ""
+        },
+        {
+          "name": "validate_sense_format",
+          "kind": "function",
+          "signature": "def validate_sense_format(cls, v: Any) -> str:",
+          "filepath": "semantics/schema.py",
+          "line": 284,
+          "docstring": ""
+        },
+        {
+          "name": "coerce_and_validate_roles",
+          "kind": "function",
+          "signature": "def coerce_and_validate_roles(cls, v: Any) -> Dict[str, str]:",
+          "filepath": "semantics/schema.py",
+          "line": 301,
+          "docstring": ""
+        },
+        {
+          "name": "DiscourseRelation",
+          "kind": "class",
+          "signature": "class DiscourseRelation(BaseModel):",
+          "filepath": "semantics/schema.py",
+          "line": 373,
+          "docstring": ""
+        },
+        {
+          "name": "coerce_discourse",
+          "kind": "function",
+          "signature": "def coerce_discourse(cls, v: Any) -> Any:",
+          "filepath": "semantics/schema.py",
+          "line": 381,
+          "docstring": ""
+        },
+        {
+          "name": "normalize_relation",
+          "kind": "function",
+          "signature": "def normalize_relation(cls, v: Any) -> str:",
+          "filepath": "semantics/schema.py",
+          "line": 393,
+          "docstring": ""
+        },
+        {
+          "name": "ExtractionPayload",
+          "kind": "class",
+          "signature": "class ExtractionPayload(BaseModel):",
+          "filepath": "semantics/schema.py",
+          "line": 409,
+          "docstring": ""
+        },
+        {
+          "name": "coerce_payload",
+          "kind": "function",
+          "signature": "def coerce_payload(cls, v: Any) -> Any:",
+          "filepath": "semantics/schema.py",
+          "line": 416,
+          "docstring": ""
+        },
+        {
+          "name": "ensure_list",
+          "kind": "function",
+          "signature": "def ensure_list(cls, v: Any) -> Any:",
+          "filepath": "semantics/schema.py",
+          "line": 490,
+          "docstring": ""
+        }
+      ]
+    }
+  }
+}

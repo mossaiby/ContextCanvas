@@ -1,0 +1,69 @@
+# ContextCanvas .gitignore
+#
+# Committed on purpose (do NOT add these here):
+#   data/propbank_lock.json       pins the exact PropBank release; required for reproducibility
+#   configs/*.json                every model configuration used in the paper
+#   paper/generated/              tables and macros the paper compiles from
+#   results/**/manifest.json, predictions.jsonl, effective_config.json
+#                                 the per-question record of every run
+#   annotation/*.csv, annotation/*.log.jsonl, annotation/*.meta.json
+#                                 human annotations and the judge's raw responses
+#   benchmark_summary.json        storage benchmark results used by the paper
+
+# --- Secrets -----------------------------------------------------------------
+.env
+.env.*
+*.key
+
+# --- Python ------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Downloaded or rebuilt data ----------------------------------------------
+# PropBank frames are re-downloaded from the locked commit; the cache is rebuilt from them.
+data/propbank-frames/
+data/propbank_cache.json
+# Benchmark datasets (MuSiQue etc.): download them, don't commit them.
+external_data/
+
+# --- Graph databases ---------------------------------------------------------
+# Rebuilt for every question; large and not needed to reproduce results.
+context_canvas_kuzu*
+*.kuzu
+results/**/kuzu/
+
+# --- Experiment intermediates ------------------------------------------------
+# The extraction cache can be tens of thousands of files. Archive it with the
+# release (e.g. Zenodo) instead of committing it.
+results/extraction_cache/
+# Pilot runs use development questions only and are not paper results.
+results/pilot*/
+
+# --- LaTeX build files -------------------------------------------------------
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/*.toc
+paper/*.pdf
+
+# --- Editors and OS ----------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

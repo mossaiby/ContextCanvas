@@ -1,0 +1,2 @@
+#!/bin/bash
+find . -type f -not -path '*/.*' -not -path '*/__pycache__/*' -not -path './.venv*' -not -name '*.json' -not -name '*.jsonl' -not -name '*.xml' -not -name '*.pdf' -exec sh -c 'echo "=== FILE: {} ==="; cat "{}"; echo ""' \; > /tmp/pr
