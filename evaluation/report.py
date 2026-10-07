@@ -290,14 +290,14 @@ def build(results_dir: Path, storage_path: Optional[Path], out_dir: Path) -> Non
     print(f"Wrote tables and macros to {out_dir}")
 
 
-def main() -> None:
+def main(argv: Optional[List[str]] = None) -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", type=Path, required=True)
     ap.add_argument("--storage", type=Path, default=ROOT_DIR / "benchmark_summary.json")
     ap.add_argument("--paper-dir", type=Path, default=ROOT_DIR / "paper" / "generated")
     ap.add_argument("--models", default="",
                     help='Model comparison: "Label=results/dir,Label2=results/dir2" (main configuration first).')
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
     args.paper_dir.mkdir(parents=True, exist_ok=True)
     if args.models:
         configs = [(part.split("=", 1)[0].strip(), Path(part.split("=", 1)[1].strip()))
@@ -306,5 +306,5 @@ def main() -> None:
     build(args.results, args.storage, args.paper_dir)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover  (script entry point; main() itself is tested)
     main()

@@ -1,0 +1,11 @@
+# Coverage settings for `pytest --cov`. Script guards are marked `# pragma: no cover` in the
+# source itself, so the exclusion works even without this file.
+[run]
+source =
+    engine
+    evaluation
+    memory
+    semantics
+
+[report]
+show_missing = True

@@ -383,7 +383,7 @@ def run_musique_evaluation(
     return metrics
 
 
-if __name__ == "__main__":
+def main(argv: Optional[List[str]] = None) -> Dict[str, Any]:
     parser = argparse.ArgumentParser(description="Evaluate on MuSiQue-Ans")
     parser.add_argument("--data", type=Path, default=Path("external_data/musique_ans_dev.jsonl"))
     parser.add_argument("--output", type=Path, default=Path("benchmark_musique_results"))
@@ -394,6 +394,10 @@ if __name__ == "__main__":
     parser.add_argument("--top-k", type=int, default=0,
                         help="If > 0 and not supporting-only, run relation-guided retrieval for top-k paragraphs.")
     parser.add_argument("--debug", action="store_true")
-    args = parser.parse_args()
-    run_musique_evaluation(args.data, args.output, args.evaluator, max_samples=args.samples,
-                           supporting_only=args.supporting_only, top_k=args.top_k, debug=args.debug)
+    args = parser.parse_args(argv)
+    return run_musique_evaluation(args.data, args.output, args.evaluator, max_samples=args.samples,
+                                  supporting_only=args.supporting_only, top_k=args.top_k, debug=args.debug)
+
+
+if __name__ == "__main__":  # pragma: no cover  (script entry point; main() itself is tested)
+    main()

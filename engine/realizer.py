@@ -42,15 +42,17 @@ def _clean_and_parse_json(raw_text: str) -> Optional[Dict[str, Any]]:
     text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE)
     text = re.sub(r"\s*```$", "", text).strip()
     first_brace, last_brace = text.find("{"), text.rfind("}")
-    candidate = text[first_brace:last_brace + 1] if 0 <= first_brace < last_brace else text
-    try:
-        data = json.loads(candidate)
+    # The whole text first: a bare JSON array of events is a common deviation from the format,
+    # and trimming it to the outermost braces would cut it into invalid JSON.
+    for candidate in dict.fromkeys([text, text[first_brace:last_brace + 1] if 0 <= first_brace < last_brace else text]):
+        try:
+            data = json.loads(candidate)
+        except Exception:
+            continue
         if isinstance(data, dict):
             return data
         if isinstance(data, list):
             return {"events": data}
-    except Exception:
-        pass
     return _salvage_truncated_json(text)
 
 
@@ -181,9 +183,6 @@ class Realizer:
 
     def reset_usage(self) -> None:
         self.usage: Dict[str, Dict[str, float]] = {}
-
-    def usage_snapshot(self) -> Dict[str, Dict[str, float]]:
-        return {k: dict(v) for k, v in self.usage.items()}
 
     def usage_summary(self) -> Dict[str, float]:
         """Index-time (extraction) vs query-time (answering) cost of the work since reset."""

@@ -49,10 +49,7 @@ JUDGMENTS = ("event_correct", "roles_correct", "context_correct", "missed_facts"
 # ------------------------------------------------------------------------------- export / subset
 
 def _role_meanings(sense_id: str, roles: Dict[str, str]) -> str:
-    try:
-        from semantics.propbank import GLOBAL_CATALOG
-    except Exception:
-        return ""
+    from semantics.propbank import GLOBAL_CATALOG  # imported lazily: loading the catalog is slow
     meanings = {r: GLOBAL_CATALOG.role_description(sense_id, r) for r in roles}
     return json.dumps({r: m for r, m in meanings.items() if m}, ensure_ascii=False) if any(meanings.values()) else ""
 
@@ -236,7 +233,7 @@ def _write_table(res: Dict, out: Path) -> None:
         + "".join(f"\\newcommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(macros.items())), encoding="utf-8")
 
 
-def main() -> None:
+def main(argv: Optional[List[str]] = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     e = sub.add_parser("export")
@@ -255,7 +252,7 @@ def main() -> None:
     c.add_argument("--labels", default="")
     c.add_argument("--judge-meta", type=Path, default=None)
     c.add_argument("--out", type=Path, default=None)
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
     if args.cmd == "export":
         export(args.cache, args.out, args.n, args.seed, args.extractor)
     elif args.cmd == "subset":
@@ -265,5 +262,5 @@ def main() -> None:
         score(args.files, labels, args.out, args.judge_meta)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover  (script entry point; main() itself is tested)
     main()

@@ -9,7 +9,8 @@ import pytest
 from evaluation.annotation import FIELDS, score, subset
 from evaluation.llm_judge import PLACEHOLDER_MODEL, group_paragraphs, load_rules, run, validate
 
-GUIDELINES = Path(__file__).resolve().parent.parent / "ANNOTATION_GUIDELINES.md"
+import evaluation.llm_judge as _judge_mod
+GUIDELINES = Path(_judge_mod.__file__).resolve().parent.parent / "ANNOTATION_GUIDELINES.md"
 
 
 def _write(path, rows):

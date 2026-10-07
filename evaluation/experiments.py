@@ -259,7 +259,7 @@ def run_system(system: str, cases: List[Dict[str, Any]], out_dir: Path, config_p
         engine.close()
 
 
-def main() -> None:
+def main(argv: Optional[List[str]] = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--data", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
@@ -275,7 +275,7 @@ def main() -> None:
     ap.add_argument("--systems", default="main", help="Comma-separated system names or group names (main, ablations).")
     ap.add_argument("--cache-dir", type=Path, default=ROOT_DIR / "results" / "extraction_cache",
                     help="Extraction cache shared by all runs; keyed by extraction model, prompt and text.")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     args.out.mkdir(parents=True, exist_ok=True)
     manifest_path = args.out / "manifest.json"
@@ -318,5 +318,5 @@ def main() -> None:
         run_system(system, cases, args.out, args.config, cache_dir)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover  (script entry point; main() itself is tested)
     main()

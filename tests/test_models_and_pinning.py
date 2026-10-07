@@ -132,7 +132,7 @@ def test_pilot_pool_uses_only_development_questions():
 def test_resume_drops_a_truncated_last_line(tmp_path):
     from evaluation.experiments import done_ids
     p = tmp_path / "predictions.jsonl"
-    p.write_text('{"id": "q1"}\n{"id": "q2"}\n{"id": "q3", "pred')
+    p.write_text('{"id": "q1"}\n\n{"id": "q2"}\n{"id": "q3", "pred')
     assert done_ids(p) == {"q1", "q2"}
     assert p.read_text() == '{"id": "q1"}\n{"id": "q2"}\n'
 

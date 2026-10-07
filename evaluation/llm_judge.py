@@ -192,7 +192,7 @@ class Judge:
     def _call(self, messages: List[Dict[str, str]]) -> Tuple[str, Dict[str, int]]:
         """One chat call. Parameters a model rejects (temperature on some reasoning models, JSON
         mode on some endpoints) are dropped once, for all later calls, and recorded in the meta."""
-        for _ in range(4):
+        while True:  # each fallback below fires at most once, so this terminates
             kwargs: Dict[str, Any] = {"model": self.model, "messages": messages,
                                       self.token_param: int(self.cfg.get("max_tokens", 4000))}
             if self.temperature is not None:
@@ -221,7 +221,6 @@ class Judge:
             tokens = {"prompt_tokens": int(getattr(usage, "prompt_tokens", 0) or 0),
                       "completion_tokens": int(getattr(usage, "completion_tokens", 0) or 0)}
             return resp.choices[0].message.content or "", tokens
-        raise RuntimeError("request failed after dropping unsupported parameters")
 
     def judge(self, messages: List[Dict[str, str]], paragraph: Dict[str, Any], rows: List[Dict[str, str]]) -> Dict[str, Any]:
         """Asks once; if the answer breaks the format, asks once more quoting the problem."""
@@ -330,16 +329,16 @@ def run(sample: Path, cfg: Dict[str, Any], out: Path, guidelines: Path, client: 
     return meta
 
 
-def main() -> None:
+def main(argv: Optional[List[str]] = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("sample", type=Path, help="CSV written by `evaluation.annotation export`")
     ap.add_argument("--config", type=Path, default=ROOT_DIR / "configs" / "judge.json")
     ap.add_argument("--out", type=Path, default=Path("annotation/annotator_llm.csv"))
     ap.add_argument("--guidelines", type=Path, default=ROOT_DIR / "ANNOTATION_GUIDELINES.md")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
     cfg = json.loads(args.config.read_text(encoding="utf-8"))
     run(args.sample, cfg, args.out, args.guidelines)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover  (script entry point; main() itself is tested)
     main()

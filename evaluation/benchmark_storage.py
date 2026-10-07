@@ -17,36 +17,32 @@ from semantics.schema import (
 )
 
 
-def _remove_path_safely(target: Path) -> None:
-    """Safely removes a file, directory, or wildcard-associated database files."""
-    if target.is_dir():
-        shutil.rmtree(target, ignore_errors=True)
-    elif target.is_file():
-        target.unlink(missing_ok=True)
+def _database_files(path: Path) -> List[Path]:
+    """The database itself plus its sidecar files ("<name>.wal", "<name>.lock", ...).
 
-    if target.parent.exists():
-        for sibling in target.parent.glob(f"{target.name}*"):
-            if sibling.is_dir():
-                shutil.rmtree(sibling, ignore_errors=True)
-            elif sibling.is_file():
-                sibling.unlink(missing_ok=True)
+    Matching "<name>.*" rather than the prefix "<name>*" matters: the prefix pattern for
+    kuzu_size_100 also matches kuzu_size_1000, a different benchmark database.
+    """
+    if not path.parent.exists():
+        return []
+    return [p for p in path.parent.iterdir() if p.name == path.name or p.name.startswith(path.name + ".")]
+
+
+def _remove_path_safely(target: Path) -> None:
+    """Removes a database (file or directory) together with its sidecar files."""
+    for path in _database_files(target):
+        if path.is_dir():
+            shutil.rmtree(path, ignore_errors=True)
+        else:
+            path.unlink(missing_ok=True)
 
 
 def measure_directory_bytes(dir_path: Path) -> int:
     """Calculates total physical disk footprint across database directory or file(s)."""
-    if not dir_path.exists():
-        if dir_path.parent.exists():
-            return sum(f.stat().st_size for f in dir_path.parent.glob(f"{dir_path.name}*") if f.is_file())
-        return 0
-
-    if dir_path.is_file():
-        total = 0
-        for f in dir_path.parent.glob(f"{dir_path.name}*"):
-            if f.is_file():
-                total += f.stat().st_size
-        return total
-
-    return sum(f.stat().st_size for f in dir_path.glob("**/*") if f.is_file())
+    if dir_path.is_dir():
+        return sum(f.stat().st_size for f in dir_path.glob("**/*") if f.is_file())
+    # Single-file database (or one not yet created): the file plus its sidecar files.
+    return sum(f.stat().st_size for f in _database_files(dir_path) if f.is_file())
 
 
 def benchmark_storage_scaling(
@@ -118,6 +114,9 @@ def benchmark_storage_scaling(
     return results
 
 
-if __name__ == "__main__":
-    metrics = benchmark_storage_scaling()
-    print(json.dumps(metrics, indent=2))
+def main() -> None:
+    print(json.dumps(benchmark_storage_scaling(), indent=2))
+
+
+if __name__ == "__main__":  # pragma: no cover  (script entry point; main() itself is tested)
+    main()
