@@ -469,8 +469,14 @@ _PLACEHOLDERS = {
 }
 
 
+_INVENTED_MARKER_RE = re.compile(r"\((?:implied|inferred|assumed|presumably|unspecified|unknown|unnamed)\)", re.IGNORECASE)
+
+
 def is_placeholder(value: str) -> bool:
-    """Extractor filler values that do not denote a specific entity."""
+    """Extractor filler values that do not denote a specific entity, including participants the
+    extractor marks as invented ("network executives (implied)")."""
+    if _INVENTED_MARKER_RE.search(value or ""):
+        return True
     v = _LEADING_ARTICLE_RE.sub("", (value or "").strip().strip(".,;:\"'")).strip().casefold()
     return not v or v in _PLACEHOLDERS
 

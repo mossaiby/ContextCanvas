@@ -1,14 +1,12 @@
 {
-  "model_name": "qwen3.8:27b",
+  "extraction_model": "qwen3.5:9b",
+  "answer_model": "qwen3.8:27b",
   "base_url": "http://localhost:11434/v1",
   "api_key": "ollama",
-  "embedding_model": "nomic-embed-text",
-  "context_window_tokens": 8192,
-  "output_reserve_tokens": 2048,
-  "safety_margin_tokens": 1024,
   "temperature": 0.0,
   "disable_thinking": false,
-
+  "context_window_tokens": 8192,
+  "output_reserve_tokens": 2048,
   "answer_policy": "best_supported",
   "max_events_per_extraction": 15,
   "max_chunk_chars": 900,
@@ -17,7 +15,7 @@
   "max_anchors": 4,
   "hub_degree": 25,
   "render_default_provenance": false,
-  "extract_timeout_s": 60,
-  "answer_timeout_s": 60,
+  "extract_timeout_s": 120,
+  "answer_timeout_s": 180,
   "max_retries": 1
 }

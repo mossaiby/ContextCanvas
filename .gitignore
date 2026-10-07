@@ -36,11 +36,16 @@ data/propbank_cache.json
 # Benchmark datasets (MuSiQue etc.): download them, don't commit them.
 external_data/
 
-# --- Graph databases ---------------------------------------------------------
-# Rebuilt for every question; large and not needed to reproduce results.
-context_canvas_kuzu*
+# --- Graph databases (never commit: large, and rebuilt from the data) --------
+# Every database the code creates, as a file or a directory, plus Kuzu's sidecar
+# files ("<name>.wal", ...): context_canvas_kuzu, eval_diagnostic_kuzu,
+# musique_eval_kuzu, results/<run>/<system>/kuzu, benchmark_storage_data/.
+*_kuzu
+*_kuzu.*
 *.kuzu
-results/**/kuzu/
+results/**/kuzu
+results/**/kuzu.*
+benchmark_storage_data/
 
 # --- Experiment intermediates ------------------------------------------------
 # The extraction cache can be tens of thousands of files. Archive it with the
@@ -59,11 +64,16 @@ paper/*.fls
 paper/*.fdb_latexmk
 paper/*.synctex.gz
 paper/*.toc
+paper/*.spl
 paper/*.pdf
 
-# --- Editors and OS ----------------------------------------------------------
+# --- Editors, tools and OS ---------------------------------------------------
+.mesh/
 .vscode/
 .idea/
 *.swp
 .DS_Store
 Thumbs.db
+
+# --- Mesh --------------------------------------------------------------------
+.mesh/

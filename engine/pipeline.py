@@ -63,13 +63,24 @@ LOCATE_LEMMAS = {"locate", "headquarter", "headquarters", "be_located", "situate
 
 
 def _drop_self_relations(events: List[ExtractedEvent]) -> List[ExtractedEvent]:
-    """A person cannot be their own parent, spouse or sibling."""
+    """No entity relates to itself. A kinship event between one person and themselves is dropped
+    entirely. In any other event, an entity filling two core roles ("DeSoto Records founded
+    DeSoto Records", a person "giving birth to" themselves) loses the agent role (ARG0) or the
+    later role, so the rest of the fact (founded in 1989, born in Nice) is kept."""
     kept = []
     for ev in events:
         if ev.sense_id in {"parent.01", "marry.01", "sibling.01"}:
             a, b = ev.roles.get(":ARG0"), ev.roles.get(":ARG1")
             if a and b and entity_match_key(a) == entity_match_key(b):
                 continue
+        core = [r for r in ev.roles if re.fullmatch(r":ARG\d", r)]
+        seen: Dict[str, str] = {}
+        for role in sorted(core, key=lambda r: (r == ":ARG0", r)):    # ARG0 last: it is the one dropped
+            key = entity_match_key(ev.roles[role])
+            if key in seen:
+                del ev.roles[role]
+            else:
+                seen[key] = role
         kept.append(ev)
     return kept
 

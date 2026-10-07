@@ -1,9 +1,6 @@
 kuzu>=0.4.0
 pydantic>=2.6.0
 openai>=1.12.0
-tiktoken>=0.7.0
 networkx>=3.2
-python-dateutil>=2.8.2
-requests>=2.31.0
 pytest>=8.0.0
 pytest-cov>=4.1.0

@@ -161,6 +161,16 @@ class ExtractedEvent(BaseModel):
         if isinstance(data, dict):
             if "temp_id" not in data or not data["temp_id"]:
                 data["temp_id"] = data.get("id") or "ev_1"
+            # Extractors sometimes write the sense into the lemma field ("lemma": "bear.02").
+            # Left alone, that yields the lemma "bear.02" and the nonsense sense "bear_02.01", which
+            # matches no frame, so the event gets no role meanings and escapes every repair.
+            embedded = re.fullmatch(r"\s*([A-Za-z][A-Za-z_\- ]*?)[._-](\d{1,2})\s*", str(data.get("lemma") or ""))
+            if embedded:
+                base, number = embedded.group(1).strip(), int(embedded.group(2))
+                data["lemma"] = base
+                sense = str(data.get("sense_id") or "").strip().lower()
+                if not re.fullmatch(re.escape(base.lower()) + r"\.\d{2}", sense):
+                    data["sense_id"] = f"{base}.{number:02d}"
             if "sense_id" not in data or not data["sense_id"]:
                 alt_sense = data.get("frame") or data.get("roleset_id") or data.get("roleset") or data.get("sense")
                 if alt_sense:

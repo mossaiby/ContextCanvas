@@ -39,6 +39,9 @@ def test_propbank_catalog_custom_cache_path(tmp_path):
     assert candidates[0].roleset_id == "test.01"
 
 
-def test_propbank_disambiguate_unknown_lemma():
-    catalog = PropBankCatalog(cache_file="nonexistent.json")
+def test_propbank_disambiguate_unknown_lemma(tmp_path):
+    # Paths inside tmp_path: given a bare file name, the catalog would parse the frames and write
+    # its cache into the current directory (this is where the stray nonexistent.json came from).
+    catalog = PropBankCatalog(frames_dir=tmp_path / "frames", cache_file=tmp_path / "cache.json")
     assert catalog.disambiguate_sense("completely_unknown_lemma_xyz", "Context here") is None
+    assert not (tmp_path / "cache.json").exists()   # nothing to cache without frames
