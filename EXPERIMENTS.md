@@ -8,7 +8,7 @@ scripts below. Never edit those files or type results into the paper by hand.
 ```bash
 pip install pydantic kuzu networkx openai   # or your existing environment
 python download_propbank.py            # pins PropBank 3.4 to an exact commit -> data/propbank_lock.json
-ollama pull qwen3.5:9b                 # extractor (all configurations except extractor_gemma)
+ollama pull qwen3.5:9b                 # small extractor and reader (extractor_small, small)
 ollama pull qwen3.8:27b                # reader (main)
 ollama pull gemma4:26b                 # reader (second model family)
 ```
@@ -23,15 +23,18 @@ ollama pull gemma4:26b                 # reader (second model family)
 
 | config | extractor | reader | role in the paper |
 |---|---|---|---|
-| `configs/main.json` | qwen3.5:9b | qwen3.8:27b | main results, ablations |
-| `configs/reader_gemma.json` | qwen3.5:9b | gemma4:26b | second model family (reader only) |
-| `configs/small.json` | qwen3.5:9b | qwen3.5:9b | does a small reader suffice? |
-| `configs/extractor_gemma.json` | gemma4:12b | qwen3.8:27b | optional: does the extractor matter? |
+| `configs/main.json` | qwen3.8:27b | qwen3.8:27b | main results, ablations |
+| `configs/reader_gemma.json` | qwen3.8:27b | gemma4:26b | second model family (reader only) |
+| `configs/extractor_small.json` | qwen3.5:9b | qwen3.8:27b | effect of extractor size |
+| `configs/small.json` | qwen3.5:9b | qwen3.5:9b | everything small |
 
 All configurations share one extraction cache (`results/extraction_cache`), keyed by extractor
-model, prompt and text. The first three therefore extract the paragraphs only **once**; the
-others re-run only answering. `extractor_gemma` re-extracts everything, so it is the most
-expensive and is optional.
+model, prompt and text. Each extractor extracts the paragraphs **once**: `main` and
+`reader_gemma` share the 27B extraction, `extractor_small` and `small` share the 9B one. Every
+other system re-runs only answering.
+
+Why the 27B extractor: on the 20-question pilot it raised facts mode from 9 to 13 correct and
+retrieval mode from 12 to 14, for about 15% more indexing time (80 vs. 70 s per question).
 
 ## 2. Pilot (development questions only)
 
@@ -68,9 +71,9 @@ whose config file changed.
 D=external_data/musique_ans_dev.jsonl
 python -m evaluation.experiments --data $D --config configs/main.json --out results/main --n 500 --seed 13 --systems main,ablations
 python -m evaluation.experiments --data $D --config configs/reader_gemma.json --out results/reader_gemma --n 500 --seed 13 --systems main
+python -m evaluation.experiments --data $D --config configs/extractor_small.json --out results/extractor_small --n 500 --seed 13 \
+    --systems contextcanvas,contextcanvas_retrieval,contextcanvas_retrieval_nofill
 python -m evaluation.experiments --data $D --config configs/small.json --out results/small --n 500 --seed 13 --systems main
-# optional
-python -m evaluation.experiments --data $D --config configs/extractor_gemma.json --out results/extractor_gemma --n 500 --seed 13 --systems contextcanvas
 ```
 
 Using the same `--n`, `--seed` and `--exclude-first` (default 50) gives every configuration the
@@ -87,7 +90,7 @@ python run_harness.py        # writes benchmark_summary.json
 Follow `ANNOTATION_GUIDELINES.md`. In short, after step 4:
 
 ```bash
-python -m evaluation.annotation export --cache results/extraction_cache --extractor qwen3.5:9b --out annotation/sample.csv --n 200 --seed 7
+python -m evaluation.annotation export --cache results/extraction_cache --extractor qwen3.8:27b --out annotation/sample.csv --n 200 --seed 7
 python -m evaluation.annotation subset annotation/sample.csv --n 35 --seed 11 --out annotation/human_subset.csv
 # humans: calibrate, then fill annotator_a.csv and annotator_b.csv (copies of human_subset.csv) independently
 export OPENAI_API_KEY=...        # or the variable named in configs/judge.json
@@ -110,8 +113,9 @@ python -m evaluation.annotation score annotation/annotator_a.csv annotation/anno
 
 ```bash
 python -m evaluation.report --results results/main --storage benchmark_summary.json \
+    --reference contextcanvas_retrieval \
     --paper-dir paper/generated \
-    --models "Main=results/main,Gemma reader=results/reader_gemma,Small (9B only)=results/small"
+    --models "Main=results/main,Gemma reader=results/reader_gemma,Small extractor=results/extractor_small,Small (9B only)=results/small"
 cd paper && latexmk -pdf ContextCanvas.tex
 ```
 
@@ -119,7 +123,7 @@ Then resolve every red **Author note** box in the PDF.
 
 ## Runtime
 
-The first held-out run extracts about 10,000 paragraphs (500 questions × 20). With a 9B
-extractor this takes several times less than with the 27B model you used for development, but
-measure it in the pilot before planning. Every later system and configuration re-runs only
-answering: one or two reader calls per question.
+Each extractor processes about 10,000 paragraphs (500 questions × 20). On the pilot, the 27B
+extractor needed about 80 s per question (≈11 hours for 500) and the 9B extractor about 70 s
+(≈10 hours). Every later system and configuration re-runs only answering: one or two reader calls
+per question, roughly 5–15 s each.

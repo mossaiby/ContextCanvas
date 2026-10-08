@@ -525,6 +525,21 @@ class ContextGraph:
             words.append(GLOBAL_CATALOG.role_description(sense, role))
         return len(question_stems & content_stems(" ".join(words)))
 
+    def source_distances(self, anchor_names: List[str], max_hops: int = 3) -> Tuple[Dict[str, int], Dict[str, int]]:
+        """Graph distances for retrieval: for every source reached, the smallest distance of an
+        event extracted from it; and for every entity reached, its distance (by entity id).
+        Distances count entity hops from the anchors, as in build_evidence."""
+        anchor_ids = list(dict.fromkeys(a for a in (self.resolve_entity_id(n) for n in anchor_names) if a))
+        if not anchor_ids:
+            return {}, {}
+        dist, _, event_dist = self._explore(anchor_ids, max_hops)
+        sources: Dict[str, int] = {}
+        for ev, d in event_dist.items():
+            src = self.mirror.nodes[ev].get("source", "")
+            if src and d < sources.get(src, d + 1):
+                sources[src] = d
+        return sources, dict(dist)
+
     def build_evidence(
         self,
         anchor_names: List[str],

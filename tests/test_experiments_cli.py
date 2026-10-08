@@ -47,6 +47,11 @@ class FakeEngine:
                                   "evidence_chars": 42, "anchors": ["France"], "llm_output": "FINAL ANSWER: Paris"}
         return "ANSWER: Paris" if hits else "STATUS: NOT_IN_EVIDENCE"
 
+    def rank_sources(self, question):
+        hits = [s for t, s in self.texts if "Paris" in t]
+        self.last_query_status = {"stage": "retrieval" if hits else "graph_no_anchors", "anchors": ["France"] if hits else []}
+        return hits + ["musique:unknown:99"]          # a source that is not a paragraph is ignored
+
     def close(self):
         self.closed = True
 
@@ -167,3 +172,28 @@ def test_main_refuses_inconsistent_runs(env, change, message):
 
 def test_groups_expand_to_their_systems():
     assert "cc_triples" in exp.GROUPS["ablations"] and "oracle" in exp.GROUPS["main"]
+
+
+def test_graph_retrieval_reads_ranked_paragraphs_as_text(env):
+    tmp = env[0]
+    exp.main(_args(env, "--systems", "contextcanvas_retrieval,contextcanvas_retrieval_nofill"))
+    filled = _predictions(tmp, "contextcanvas_retrieval")
+    assert all(len(r["support_pred"]) == 2 for r in filled)                # k=5, but only 2 paragraphs exist
+    assert {r["retrieval"]["from_graph"] for r in filled} == {0, 1}
+    hits = [r for r in filled if r["retrieval"]["from_graph"] == 1]
+    assert all(r["support_pred"][0] == 0 and r["em"] == 1.0 for r in hits)
+    unfilled = _predictions(tmp, "contextcanvas_retrieval_nofill")
+    misses = [r for r in unfilled if r["retrieval"]["from_graph"] == 0]
+    assert misses and all(r["support_pred"] == [] and r["predicted"] == "" and r["llm_output"] == "" for r in misses)
+    assert {r["failure_stage"] for r in misses} == {"extraction_zero_events"}
+    assert {r["failure_stage"] for r in unfilled if r["retrieval"]["from_graph"]} == {"success"}
+
+
+def test_filling_stops_at_k_paragraphs(env):
+    engine = FakeEngine(db_path=None, config_path=None, config_overrides={"retrieval_k": 1, "retrieval_fill": True})
+    case = exp.load_records(env[1], include_unanswerable=False)[0] | {"paragraphs": [
+        {"idx": i, "title": f"T{i}", "paragraph_text": "France wine." if i else "Capital of France?", "is_supporting": False}
+        for i in range(3)]}
+    out = exp.run_graph_retrieval_case(engine, case, max_chars=10_000)
+    assert out["retrieval"] == {"from_graph": 0, "filled": 1, "links": {"event": 0, "title": 0, "mention": 0}}
+    assert len(out["support"]) == 1

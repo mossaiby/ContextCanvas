@@ -44,7 +44,7 @@
 Retrieval-augmented generation passes text chunks to a language model and leaves relational structure implicit, whereas knowledge-graph approaches usually reduce text to binary triples, losing the argument structure and the temporal, spatial and provenance context of each statement.
 We present ContextCanvas, a system that stores text as an event-centric property graph: each statement becomes a PropBank-grounded event frame whose arguments are typed semantic roles and which carries explicit temporal, spatial and epistemic \emph{context envelopes}.
 The graph is built by a language model under a fixed frame contract and is then normalized by deterministic, independently switchable rules for kinship, place containment, aliases and role alignment.
-Questions are answered from a bounded, role-labelled serialization of the subgraph around the entities named in the question, under an explicit answering policy that separates answering from refusing.
+The graph supports two answering modes: in \emph{facts mode} a language model answers from a bounded, role-labelled serialization of the subgraph around the entities named in the question; in \emph{retrieval mode} the graph ranks the source documents by their distance from those entities and the model reads the top-ranked documents as text.
 On \ResNTest{} held-out MuSiQue questions, ContextCanvas reaches \ResCCEM{} exact match and \ResCCFOne{} F1, compared with \ResFullEM{} / \ResFullFOne{} for the same reader model given all candidate paragraphs and \ResBMfiveEM{} / \ResBMfiveFOne{} with BM25 retrieval.
 Results are replicated with a second model family as reader, ablations quantify the contribution of role labels, context envelopes and each normalization rule; a manual annotation study measures extraction precision.
 All code, prompts, configurations and per-question outputs are released.
@@ -151,6 +151,8 @@ Two events are duplicates iff they have the same roleset, the same set of (role,
 Rolesets are taken from PropBank release \ResPropBankRef{} (commit \ResPropBankCommit{} of the frames repository).
 Relations central to the evaluation domain are fixed by a registry of \emph{system frames} (Table~\ref{tab:frames}).
 The extraction prompt is generated from this registry and role validation uses it with precedence over the installed PropBank release, so the roles the model is asked to produce and the roles accepted by validation cannot diverge.
+Each system frame also lists the verbs that may carry it (for \texttt{locate.01}: \textit{locate, be located, situate, lie, headquarter, take place}, \ldots).
+The contract applies in both directions: a listed verb whose extracted sense does not exist in PropBank (\textit{co-found} as \texttt{co-found.01}) takes its system frame, and an extracted event whose verb is not listed keeps its arguments but receives the verb's own sense instead: language models attach system frames to verbs that do not express them (\textit{hold} or \textit{be known as} as \texttt{locate.01}, \textit{be home to} as \texttt{member.01}), and because containment is transitive, a single false \texttt{locate.01} fact corrupts every place chain through it.
 Two internal frames are produced only by the normalization layer: \texttt{alias.01} (two names of one entity) and \texttt{affiliate.01} (possessive association).
 
 \begin{table}[t]
@@ -211,7 +213,7 @@ CREATE REL TABLE DiscourseLink(FROM Event TO Event, relation STRING);
 
 Paragraphs longer than 900 characters are split at sentence boundaries, and the document title is prefixed to later chunks to support pronoun resolution.
 For each chunk a language model emits JSON listing up to 15 events, each with a lemma, a roleset identifier, role-to-name assignments, optional temporal and spatial context, and optional discourse links.
-The prompt (released with the code) lists the system frames of Table~\ref{tab:frames} and instructs the model to express relations with these verbs rather than with a copula and a relational noun.
+The prompt (released with the code) lists the system frames of Table~\ref{tab:frames}, instructs the model to use them only for the relations they denote and to express those relations with these verbs rather than with a copula and a relational noun, and asks for entity names rather than phrases containing them (\textit{Acme Corp} rather than \textit{Acme Corp's support}).
 The source identifier is not shown to the model, so extraction is a deterministic function of the text at temperature~0; outputs are cached by a hash of the model, prompt and text, which lets all system variants in our experiments share one set of extractions.
 A schema layer coerces common deviations (alternative role names, list-valued roles, a sense identifier written into the lemma field, truncated JSON) into the data model.
 
@@ -221,6 +223,7 @@ Each extracted event passes through the following rules before storage.
 Each rule can be disabled independently (Section~\ref{sec:ablation}).
 
 \begin{description}
+\item[Frame--verb contract.] A system frame on a verb not listed for it is replaced by the verb's own sense, and a listed verb with a non-existent sense takes its frame (Section~\ref{sec:model}).
 \item[Date migration.] Arguments that are pure temporal expressions (recognized by a vocabulary of month names, years, era markers and temporal function words) move into the temporal envelope, so dates never become entities.
 \item[Placeholder filtering.] Arguments such as \textit{unknown}, \textit{someone} or bare pronouns are removed, as are participants the extractor itself marks as inferred (\textit{network executives (implied)}); otherwise a single \textit{unknown} node links unrelated events.
 \item[Self-relations.] No entity relates to itself. A kinship event between a person and themselves is discarded; in any other event, an entity that fills two core roles keeps only the non-agent one, so that \textit{DeSoto Records founded DeSoto Records in 1989} is stored as \textit{DeSoto Records was founded in 1989}.
@@ -228,7 +231,7 @@ Each rule can be disabled independently (Section~\ref{sec:ablation}).
 \item[Copula and birth.] Subject--predicate copulas are mapped onto \texttt{be.01} (\texttt{ARG1} topic, \texttt{ARG2} comment). Birth events are mapped onto \texttt{bear.02} with the person born as \texttt{ARG1}; one remaining argument is the birthplace, two or more are parents.
 \item[Place hierarchies.] A comma-qualified place in a locative slot (\textit{Canyon, Texas, United States}) becomes its head plus explicit containment events (\textit{Canyon} in \textit{Texas}, \textit{Texas} in \textit{United States}). Strings containing digits, lower-case fragments, title words (\textit{Duke}, \textit{Prince}) or more than five parts are left intact, so names such as \textit{Philippe, Duke of Orl\'eans} and quantities such as \textit{161,000 customers} are never split.
 \item[Aliases.] Definitions of the form \textit{Long Name (ABBR)} in the source text create \texttt{alias.01} events if the abbreviation is alphabetic and spells the initials of the name; the name is trimmed to the shortest suffix that does, and never extends across a sentence boundary. Unaligned abbreviations (e.g.\ in another language) are not mined: a wrong alias merges unrelated entities, while a missing one only loses a link.
-\item[Possessive links.] \textit{X's Y}, where both parts are proper names and $X$ is an entity in its own right, yields \texttt{affiliate.01}$(X, \textit{X's Y})$. Titles containing a possessive (\textit{Grant's First Stand}) are excluded.
+\item[Possessive links.] \textit{X's Y}, where both parts are proper names and $X$ is an entity in its own right, yields \texttt{affiliate.01}$(X, \textit{X's Y})$. Titles containing a possessive (\textit{Grant's First Stand}) are excluded. When the possessed part is a common noun phrase (\textit{Orion Pictures' support}), the argument is kept as stated and $X$ is attached to the same event as a possessor role; replacing the argument by $X$ would change the fact (\textit{ended Algeria's status as a colony} is not \textit{ended Algeria}).
 \end{description}
 
 \paragraph{Sense selection and role alignment}
@@ -288,6 +291,19 @@ Each event is rendered with its role meanings and envelopes, for example:
 The serialization is followed by up to ten \emph{path candidates}: entities reached by the search, selected in turn across distances and listed with the role-labelled path from the anchor.
 Epistemic envelopes are shown only when informative (confidence below one or speculative); source identifiers are always retained internally and used to compute supporting-paragraph predictions.
 
+\subsection{Graph-guided retrieval}
+\label{sec:retrieval}
+
+Extraction loses information: a relation the extractor missed cannot be read from the facts.
+In retrieval mode the graph is used only to select text.
+The anchors are found as above, and each source document is linked to the graph search in three ways, of which it takes the closest: through an event extracted from it (at the event's distance); through its title, when the title names an entity the search reached (\textit{Pecos County, Texas} names \textit{Pecos County}; a parenthetical qualifier is ignored); and through a \emph{mention}, when its text contains the name of an entity the search reached.
+Mention links compensate for extraction misses, and they matter for multi-hop questions in particular: the document that answers the second hop typically mentions the bridge entity without being about it, and nothing about that entity may have been extracted from it.
+Only names of at least four characters containing a capital letter create mention links, and hub entities other than the anchors create none, as in the graph search.
+At equal distance, event links rank before title links and title links before mention links.
+The $k$ nearest documents (ties in ingestion order) are given to the reader as text, with the same prompt as the text baselines.
+If the graph reaches fewer than $k$ documents, the remaining slots are filled by BM25, so that the evidence budget equals that of the BM25 top-$k$ baseline; a variant without filling isolates the graph's contribution.
+Retrieval mode keeps the provenance of facts mode: every selected document is justified by a path from the question's entities.
+
 \subsection{Answering}
 
 The language model receives the serialized evidence and the question and must end its output with one of
@@ -316,7 +332,7 @@ ContextCanvas uses two models with different roles.
 The \emph{extractor} (\ResExtractionModel{}) builds the graph; extraction is a high-volume structured task with one call per paragraph chunk.
 The \emph{reader} (\ResAnswerModel{}) answers questions; it is also the only model used by the text baselines, so every system answers with the same model and the comparison isolates the representation of the evidence.
 All models are served locally through Ollama at temperature~0 with a context window of 8{,}192 tokens, of which 2{,}048 are reserved for the answer.
-Section~\ref{sec:models} replaces the reader with a model of another family, and uses a single small model for both roles.
+Section~\ref{sec:models} replaces the reader with a model of another family, replaces the extractor with a smaller model of the same family, and uses a single small model for both roles.
 The prompts and the full configuration of every run are released with the per-question outputs.
 \AuthorNote{Cite the technical reports of the models used.}
 
@@ -326,7 +342,7 @@ All systems share the answer format, the answer parser and the evidence budget.
 \emph{BM25 top-$k$}: the $k \in \{2, 5\}$ paragraphs ranked highest by BM25 \citep{robertson2009bm25}.
 \emph{Full-context}: all 20 paragraphs, truncated to the evidence budget.
 \emph{Oracle}: only the gold supporting paragraphs; this is an upper bound for text-based reading, not a competitor.
-\emph{ContextCanvas} under the best-supported and the strict policy.
+\emph{ContextCanvas} in facts mode under the best-supported and the strict policy, and in retrieval mode with $k=5$: with BM25 filling, without it, and without mention links.
 
 \paragraph{Metrics}
 Exact match (EM) and token F1 after SQuAD normalization \citep{rajpurkar2016squad}, maximized over the gold answer and its aliases; supporting-paragraph F1, where a system's predicted support is the set of paragraphs whose content was shown to the answerer (for ContextCanvas: the sources of the serialized events); refusal rate; and cost, split into index-time tokens (extraction) and query-time tokens (answering) per question, with wall-clock model time.
@@ -364,7 +380,7 @@ The full-context baseline obtains \ResFullEM{} EM, BM25 top-5 \ResBMfiveEM{}, th
 On average the serialized evidence comprised \ResCCEvidenceChars{} characters, and the follow-up call for truncated answers was needed for \ResCCFinalizeRate\% of questions.
 Table~\ref{tab:cost} separates index-time from query-time cost: ContextCanvas pays for extraction once per paragraph, whereas the text baselines read paragraphs at every query.
 
-\AuthorNote{Interpret Table~\ref{tab:main} once it is filled: (a) whether ContextCanvas differs significantly from full-context and BM25; (b) the precision/coverage trade-off between the two policies; (c) the gap to the oracle; (d) the cost profile of Table~\ref{tab:cost}. Do not claim superiority where $p \geq 0.05$.}
+\AuthorNote{Decide which mode is the headline system and regenerate the tables with \texttt{report.py --reference} set to it. Interpret Table~\ref{tab:main} once it is filled: (o) facts mode versus retrieval mode, and retrieval mode versus BM25 at the same budget; (a) whether ContextCanvas differs significantly from full-context and BM25; (b) the precision/coverage trade-off between the two policies; (c) the gap to the oracle; (d) the cost profile of Table~\ref{tab:cost}. Do not claim superiority where $p \geq 0.05$.}
 
 \subsection{Effect of reasoning depth}
 
@@ -390,7 +406,7 @@ Table~\ref{tab:hops} breaks EM down by the number of composed single-hop questio
 \IfFileExists{generated/tab_models_note.tex}{\input{generated/tab_models_note.tex}}{}
 \end{table}
 
-Table~\ref{tab:models} repeats the main comparison with a reader from another model family and with a single small model in both roles.
+Table~\ref{tab:models} repeats the main comparison with a reader from another model family, with a smaller extractor, and with a single small model in both roles.
 Configurations that share the extractor share the extracted graphs exactly (extractions are cached by extractor, prompt and text), so differences between them are due to the reader alone.
 \AuthorNote{State whether the ranking of ContextCanvas against the full-context baseline is stable across readers, and what the small configuration shows about the model size the method needs.}
 

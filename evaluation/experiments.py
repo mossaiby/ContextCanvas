@@ -46,10 +46,16 @@ ALL_REPAIRS_OFF = {
 SYSTEMS: Dict[str, Any] = {
     "contextcanvas": ("graph", {}),
     "contextcanvas_strict": ("graph", {"answer_policy": "strict"}),
+    # Graph-guided retrieval: the graph selects documents, the reader reads them as text.
+    "contextcanvas_retrieval": ("graph_retrieval", {"retrieval_k": 5, "retrieval_fill": True}),
+    "contextcanvas_retrieval_nofill": ("graph_retrieval", {"retrieval_k": 5, "retrieval_fill": False}),
+    "contextcanvas_retrieval_nomention": ("graph_retrieval", {"retrieval_k": 5, "retrieval_fill": True,
+                                                              "ablations": {"mention_links": False}}),
     "cc_triples": ("graph", {"ablations": {"triples_only": True}}),
     "cc_no_role_labels": ("graph", {"ablations": {"role_labels": False}}),
     "cc_no_envelopes": ("graph", {"ablations": {"envelopes": False}}),
     "cc_no_repairs": ("graph", {"ablations": ALL_REPAIRS_OFF}),
+    "cc_no_frame_guard": ("graph", {"ablations": {"frame_guard": False}}),
     "cc_no_kinship": ("graph", {"ablations": {"kinship_repair": False}}),
     "cc_no_place_hierarchy": ("graph", {"ablations": {"place_hierarchy": False}}),
     "cc_no_aliases": ("graph", {"ablations": {"alias_mining": False, "possessive_links": False}}),
@@ -63,7 +69,9 @@ SYSTEMS: Dict[str, Any] = {
     "oracle": ("text", None),
 }
 GROUPS = {
-    "main": ["contextcanvas", "contextcanvas_strict", "closed_book", "full_context", "bm25_k2", "bm25_k5", "oracle"],
+    "main": ["contextcanvas", "contextcanvas_strict", "contextcanvas_retrieval", "contextcanvas_retrieval_nofill",
+             "contextcanvas_retrieval_nomention",
+             "closed_book", "full_context", "bm25_k2", "bm25_k5", "oracle"],
     "ablations": [s for s in SYSTEMS if s.startswith("cc_")],
 }
 
@@ -145,8 +153,8 @@ def source_idx(source: str) -> Optional[int]:
 
 # ---------------------------------------------------------------------------------- runners
 
-def run_graph_case(engine: Any, case: Dict[str, Any]) -> Dict[str, Any]:
-    from evaluation.eval_musique_runner import classify_case
+def ingest_case(engine: Any, case: Dict[str, Any]) -> int:
+    """Fresh graph from the case's paragraphs; returns the number of events stored."""
     engine.reset()
     engine.realizer.reset_usage()
     events = 0
@@ -154,6 +162,52 @@ def run_graph_case(engine: Any, case: Dict[str, Any]) -> Dict[str, Any]:
         title = p.get("title", "")
         text = f"{title}. {p.get('paragraph_text', '')}".strip() if title else p.get("paragraph_text", "")
         events += len(engine.ingest_text(text, source=f"musique:{case['id']}:{p['idx']}", title=title or None))
+    return events
+
+
+def run_graph_retrieval_case(engine: Any, case: Dict[str, Any], max_chars: int) -> Dict[str, Any]:
+    """The graph ranks the case's paragraphs; the top k are given to the reader as text. With
+    retrieval_fill, BM25 fills the remaining slots so the budget equals the BM25 top-k baseline."""
+    from evaluation.baselines import BM25, format_passages
+    from evaluation.eval_musique_runner import classify_case
+    cfg = engine.realizer.config
+    k, fill = int(cfg.get("retrieval_k", 5)), bool(cfg.get("retrieval_fill", True))
+    events = ingest_case(engine, case)
+    by_idx = {int(p["idx"]): p for p in case["paragraphs"]}
+    ranked_sources = [(source_idx(s), s) for s in engine.rank_sources(case["question"])]
+    ranked_sources = [(i, s) for i, s in ranked_sources if i in by_idx]
+    meta = dict(engine.last_query_status)
+    chosen = [i for i, _ in ranked_sources[:k]]
+    from_graph = len(chosen)
+    link_of = meta.get("source_links", {})
+    link_counts = {kind: sum(1 for _, s in ranked_sources[:k] if link_of.get(s) == kind) for kind in ("event", "title", "mention")}
+    if fill and len(chosen) < k:
+        bm25 = BM25([f"{p.get('title', '')} {p.get('paragraph_text', '')}" for p in case["paragraphs"]])
+        for pos in bm25.top_k(case["question"], len(case["paragraphs"])):
+            idx = int(case["paragraphs"][pos]["idx"])
+            if len(chosen) >= k:
+                break
+            if idx not in chosen:
+                chosen.append(idx)
+    text, used = format_passages([by_idx[i] for i in chosen], max_chars)
+    raw = engine.realizer.answer_question(case["question"], text, evidence_kind="text") if used else "STATUS: NOT_IN_EVIDENCE"
+    pred = clean_prediction(raw)
+    stage = meta.get("stage") if not used else ("qa_success" if pred else "qa_refusal")
+    meta.update({"stage": stage, "evidence_text": text})
+    return {
+        "raw": raw, "predicted": pred, "support": used, "evidence_chars": len(text),
+        "failure_stage": classify_case(pred, case["answer_aliases"], len(case["paragraphs"]), events, meta)
+        if case["answerable"] else None,
+        "anchors": meta.get("anchors", []),
+        "retrieval": {"from_graph": from_graph, "filled": len(chosen) - from_graph, "links": link_counts},
+        "llm_output": (engine.realizer.last_answer_text or "")[-4000:] if used else "",
+        "usage": engine.realizer.usage_summary(),
+    }
+
+
+def run_graph_case(engine: Any, case: Dict[str, Any]) -> Dict[str, Any]:
+    from evaluation.eval_musique_runner import classify_case
+    events = ingest_case(engine, case)
     raw = engine.ask(case["question"])
     meta = dict(engine.last_query_status)
     pred = clean_prediction(raw)
@@ -212,14 +266,19 @@ def run_system(system: str, cases: List[Dict[str, Any]], out_dir: Path, config_p
         return
 
     base_overrides = {"extraction_cache_dir": str(cache_dir)}
-    if kind == "graph":
+    if kind in ("graph", "graph_retrieval"):
         from engine.pipeline import ContextCanvasEngine
         from engine.realizer import _deep_merge
         engine = ContextCanvasEngine(
             db_path=str(sys_dir / "kuzu"), config_path=str(config_path),
             config_overrides=_deep_merge(base_overrides, overrides),
         )
-        runner = lambda case: run_graph_case(engine, case)
+        if kind == "graph":
+            runner = lambda case: run_graph_case(engine, case)
+        else:
+            # Same evidence budget as the text baselines.
+            max_chars = int((engine.realizer.context_window_tokens - engine.realizer.output_reserve_tokens - 700) * 3.5)
+            runner = lambda case: run_graph_retrieval_case(engine, case, max_chars)
         (sys_dir / "effective_config.json").write_text(json.dumps(
             {**engine.realizer.config, "ablations_effective": engine.ablations}, indent=2), encoding="utf-8")
     else:
@@ -250,12 +309,13 @@ def run_system(system: str, cases: List[Dict[str, Any]], out_dir: Path, config_p
                 "support_gold": [p["idx"] for p in case["paragraphs"] if p.get("is_supporting")],
                 "failure_stage": out["failure_stage"], "anchors": out["anchors"],
                 "evidence_chars": out["evidence_chars"], "usage": out["usage"],
+                "retrieval": out.get("retrieval"),
                 "wall_seconds": time.perf_counter() - t0, "error": error, "llm_output": out["llm_output"],
             }
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
             f.flush()
             print(f"  [{i}/{len(todo)}] {case['id']}  EM={scores['em']:.0f}  pred={out['predicted'][:40]!r}  gold={case['answer'][:40]!r}")
-    if kind == "graph":
+    if kind in ("graph", "graph_retrieval"):
         engine.close()
 
 

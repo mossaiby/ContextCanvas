@@ -132,8 +132,9 @@ def test_unknown_sense_is_disambiguated(engine, monkeypatch):
 # ------------------------------------------------------------------ titles, anaphora, possessives
 
 def test_title_is_derived_from_the_text_and_resolves_anaphora(engine):
-    _ingest(engine, "Learjet (company). The company builds jets.", [_ev("build", {":ARG0": "the company", ":ARG1": "Jets"})])
-    assert ("build.01", ((":ARG0", "Learjet"), (":ARG1", "Jets"))) in _facts(engine)
+    # "operate" is on no frame list, so the result does not depend on the installed PropBank frames.
+    _ingest(engine, "Learjet (company). The company operates plants.", [_ev("operate", {":ARG0": "the company", ":ARG1": "Plants"})])
+    assert ("operate.01", ((":ARG0", "Learjet"), (":ARG1", "Plants"))) in _facts(engine)
     assert ContextCanvasEngine._extract_document_title("no title here") is None
 
 
@@ -228,3 +229,10 @@ def test_ask_with_an_anchor_but_no_evidence(engine, capsys):
     assert engine.ask("Who?", target_entity="Lonely Entity", debug=True) == "STATUS: NOT_IN_EVIDENCE"
     assert engine.last_query_status["stage"] == "graph_empty_blueprint"
     assert "Evidence: EMPTY" in capsys.readouterr().out
+
+
+def test_questions_naming_nothing_in_the_graph_are_refused(engine):
+    engine.ingest_event_direct(ExtractedEvent(temp_id="b1", lemma="bear", sense_id="bear.02", roles={":ARG1": "Ann Lee"}))
+    assert engine._find_candidate_entities("what is it?") == []
+    assert engine.ask("what is it?") == "STATUS: NOT_IN_EVIDENCE"
+    assert engine.last_query_status == {"stage": "graph_no_anchors", "anchors": []}

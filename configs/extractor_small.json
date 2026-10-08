@@ -1,6 +1,6 @@
 {
-  "extraction_model": "qwen3.8:27b",
-  "answer_model": "gemma4:26b",
+  "extraction_model": "qwen3.5:9b",
+  "answer_model": "qwen3.8:27b",
   "base_url": "http://localhost:11434/v1",
   "api_key": "ollama",
   "temperature": 0.0,

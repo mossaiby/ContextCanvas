@@ -1,0 +1,14 @@
+{
+  "strict_em": 33.33,
+  "normalized_em": 33.33,
+  "answer_em": 33.33,
+  "alias_em": 33.33,
+  "answer_f1": 33.33,
+  "evaluated_cases": 3,
+  "mode": "all_paragraphs",
+  "failure_stages": {
+    "success": 1,
+    "qa_refusal_answer_not_in_evidence": 1,
+    "answer_mismatch_answer_not_in_evidence": 1
+  }
+}

@@ -240,3 +240,12 @@ def test_path_candidates_and_blueprint(graph):
     assert [name for name, _ in paths] == ["Learjet", "Wichita"]
     assert graph.find_candidate_answers_from_paths("Nobody") == []
     assert graph.query_subgraph_blueprint("Nobody") == "No matching context graph entries found."
+
+
+def test_one_entity_in_two_roles_of_one_event_is_one_node(graph):
+    """An event may name a place both as an argument and as its location: one entity, two edges."""
+    ev_id = graph.insert_event(_event("e1", "move", {":ARG1": "Ann Lee", ":ARG2": "Paris", ":location": "Paris"}))
+    roles = sorted(graph._event_roles(ev_id))
+    paris = graph.resolve_entity_id("Paris")
+    assert [(r, e) for r, e in roles if e == paris] == [(":ARG2", paris), (":location", paris)]
+    assert sum(1 for n, d in graph.mirror.nodes(data=True) if d.get("name") == "Paris") == 1

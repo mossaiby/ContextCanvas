@@ -1,0 +1,146 @@
+[
+  {
+    "id": "double__460946_294723",
+    "question": "Who is the spouse of the Green performer?",
+    "gold": "Miquette Giraudy",
+    "aliases": [
+      "Miquette Giraudy"
+    ],
+    "predicted": "Miquette Giraudy",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 78,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Green"
+      ],
+      "matched_anchors": [
+        "Green"
+      ],
+      "candidate_entities": [
+        "Dorking",
+        "Steve Hillage",
+        "Miquette Giraudy",
+        "Surrey and London",
+        "Gong",
+        "Nice",
+        "System 7",
+        "ambient band System 7"
+      ],
+      "evidence_event_ids": [
+        "ev1_22",
+        "ev2_23",
+        "ev2_7",
+        "ev2_loc0",
+        "ev1_5",
+        "ev3_8",
+        "ev4_9",
+        "ev5_10"
+      ],
+      "evidence_sources": [
+        "musique:double__460946_294723:10",
+        "musique:double__460946_294723:5"
+      ],
+      "evidence_text": "=== CONTEXT GRAPH EVIDENCE ===\n- [ev1_22] write (write.01): ARG0[writer]=Steve Hillage; ARG1[thing written]=Green\n  Temporal Scope: spring 1977 [1977]\n- [ev2_23] record (record.01): ARG0[recorder]=Steve Hillage; ARG1[record]=Green; location=Dorking\n  Temporal Scope: late 1977 [1977]\n  Spatial Scope: Dorking (Surrey and London)\n- [ev2_7] partner (partner.01): ARG0[partner]=Miquette Giraudy; ARG1[other partner]=Steve Hillage\n- [ev2_loc0] locate (locate.01): ARG1[thing located]=Dorking; ARG2[location]=Surrey and London\n- [ev1_5] bear (bear.02): ARG1[person born]=Miquette Giraudy; location=Nice\n  Temporal Scope: 9 February 1953 [1953]\n  Spatial Scope: Nice (France)\n- [ev3_8] member (member.01): ARG0[member]=Miquette Giraudy; ARG1[group]=Gong\n- [ev4_9] member (member.01): ARG0[member]=Miquette Giraudy; ARG1[group]=System 7\n- [ev5_10] member (member.01): ARG0[member]=Miquette Giraudy; ARG1[group]=ambient band System 7\n\n=== DISCOVERED PATH CANDIDATES ===\n- Candidate: Dorking (Path: Green | ARG1<-[record.01]->location | Dorking)\n- Candidate: Steve Hillage (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage)\n- Candidate: Miquette Giraudy (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage | ARG1<-[partner.01]->ARG0 | Miquette Giraudy)\n- Candidate: Surrey and London (Path: Green | ARG1<-[record.01]->location | Dorking | ARG1<-[locate.01]->ARG2 | Surrey and London)\n- Candidate: Gong (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage | ARG1<-[partner.01]->ARG0 | Miquette Giraudy | ARG0<-[member.01]->ARG1 | Gong)\n- Candidate: Nice (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage | ARG1<-[partner.01]->ARG0 | Miquette Giraudy | ARG1<-[bear.02]->location | Nice)\n- Candidate: System 7 (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage | ARG1<-[partner.01]->ARG0 | Miquette Giraudy | ARG0<-[member.01]->ARG1 | System 7)\n- Candidate: ambient band System 7 (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage | ARG1<-[partner.01]->ARG0 | Miquette Giraudy | ARG0<-[member.01]->ARG1 | ambient band System 7)",
+      "evidence_chars": 2032,
+      "raw_response": "ANSWER: Miquette Giraudy",
+      "llm_output": "The \"Green\" performer is Steve Hillage (he wrote and recorded \"Green\"). According to fact [ev2_7], Steve Hillage's partner is Miquette Giraudy.\n\nFINAL ANSWER: Miquette Giraudy"
+    }
+  },
+  {
+    "id": "double__252311_366220",
+    "question": "Who founded the company that distributed the film UHF?",
+    "gold": "Mike Medavoy",
+    "aliases": [
+      "Mike Medavoy"
+    ],
+    "predicted": "",
+    "failure_stage": "qa_refusal_answer_not_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 90,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_refusal",
+      "anchors": [
+        "UHF"
+      ],
+      "matched_anchors": [
+        "UHF"
+      ],
+      "candidate_entities": [
+        "Yankovic and Levey",
+        "Orion Pictures' support",
+        "approach of George being a straight man",
+        "finding a film production company"
+      ],
+      "evidence_event_ids": [
+        "ev1_37",
+        "ev2_38",
+        "ev3_39",
+        "ev4_40"
+      ],
+      "evidence_sources": [
+        "musique:double__252311_366220:10"
+      ],
+      "evidence_text": "=== CONTEXT GRAPH EVIDENCE ===\n- [ev1_37] write (write.01): ARG0[writer]=Yankovic and Levey; ARG1[thing written]=UHF\n  Temporal Scope: after Yankovic's second studio album\n- [ev2_38] choose (choose.01): ARG0[picker]=Yankovic and Levey; ARG1[thing picked]=approach of George being a straight man\n- [ev3_39] struggle (struggle.01): ARG0[first struggler]=Yankovic and Levey; ARG1[second struggler]=finding a film production company\n- [ev4_40] get (get.01): ARG0[receiver]=Yankovic and Levey; ARG1[thing gotten]=Orion Pictures' support\n\n=== DISCOVERED PATH CANDIDATES ===\n- Candidate: Yankovic and Levey (Path: UHF | ARG1<-[write.01]->ARG0 | Yankovic and Levey)\n- Candidate: Orion Pictures' support (Path: UHF | ARG1<-[write.01]->ARG0 | Yankovic and Levey | ARG0<-[get.01]->ARG1 | Orion Pictures' support)\n- Candidate: approach of George being a straight man (Path: UHF | ARG1<-[write.01]->ARG0 | Yankovic and Levey | ARG0<-[choose.01]->ARG1 | approach of George being a straight man)\n- Candidate: finding a film production company (Path: UHF | ARG1<-[write.01]->ARG0 | Yankovic and Levey | ARG0<-[struggle.01]->ARG1 | finding a film production company)",
+      "evidence_chars": 1149,
+      "raw_response": "STATUS: NOT_IN_EVIDENCE",
+      "llm_output": "The facts indicate that Yankovic and Levey wrote UHF and obtained Orion Pictures' support, suggesting Orion Pictures is the company connected to UHF's production/distribution. However, none of the provided facts state who **founded** Orion Pictures. The only people mentioned are Yankovic and Levey (as writers and recipients of support), and there is no \"found\" or \"establish\" relation linking any person to Orion Pictures.\n\nFINAL ANSWER: NOT_IN_EVIDENCE"
+    }
+  },
+  {
+    "id": "double__701895_752697",
+    "question": "What administrative territorial entity is the owner of Ciudad Deportiva located?",
+    "gold": "Tamaulipas",
+    "aliases": [
+      "Tamaulipas"
+    ],
+    "predicted": "Nuevo Laredo",
+    "failure_stage": "answer_mismatch_answer_not_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 100,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Ciudad Deportiva"
+      ],
+      "matched_anchors": [
+        "Ciudad Deportiva"
+      ],
+      "candidate_entities": [
+        "Estadio Nuevo Laredo",
+        "Mexico",
+        "Nuevo Laredo",
+        "Nuevo Laredo Multidisciplinary Gymnasium"
+      ],
+      "evidence_event_ids": [
+        "ev1_32",
+        "ev2_33",
+        "ev3_34",
+        "ev4_35"
+      ],
+      "evidence_sources": [
+        "musique:double__701895_752697:11"
+      ],
+      "evidence_text": "=== CONTEXT GRAPH EVIDENCE ===\n- [ev1_32] locate (locate.01): ARG1[thing located]=Ciudad Deportiva; ARG2[location]=Nuevo Laredo\n- [ev2_33] locate (locate.01): ARG1[thing located]=Ciudad Deportiva; ARG2[location]=Mexico\n- [ev3_34] locate (locate.01): ARG1[thing located]=Estadio Nuevo Laredo; ARG2[location]=Ciudad Deportiva\n- [ev4_35] locate (locate.01): ARG1[thing located]=Nuevo Laredo Multidisciplinary Gymnasium; ARG2[location]=Ciudad Deportiva\n\n=== DISCOVERED PATH CANDIDATES ===\n- Candidate: Estadio Nuevo Laredo (Path: Ciudad Deportiva | ARG2<-[locate.01]->ARG1 | Estadio Nuevo Laredo)\n- Candidate: Mexico (Path: Ciudad Deportiva | ARG1<-[locate.01]->ARG2 | Mexico)\n- Candidate: Nuevo Laredo (Path: Ciudad Deportiva | ARG1<-[locate.01]->ARG2 | Nuevo Laredo)\n- Candidate: Nuevo Laredo Multidisciplinary Gymnasium (Path: Ciudad Deportiva | ARG2<-[locate.01]->ARG1 | Nuevo Laredo Multidisciplinary Gymnasium)",
+      "evidence_chars": 912,
+      "raw_response": "ANSWER: Nuevo Laredo",
+      "llm_output": "Looking at the facts, Ciudad Deportiva is located in **Nuevo Laredo** (ev1_32) and in **Mexico** (ev2_33). The question asks for the administrative territorial entity where Ciudad Deportiva is located. Nuevo Laredo is a municipality (an administrative territorial entity), while Mexico is a country. The most specific administrative territorial entity directly containing Ciudad Deportiva is Nuevo Laredo.\n\nFINAL ANSWER: Nuevo Laredo"
+    }
+  }
+]

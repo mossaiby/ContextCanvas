@@ -1,0 +1,166 @@
+[
+  {
+    "id": "double__460946_294723",
+    "question": "Who is the spouse of the Green performer?",
+    "gold": "Miquette Giraudy",
+    "aliases": [
+      "Miquette Giraudy"
+    ],
+    "predicted": "Miquette Giraudy",
+    "failure_stage": "success",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 85,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Green"
+      ],
+      "matched_anchors": [
+        "Green"
+      ],
+      "candidate_entities": [
+        "Dorking",
+        "Steve Hillage",
+        "performances",
+        "Miquette Giraudy",
+        "Motivation Radio",
+        "Surrey and London",
+        "Gong",
+        "Nice",
+        "System 7",
+        "actress"
+      ],
+      "evidence_event_ids": [
+        "ev2",
+        "ev1_25",
+        "ev2_26",
+        "ev3_27",
+        "ev2_9",
+        "ev2_loc0",
+        "ev4_28",
+        "ev5_29",
+        "ev6_30",
+        "ev1_7",
+        "ev3_10",
+        "ev4_11",
+        "ev5_12",
+        "ev6_13",
+        "ev7",
+        "ev8"
+      ],
+      "evidence_sources": [
+        "musique:double__460946_294723:0",
+        "musique:double__460946_294723:10",
+        "musique:double__460946_294723:5"
+      ],
+      "evidence_text": "=== CONTEXT GRAPH EVIDENCE ===\n- [ev2] record (record.01): ARG0[recorder]=Green; ARG1[record]=performances\n- [ev1_25] write (write.01): ARG0[writer]=Steve Hillage; ARG1[thing written]=Green\n  Temporal Scope: spring 1977 [1977]\n- [ev2_26] record (record.01): ARG0[recorder]=Steve Hillage; ARG1[record]=Green; location=Dorking\n  Temporal Scope: late 1977 [1977]\n  Spatial Scope: Dorking (Surrey and London)\n- [ev3_27] release (release.01): ARG0[releaser]=Steve Hillage; ARG1[thing released]=Green\n- [ev2_9] partner (partner.01): ARG0[partner]=Miquette Giraudy; ARG1[other partner]=Steve Hillage\n- [ev2_loc0] locate (locate.01): ARG1[thing located]=Dorking; ARG2[location]=Surrey and London\n- [ev4_28] write (write.01): ARG0[writer]=Steve Hillage; ARG1[thing written]=Motivation Radio\n  Temporal Scope: spring 1977 [1977]\n- [ev5_29] release (release.01): ARG0[releaser]=Steve Hillage; ARG1[thing released]=Motivation Radio\n- [ev6_30] tour (tour.01): ARG0[tourist]=Steve Hillage\n  Temporal Scope: late 1977 [1977]\n- [ev1_7] bear (bear.02): ARG1[person born]=Miquette Giraudy; location=Nice\n  Temporal Scope: 9 February 1953 [1953]\n  Spatial Scope: Nice (France)\n- [ev3_10] form (form.01): ARG0[creator]=Miquette Giraudy; ARG1[thing created]=System 7\n- [ev4_11] work (work.01): ARG0[worker]=Miquette Giraudy; ARG1[job, project]=Gong\n- [ev5_12] work (work.01): ARG0[worker]=Miquette Giraudy; ARG1[job, project]=System 7\n- [ev6_13] work (work.01): ARG0[worker]=Miquette Giraudy; ARG1[job, project]=actress\n- [ev7] work (work.01): ARG0[worker]=Miquette Giraudy; ARG1[job, project]=film editor\n- [ev8] work (work.01): ARG0[worker]=Miquette Giraudy; ARG1[job, project]=writer\n\n=== DISCOVERED PATH CANDIDATES ===\n- Candidate: Dorking (Path: Green | ARG1<-[record.01]->location | Dorking)\n- Candidate: Steve Hillage (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage)\n- Candidate: performances (Path: Green | ARG0<-[record.01]->ARG1 | performances)\n- Candidate: Miquette Giraudy (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage | ARG1<-[partner.01]->ARG0 | Miquette Giraudy)\n- Candidate: Motivation Radio (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage | ARG0<-[write.01]->ARG1 | Motivation Radio)\n- Candidate: Surrey and London (Path: Green | ARG1<-[record.01]->location | Dorking | ARG1<-[locate.01]->ARG2 | Surrey and London)\n- Candidate: Gong (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage | ARG1<-[partner.01]->ARG0 | Miquette Giraudy | ARG0<-[work.01]->ARG1 | Gong)\n- Candidate: Nice (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage | ARG1<-[partner.01]->ARG0 | Miquette Giraudy | ARG1<-[bear.02]->location | Nice)\n- Candidate: System 7 (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage | ARG1<-[partner.01]->ARG0 | Miquette Giraudy | ARG0<-[form.01]->ARG1 | System 7)\n- Candidate: actress (Path: Green | ARG1<-[write.01]->ARG0 | Steve Hillage | ARG1<-[partner.01]->ARG0 | Miquette Giraudy | ARG0<-[work.01]->ARG1 | actress)",
+      "evidence_chars": 2948,
+      "raw_response": "ANSWER: Miquette Giraudy",
+      "llm_output": "Looking at the facts, \"Green\" is a project/album that was written, recorded, and released by Steve Hillage (ev1_25, ev2_26, ev3_27). Steve Hillage is the performer associated with Green.\n\nThe partner (spouse) of Steve Hillage is identified in [ev2_9]: partner.01 with ARG0[partner]=Miquette Giraudy and ARG1[other partner]=Steve Hillage.\n\nFINAL ANSWER: Miquette Giraudy"
+    }
+  },
+  {
+    "id": "double__252311_366220",
+    "question": "Who founded the company that distributed the film UHF?",
+    "gold": "Mike Medavoy",
+    "aliases": [
+      "Mike Medavoy"
+    ],
+    "predicted": "",
+    "failure_stage": "qa_refusal_answer_not_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 88,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_refusal",
+      "anchors": [
+        "UHF"
+      ],
+      "matched_anchors": [
+        "UHF"
+      ],
+      "candidate_entities": [
+        "Yankovic and Levey",
+        "Orion Pictures' support",
+        "approach of George being a straight man",
+        "finding a film production company"
+      ],
+      "evidence_event_ids": [
+        "ev1_35",
+        "ev2_36",
+        "ev3_37",
+        "ev4_38"
+      ],
+      "evidence_sources": [
+        "musique:double__252311_366220:10"
+      ],
+      "evidence_text": "=== CONTEXT GRAPH EVIDENCE ===\n- [ev1_35] write (write.01): ARG0[writer]=Yankovic and Levey; ARG1[thing written]=UHF\n  Temporal Scope: after Yankovic's second studio album\n- [ev2_36] choose (choose.01): ARG0[picker]=Yankovic and Levey; ARG1[thing picked]=approach of George being a straight man\n- [ev3_37] struggle (struggle.01): ARG0[first struggler]=Yankovic and Levey; ARG1[second struggler]=finding a film production company\n- [ev4_38] get (get.01): ARG0[receiver]=Yankovic and Levey; ARG1[thing gotten]=Orion Pictures' support\n\n=== DISCOVERED PATH CANDIDATES ===\n- Candidate: Yankovic and Levey (Path: UHF | ARG1<-[write.01]->ARG0 | Yankovic and Levey)\n- Candidate: Orion Pictures' support (Path: UHF | ARG1<-[write.01]->ARG0 | Yankovic and Levey | ARG0<-[get.01]->ARG1 | Orion Pictures' support)\n- Candidate: approach of George being a straight man (Path: UHF | ARG1<-[write.01]->ARG0 | Yankovic and Levey | ARG0<-[choose.01]->ARG1 | approach of George being a straight man)\n- Candidate: finding a film production company (Path: UHF | ARG1<-[write.01]->ARG0 | Yankovic and Levey | ARG0<-[struggle.01]->ARG1 | finding a film production company)",
+      "evidence_chars": 1149,
+      "raw_response": "STATUS: NOT_IN_EVIDENCE",
+      "llm_output": "The facts indicate that Yankovic and Levey wrote UHF and obtained Orion Pictures' support, suggesting Orion Pictures is the company connected to UHF's production/distribution. However, none of the provided facts state who **founded** Orion Pictures. The only people mentioned are Yankovic and Levey (as writers and recipients of support), and there is no \"found\" or \"establish\" relation linking any person to Orion Pictures.\n\nFINAL ANSWER: NOT_IN_EVIDENCE"
+    }
+  },
+  {
+    "id": "double__701895_752697",
+    "question": "What administrative territorial entity is the owner of Ciudad Deportiva located?",
+    "gold": "Tamaulipas",
+    "aliases": [
+      "Tamaulipas"
+    ],
+    "predicted": "Municipality of Nuevo Laredo",
+    "failure_stage": "answer_mismatch_answer_in_evidence",
+    "mode": "all_paragraphs",
+    "paragraphs_ingested": 20,
+    "events_extracted": 111,
+    "hop_records": {
+      "hop1": [],
+      "hop2": []
+    },
+    "query_meta": {
+      "stage": "qa_success",
+      "anchors": [
+        "Ciudad Deportiva"
+      ],
+      "matched_anchors": [
+        "Ciudad Deportiva"
+      ],
+      "candidate_entities": [
+        "Nuevo Laredo",
+        "Tecolotes de Nuevo Laredo",
+        "Toros de Nuevo Laredo",
+        "Mexico",
+        "Municipality of Nuevo Laredo",
+        "Tamaulipas",
+        "D\u00edaz administration",
+        "elite throughout Mexico"
+      ],
+      "evidence_event_ids": [
+        "ev1_39",
+        "ev3_41",
+        "ev4_42",
+        "ev2_3",
+        "ev2_40",
+        "ev1_2",
+        "c0_ev1_57"
+      ],
+      "evidence_sources": [
+        "musique:double__701895_752697:11",
+        "musique:double__701895_752697:16",
+        "musique:double__701895_752697:3"
+      ],
+      "evidence_text": "=== CONTEXT GRAPH EVIDENCE ===\n- [ev1_39] be located (locate.01): ARG1[thing located]=Ciudad Deportiva; ARG2[location]=Nuevo Laredo\n- [ev3_41] be home to (member.01): ARG0[member]=Ciudad Deportiva; ARG1[group]=Tecolotes de Nuevo Laredo\n- [ev4_42] be home to (member.01): ARG0[member]=Ciudad Deportiva; ARG1[group]=Toros de Nuevo Laredo\n- [ev2_3] locate (locate.01): ARG1[thing located]=Municipality of Nuevo Laredo; ARG2[location]=Nuevo Laredo\n- [ev2_40] be located (locate.01): ARG1[thing located]=Nuevo Laredo; ARG2[location]=Mexico\n- [ev1_2] locate (locate.01): ARG1[thing located]=Municipality of Nuevo Laredo; ARG2[location]=Tamaulipas\n- [c0_ev1_57] allow (allow.01): ARG0[allower]=D\u00edaz administration; ARG1[action allowed]=elite throughout Mexico; location=Mexico\n  Temporal Scope: During this time\n  Spatial Scope: Mexico\n\n=== DISCOVERED PATH CANDIDATES ===\n- Candidate: Nuevo Laredo (Path: Ciudad Deportiva | ARG1<-[locate.01]->ARG2 | Nuevo Laredo)\n- Candidate: Tecolotes de Nuevo Laredo (Path: Ciudad Deportiva | ARG0<-[member.01]->ARG1 | Tecolotes de Nuevo Laredo)\n- Candidate: Toros de Nuevo Laredo (Path: Ciudad Deportiva | ARG0<-[member.01]->ARG1 | Toros de Nuevo Laredo)\n- Candidate: Mexico (Path: Ciudad Deportiva | ARG1<-[locate.01]->ARG2 | Nuevo Laredo | ARG1<-[locate.01]->ARG2 | Mexico)\n- Candidate: Municipality of Nuevo Laredo (Path: Ciudad Deportiva | ARG1<-[locate.01]->ARG2 | Nuevo Laredo | ARG2<-[locate.01]->ARG1 | Municipality of Nuevo Laredo)\n- Candidate: Tamaulipas (Path: Ciudad Deportiva | ARG1<-[locate.01]->ARG2 | Nuevo Laredo | ARG2<-[locate.01]->ARG1 | Municipality of Nuevo Laredo | ARG1<-[locate.01]->ARG2 | Tamaulipas)\n- Candidate: D\u00edaz administration (Path: Ciudad Deportiva | ARG1<-[locate.01]->ARG2 | Nuevo Laredo | ARG1<-[locate.01]->ARG2 | Mexico | location<-[allow.01]->ARG0 | D\u00edaz administration)\n- Candidate: elite throughout Mexico (Path: Ciudad Deportiva | ARG1<-[locate.01]->ARG2 | Nuevo Laredo | ARG1<-[locate.01]->ARG2 | Mexico | location<-[allow.01]->ARG1 | elite throughout Mexico)",
+      "evidence_chars": 2034,
+      "raw_response": "ANSWER: Municipality of Nuevo Laredo",
+      "llm_output": "Looking at the facts, I need to find an administrative territorial entity connected to Ciudad Deportiva as an \"owner.\"\n\nFrom the facts:\n- Ciudad Deportiva is located in Nuevo Laredo [ev1_39]\n- Municipality of Nuevo Laredo is located in Nuevo Laredo [ev2_3]\n- Municipality of Nuevo Laredo is located in Tamaulipas [ev1_2]\n\nThe \"be home to\" relations link Ciudad Deportiva to sports teams (Tecolotes de Nuevo Laredo, Toros de Nuevo Laredo), not to an administrative entity as owner. However, the Municipality of Nuevo Laredo is the administrative territorial entity that encompasses the location of Ciudad Deportiva (both are in Nuevo Laredo), making it the administrative entity most directly associated with the stadium.\n\nFINAL ANSWER: Municipality of Nuevo Laredo"
+    }
+  }
+]

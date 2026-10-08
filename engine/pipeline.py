@@ -6,6 +6,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from engine.realizer import Realizer
 from memory.context_graph import ContextGraph
+from semantics.frames import VERB_FRAMES, frame_accepts, lemma_key
 from semantics.propbank import GLOBAL_CATALOG
 from semantics.schema import (
     DiscourseRelation,
@@ -57,9 +58,10 @@ SUBJECT_IS_PARENT = {"parent", "father", "mother", "beget", "father_of", "mother
 BIRTH_GIVING = {"have_child", "give_birth"}
 SPOUSE_LEMMAS = {"marry", "wed", "spouse", "husband", "wife", "be_married", "married", "marriage", "married_to"}
 SIBLING_LEMMAS = {"sibling", "brother", "sister", "be_sibling_of"}
-COPULA_LEMMAS = {"be", "is", "was", "be_a", "be_an"}
-BIRTH_LEMMAS = {"born", "bear", "be_born"}
-LOCATE_LEMMAS = {"locate", "headquarter", "headquarters", "be_located", "situate"}
+# Compared via lemma_key(): lower case, underscores as spaces.
+COPULA_LEMMAS = {"be", "is", "was", "be a", "be an"}
+BIRTH_LEMMAS = {"born", "bear", "be born"}
+LOCATE_LEMMAS = {"locate", "headquarter", "headquarters", "be located", "situate"}
 
 
 def _drop_self_relations(events: List[ExtractedEvent]) -> List[ExtractedEvent]:
@@ -107,6 +109,7 @@ def _relation_event(relation: str, subject: str, other: str, template: Extracted
 
 # Every component the paper claims matters can be switched off for ablation studies.
 DEFAULT_ABLATIONS: Dict[str, bool] = {
+    "frame_guard": True,           # frame-verb contract: system frames only for their listed verbs, and listed verbs with an invalid sense take their frame
     "date_migration": True,        # move pure dates from arguments into the temporal envelope
     "placeholder_filter": True,    # drop "unknown"/pronoun arguments
     "kinship_repair": True,        # kinship lemmas / relational noun phrases -> parent/marry/sibling
@@ -120,6 +123,7 @@ DEFAULT_ABLATIONS: Dict[str, bool] = {
     "relevance_ranking": True,     # order same-distance events by question overlap
     "hub_pruning": True,           # drop hub anchors when a specific anchor exists
     "triples_only": False,         # render events as plain (subject, predicate, object) triples
+    "mention_links": True,         # retrieval: documents mentioning a reached entity are reached too
 }
 
 
@@ -141,6 +145,8 @@ class ContextCanvasEngine:
         self.max_chunk_chars = int(cfg.get("max_chunk_chars", 900))
         self.max_hops = int(cfg.get("evidence_max_hops", 3))
         self.max_evidence_events = int(cfg.get("evidence_max_events", 40))
+        self._source_titles: Dict[str, str] = {}
+        self._source_texts: Dict[str, str] = {}
         self.max_anchors = int(cfg.get("max_anchors", 4))
         self.graph = ContextGraph(
             db_path=db_path,
@@ -161,6 +167,8 @@ class ContextCanvasEngine:
     def reset(self) -> None:
         self._event_counter = 0
         self.last_query_status = {}
+        self._source_titles = {}
+        self._source_texts = {}
         self.graph.reset()
 
     def _evidence_char_budget(self) -> int:
@@ -289,7 +297,7 @@ class ContextCanvasEngine:
 
         # Relational noun phrases inside arguments: "X be son of Y", "X be younger son, ARG2 Y".
         # Not applied to birth events: there the noun phrase names the person born.
-        if lemma in BIRTH_LEMMAS:
+        if lemma_key(event.lemma) in BIRTH_LEMMAS:
             return None
         subj_role = self._subject_role(event)
         if not subj_role:
@@ -315,14 +323,14 @@ class ContextCanvasEngine:
                     found = True
         if not found:
             return None
-        if lemma in COPULA_LEMMAS:
+        if lemma_key(event.lemma) in COPULA_LEMMAS:
             return derived            # the copula carried nothing but the relation
         return [event] + derived
 
     @staticmethod
     def _normalize_copula(event: ExtractedEvent) -> None:
         """Maps subject/predicate copulas onto be.01 (:ARG1 topic, :ARG2 comment)."""
-        if event.lemma.lower() in COPULA_LEMMAS and ":ARG0" in event.roles and ":ARG2" not in event.roles:
+        if lemma_key(event.lemma) in COPULA_LEMMAS and ":ARG0" in event.roles and ":ARG2" not in event.roles:
             subject = event.roles.pop(":ARG0")
             if ":ARG1" in event.roles:
                 event.roles[":ARG2"] = event.roles.pop(":ARG1")
@@ -337,7 +345,7 @@ class ContextCanvasEngine:
         argument is the birthplace if there is exactly one; two or more are the parents.
         Returns derived parent events (if any).
         """
-        lemma = event.lemma.lower()
+        lemma = lemma_key(event.lemma)
         if lemma not in BIRTH_LEMMAS:
             return []
         roles = dict(event.roles)
@@ -369,7 +377,7 @@ class ContextCanvasEngine:
     @staticmethod
     def _normalize_locate(event: ExtractedEvent) -> None:
         """locate.01: :ARG1 is the located thing, :ARG2 the location."""
-        if event.lemma.lower() not in LOCATE_LEMMAS:
+        if lemma_key(event.lemma) not in LOCATE_LEMMAS:
             return
         event.lemma, event.sense_id = "locate", "locate.01"
         roles = event.roles
@@ -418,7 +426,41 @@ class ContextCanvasEngine:
                 ))
         return derived
 
+    # "Orion Pictures' support", "Algeria's status as a colony": a capitalised name, a possessive
+    # marker, then a lower-case phrase. Titles ("Grant's First Stand") continue in capitals.
+    _POSSESSIVE_ARGUMENT_RE = re.compile(
+        r"^(?P<owner>[A-Z][\w.&-]*(?:\s+[A-Z][\w.&-]*)*)(?:'s|\u2019s|'|\u2019)\s+[a-z]")
+
+    @staticmethod
+    def _link_possessor(event: ExtractedEvent) -> None:
+        """An argument naming something of an entity ("Orion Pictures' support") hides that
+        entity from the graph. The argument is kept as stated and the owner is attached to the
+        same event as a possessor role, which connects the entity without changing the fact
+        ("ended Algeria's status as a colony" must not become "ended Algeria")."""
+        if GLOBAL_CATALOG.POSSESSOR_ROLE in event.roles:
+            return
+        named = {entity_match_key(v) for v in event.roles.values()}
+        for role in sorted(r for r in event.roles if re.fullmatch(r":ARG\d", r)):
+            match = ContextCanvasEngine._POSSESSIVE_ARGUMENT_RE.match(event.roles[role])
+            if match and entity_match_key(match.group("owner")) not in named:
+                event.roles[GLOBAL_CATALOG.POSSESSOR_ROLE] = match.group("owner")
+                return
+
+    @staticmethod
+    def _guard_system_frame(event: ExtractedEvent) -> None:
+        """A system frame attached to a verb that does not express it ("hold" -> locate.01) is
+        replaced by the verb's own sense, so the fact keeps its arguments but not a false meaning.
+        Runs on extractor output only, before the repairs, which create system frames themselves."""
+        if not frame_accepts(event.sense_id, event.lemma):
+            event.sense_id = lemma_key(event.lemma).replace(" ", "_") + ".01"
+
     def _finalize_sense_and_roles(self, event: ExtractedEvent, context_text: str) -> None:
+        if event.sense_id not in GLOBAL_CATALOG.framesets and self.ablations["frame_guard"]:
+            # A verb listed for a system frame whose extracted sense does not exist
+            # ("co-found" -> "co-found.01") takes that frame.
+            frame = VERB_FRAMES.get(lemma_key(event.lemma))
+            if frame:
+                event.sense_id = frame
         if event.sense_id not in GLOBAL_CATALOG.framesets:
             resolved = GLOBAL_CATALOG.disambiguate_sense(event.lemma, context_text)
             if resolved:
@@ -437,6 +479,8 @@ class ContextCanvasEngine:
             event.epistemic_context = event.epistemic_context.model_copy(update={"source": source})
 
         ab = self.ablations
+        if ab["frame_guard"]:
+            self._guard_system_frame(event)
         if ab["date_migration"]:
             self._migrate_dates(event)
         if ab["placeholder_filter"]:
@@ -456,6 +500,7 @@ class ContextCanvasEngine:
                 derived += self._expand_place_hierarchies(ev)
             if ab["possessive_links"]:
                 derived += self._derive_possessive_associations(ev, doc_title, context_text)
+                self._link_possessor(ev)
             for e in [ev] + derived:
                 self._finalize_sense_and_roles(e, context_text or " ".join(e.roles.values()))
                 if e.roles:
@@ -480,6 +525,9 @@ class ContextCanvasEngine:
     ) -> List[str]:
         """Extracts events chunk by chunk, repairs and validates them, and commits them."""
         doc_title = title or self._extract_document_title(text)
+        if doc_title:
+            self._source_titles[source] = doc_title
+        self._source_texts[source] = text
         chunks = chunk_text(text, self.max_chunk_chars)
         multi = len(chunks) > 1
 
@@ -558,6 +606,76 @@ class ContextCanvasEngine:
             ev_id = self.graph.insert_event(ev)
             first_id = first_id or ev_id
         return first_id
+
+    # ------------------------------------------------------------------ graph-guided retrieval
+
+    @staticmethod
+    def _title_names(title: str) -> List[str]:
+        """Names a document title may give its subject: "Pecos County, Texas" -> "Pecos County";
+        "Green (Steve Hillage album)" -> "Green"."""
+        names = [title]
+        bare = re.sub(r"\s*\([^)]*\)\s*$", "", title).strip()
+        names.append(bare)
+        if "," in bare:
+            names.append(bare.split(",", 1)[0].strip())
+        return [n for n in dict.fromkeys(names) if n]
+
+    def rank_sources(self, question: str) -> List[str]:
+        """Sources (documents) ranked by graph distance from the entities the question names.
+
+        A document is reached through the events extracted from it and through its title: an
+        article about an entity the search reaches is relevant even when the extractor missed
+        the relation the question needs. Ties keep ingestion order. Anchoring is the same as in
+        ask(); the outcome is recorded in last_query_status."""
+        anchors = self._find_candidate_entities(question)
+        matched = list(anchors)
+        if not anchors:
+            self.last_query_status = {"stage": "graph_no_anchors", "anchors": [], "matched_anchors": []}
+            return []
+        if self.ablations["hub_pruning"]:
+            anchors = self._drop_hub_anchors(anchors)
+        anchors = anchors[: self.max_anchors]
+        source_dist, entity_dist = self.graph.source_distances(anchors, max_hops=self.max_hops)
+        links = {s: "event" for s in source_dist}
+
+        def link(source: str, d: int, kind: str) -> None:
+            if d < source_dist.get(source, d + 1):
+                source_dist[source], links[source] = d, kind
+
+        for source, title in self._source_titles.items():
+            for name in self._title_names(title):
+                ent = self.graph.resolve_entity_id(name)
+                if ent in entity_dist:
+                    link(source, entity_dist[ent], "title")
+                    break
+        if self.ablations["mention_links"]:
+            # A document that mentions an entity on the search frontier is reached at that
+            # entity's distance, whether or not anything was extracted from it: in multi-hop
+            # questions the second document typically mentions the bridge entity without being
+            # about it. Hubs (other than the anchors) create no links, as in the graph search.
+            for ent, d in sorted(entity_dist.items(), key=lambda item: item[1]):
+                name = self.graph.mirror.nodes[ent].get("name", "")
+                if not self._mentionable(name):
+                    continue
+                if d > 0 and len(self.graph._entity_events(ent)) > self.graph.hub_degree:
+                    continue
+                pattern = re.compile(r"(?<!\w)" + re.escape(name) + r"(?!\w)", re.IGNORECASE)
+                for source, text in self._source_texts.items():
+                    if d < source_dist.get(source, d + 1) and pattern.search(text):
+                        link(source, d, "mention")
+        order = {s: i for i, s in enumerate(self._source_texts)}
+        kind_order = {"event": 0, "title": 1, "mention": 2}
+        ranked = sorted(source_dist, key=lambda s: (source_dist[s], kind_order[links[s]], order.get(s, len(order))))
+        self.last_query_status = {"stage": "retrieval", "anchors": anchors, "matched_anchors": matched,
+                                  "source_distances": {s: source_dist[s] for s in ranked},
+                                  "source_links": {s: links[s] for s in ranked}}
+        return ranked
+
+    @staticmethod
+    def _mentionable(name: str) -> bool:
+        """Names specific enough to link documents by mention: at least four characters and a
+        capital letter (extractor phrases such as "performances" or "film editor" are not)."""
+        return len(name) >= 4 and any(c.isupper() for c in name) and not is_placeholder(name)
 
     # ------------------------------------------------------------------ question answering
 

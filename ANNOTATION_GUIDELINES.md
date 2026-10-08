@@ -39,7 +39,7 @@ by default) without human effort.
 
 1. Export the full sample, then draw the human subset from it:
    ```bash
-   python -m evaluation.annotation export --cache results/extraction_cache --extractor qwen3.5:9b --out annotation/sample.csv --n 200 --seed 7
+   python -m evaluation.annotation export --cache results/extraction_cache --extractor qwen3.8:27b --out annotation/sample.csv --n 200 --seed 7
    python -m evaluation.annotation subset annotation/sample.csv --n 35 --seed 11 --out annotation/human_subset.csv
    ```
 2. Copy `human_subset.csv` to `annotator_a.csv` and `annotator_b.csv`. Give one copy to each person.

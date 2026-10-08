@@ -154,7 +154,12 @@ class PropBankCatalog:
                 return [self.framesets[sid] for sid in sense_ids if sid in self.framesets]
         return []
 
+    # Added by the normalization layer to link the owner named in a possessive argument.
+    POSSESSOR_ROLE = ":ARGM-POSS"
+
     def role_description(self, sense_id: str, role: str) -> str:
+        if role == self.POSSESSOR_ROLE:
+            return "possessor"
         roleset = self.framesets.get(sense_id)
         return roleset.roles.get(role, "") if roleset else ""
 

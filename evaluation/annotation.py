@@ -3,7 +3,7 @@
 See ANNOTATION_GUIDELINES.md for the procedure and the rules. Commands:
 
     # 1. sample extracted paragraphs (from the extraction cache) for annotation
-    python -m evaluation.annotation export --cache results/extraction_cache --extractor qwen3.5:9b \
+    python -m evaluation.annotation export --cache results/extraction_cache --extractor qwen3.8:27b \
         --out annotation/sample.csv --n 200 --seed 7
 
     # 2. the paragraphs the two humans annotate (a subset of the sample)

@@ -217,3 +217,12 @@ def test_model_table_refuses_different_question_sets(tmp_path):
     except SystemExit:
         return
     raise AssertionError("different question sets must be refused")
+
+
+def test_main_table_reference_is_configurable(tmp_path):
+    _results(tmp_path / "res", ["q1", "q2"], systems=("contextcanvas", "contextcanvas_retrieval", "full_context"))
+    report.build(tmp_path / "res", None, tmp_path / "gen", reference="contextcanvas_retrieval")
+    table = (tmp_path / "gen" / "tab_main.tex").read_text()
+    retrieval_row = next(l for l in table.splitlines() if l.startswith("ContextCanvas retrieval + LLM"))
+    assert retrieval_row.rstrip(" \\\\").endswith("ref.")
+    assert "against ContextCanvas retrieval + LLM" in (tmp_path / "gen" / "tab_main_note.tex").read_text()

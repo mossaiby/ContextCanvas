@@ -125,7 +125,7 @@ class Realizer:
     """LLM access for extraction and answering, with caching and usage accounting."""
 
     # Bump when an extraction prompt change should invalidate cached extractions.
-    EXTRACTION_PROMPT_VERSION = "2026-10-06"
+    EXTRACTION_PROMPT_VERSION = "2026-10-07"
 
     def __init__(self, config_path: str = "config.json", overrides: Optional[Dict[str, Any]] = None):
         with open(config_path, "r", encoding="utf-8") as f:
@@ -252,8 +252,11 @@ class Realizer:
             "}\n\n"
             "RULES:\n"
             "1. Resolve pronouns and generic nouns ('the film', 'he', 'the company') to the specific proper name.\n"
-            "2. Role values are entity names only - never dates (dates go in time_context) and never whole clauses.\n"
-            "3. Use these frames for common relations:\n"
+            "2. Role values are entity names only - never dates (dates go in time_context) and never whole clauses. "
+            "Name the entity itself, not a phrase around it: \"Acme Corp's support\" -> \"Acme Corp\"; "
+            "\"the headquarters of Acme Corp\" or \"Acme Corp's studios\" -> \"Acme Corp\".\n"
+            "3. Use these frames only when the sentence states exactly that relation; for any other verb "
+            "use the verb's own lemma and sense:\n"
             + "\n".join(prompt_frame_lines()) + "\n"
             "4. Express relations with the specific verb above instead of 'be' + a noun phrase "
             "('X is the son of Y' -> parent.01 {':ARG0': 'Y', ':ARG1': 'X'}).\n"

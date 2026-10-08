@@ -34,6 +34,48 @@ INTERNAL_FRAMES: Dict[str, Tuple[str, Dict[str, str]]] = {
 # Relations whose two arguments denote the same real-world entity; traversal crosses them freely.
 IDENTITY_FRAMES = {"alias.01"}
 
+# The verbs allowed to use each system frame. An extractor attaches system frames to verbs that do
+# not express them ("hold" -> locate.01, "be home to" -> member.01); such a fact would carry a
+# false meaning (containment is transitive, so one wrong locate.01 corrupts every place chain
+# through it). Any other verb keeps its own sense: a fact without role meanings is harmless, a
+# fact with wrong ones is not. Lemmas are compared after lemma_key().
+FRAME_VERBS: Dict[str, set] = {
+    "locate.01": {"locate", "be located", "situate", "be situated", "lie", "sit", "stand", "headquarter",
+                  "headquarters", "be headquartered", "take place"},
+    "own.01": {"own", "possess", "acquire", "buy", "purchase"},
+    "marry.01": {"marry", "wed", "be married"},
+    "parent.01": {"parent", "father", "mother", "beget"},
+    "sibling.01": {"sibling", "brother", "sister"},
+    "bear.02": {"bear", "born", "be born", "give birth"},
+    "employ.01": {"employ", "hire", "work for", "work at"},
+    "member.01": {"member", "be member", "be a member", "join", "belong", "belong to", "play for"},
+    "found.01": {"found", "co-found", "cofound", "establish", "co-establish", "set up"},
+    "distribute.01": {"distribute", "release", "market", "publish"},
+    "manufacture.01": {"manufacture", "make", "build"},
+    "partner.01": {"partner", "collaborate", "team up"},
+    "alias.01": {"alias"},
+    "affiliate.01": {"affiliate"},
+}
+
+
+# The other direction of the contract: a listed verb whose extracted sense does not exist
+# ("co-found" -> "co-found.01") takes its system frame. Internal frames are produced only by
+# the normalization layer, so they are not reachable from verbs.
+VERB_FRAMES: Dict[str, str] = {
+    verb: sense for sense, verbs in FRAME_VERBS.items() if sense in CANONICAL_FRAMES for verb in verbs
+}
+
+
+def lemma_key(lemma: str) -> str:
+    """Comparable form of a lemma: lower case, underscores as spaces ("be_located" == "Be located")."""
+    return " ".join((lemma or "").lower().replace("_", " ").split())
+
+
+def frame_accepts(sense_id: str, lemma: str) -> bool:
+    """Whether a verb may carry the given sense. Only system frames are restricted."""
+    verbs = FRAME_VERBS.get(sense_id)
+    return verbs is None or lemma_key(lemma) in verbs
+
 
 def all_system_frames() -> Dict[str, Tuple[str, Dict[str, str]]]:
     return {**CANONICAL_FRAMES, **INTERNAL_FRAMES}
